@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Ch13 利害關係人管理</title>
+<style>
+  :root{--primary:#1F4E79;--secondary:#2E75B6;--accent:#2E5F8A;--warn-bg:#FFF9E6;--warn-border:#F0C040;--warn-text:#7A4F00;--tip-bg:#EAF5EA;--tip-border:#5CAF5C;--tip-text:#2E5E2E;--trap-bg:#FFF0F0;--trap-border:#E05050;--trap-text:#6E1010;--bg:#F4F7FB;--card:#FFFFFF;--border:#D0DCE8;--text:#222222;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;padding-bottom:60px;}
+  .hero{background:linear-gradient(135deg,#1F4E79 0%,#2E75B6 100%);color:white;padding:28px 20px 22px;text-align:center;}
+  .hero h1{font-size:22px;font-weight:700;margin-bottom:6px;}
+  .hero p{font-size:13px;opacity:.85;}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:12px;margin-top:8px;}
+  .nav-bar{background:white;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;}
+  .nav-bar a{color:var(--secondary);text-decoration:none;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:white;}
+  .nav-bar a.active{background:var(--primary);color:white;border-color:var(--primary);}
+  .toc{background:var(--card);margin:16px;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .toc-header{background:var(--primary);color:white;padding:12px 16px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;}
+  .toc-body{padding:12px 16px;}
+  .toc-body a{display:block;color:var(--secondary);text-decoration:none;padding:5px 0;font-size:14px;border-bottom:1px solid #f0f0f0;}
+  .toc-body a:last-child{border-bottom:none;}
+  .section{margin:0 16px 16px;background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .section-header{background:linear-gradient(90deg,var(--primary),var(--accent));color:white;padding:14px 16px;font-size:16px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .section-header .num{background:rgba(255,255,255,.25);border-radius:20px;padding:2px 10px;font-size:12px;margin-right:8px;}
+  .section-body{padding:16px;display:none;}
+  .section-body.open{display:block;}
+  h3{color:var(--primary);font-size:14px;font-weight:700;margin:18px 0 8px;padding-left:10px;border-left:4px solid var(--secondary);}
+  h3:first-child{margin-top:0;}
+  p{font-size:14px;margin-bottom:10px;}
+  .table-wrap{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid var(--border);}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{background:var(--primary);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  td{padding:9px 12px;border-bottom:1px solid #eef2f7;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#F8FAFD;}
+  td:first-child{font-weight:600;color:var(--accent);}
+  .box{border-radius:10px;padding:12px 14px;margin:10px 0;font-size:13.5px;line-height:1.65;}
+  .box .box-title{font-weight:700;margin-bottom:5px;font-size:13px;}
+  .warn{background:var(--warn-bg);border-left:4px solid var(--warn-border);color:var(--warn-text);}
+  .tip{background:var(--tip-bg);border-left:4px solid var(--tip-border);color:var(--tip-text);}
+  .trap{background:var(--trap-bg);border-left:4px solid var(--trap-border);color:var(--trap-text);}
+  ul{padding-left:18px;margin:8px 0;}
+  ul li{font-size:14px;margin-bottom:5px;}
+  .qtype{background:#F0F6FF;border:1px solid #C0D8F0;border-radius:10px;padding:12px 14px;margin:10px 0;}
+  .qtype .qt-title{font-weight:700;color:var(--primary);font-size:13px;margin-bottom:6px;}
+  /* Power/Interest Grid */
+  .pi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
+  .pi-card{border-radius:10px;padding:12px;border:2px solid;text-align:center;}
+  .pi-card .pi-strategy{font-size:16px;font-weight:800;margin-bottom:4px;}
+  .pi-card .pi-label{font-size:11px;}
+  .pi-hh{background:#EAF5EA;border-color:#5CAF5C;color:#2E5E2E;}
+  .pi-hl{background:#FFF9E6;border-color:#F0C040;color:#7A4F00;}
+  .pi-lh{background:#E8F4FF;border-color:#5090CC;color:#1a3a6e;}
+  .pi-ll{background:#F8FAFD;border-color:#D0DCE8;color:#555;}
+  .back-top{text-align:center;padding:20px 0 10px;font-size:13px;color:var(--secondary);cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 13｜利害關係人管理 Stakeholder Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+<div class="nav-bar">
+  <a href="PMP_Ch1-Ch3.html">Ch1~3</a><a href="ch4.html">Ch4</a><a href="ch5.html">Ch5</a><a href="ch6.html">Ch6</a><a href="ch7.html">Ch7</a><a href="ch8.html">Ch8</a><a href="ch9.html">Ch9</a><a href="ch10.html">Ch10</a><a href="ch11.html">Ch11</a><a href="ch12.html">Ch12</a>
+  <a href="ch13.html" class="active">Ch13 利害關係人</a><a href="ch14.html">Ch14 敏捷</a>
+</div>
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、利害關係人管理四個流程</a>
+    <a href="#s2">二、權力/利益方格（Power/Interest Grid）</a>
+    <a href="#s3">三、辨識利害關係人的識別要素</a>
+    <a href="#s4">四、高頻情境題解析</a>
+    <a href="#s5">五、題目出題模式與陷阱彙整</a>
+  </div>
+</div>
+
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>利害關係人管理四個流程</span><span id="c1">▼</span></div>
+  <div class="section-body open" id="b1">
+    <div class="table-wrap"><table>
+      <tr><th>流程</th><th>核心工作</th><th>考試關鍵字</th></tr>
+      <tr><td>辨識利害關係人<br>Identify Stakeholders</td><td>找出所有會影響或受到專案影響的人，分析其利益、參與度、影響力</td><td>「目前正在釐清專案有哪些利害關係人」→ 辨識利害關係人<br>⚠️ 整個專案生命週期都要辨識，不只是起始階段</td></tr>
+      <tr><td>規劃利害關係人參與<br>Plan Stakeholder Engagement</td><td>制定讓利害關係人有效參與專案的計畫，說明如何讓利害關係人有效參與</td><td>「為了說明如何讓利害關係人有效參與專案，必須完成哪個流程」→ 規劃利害關係人參與<br>「提高支持及降低抗拒，需推動哪份計畫」→ 利害關係人參與計畫</td></tr>
+      <tr><td>管理利害關係人參與<br>Manage Stakeholder Engagement</td><td>與利害關係人溝通合作，解決問題，管理期望</td><td>「在重要會議上，另一位 PM 表現良好但你的專案延遲，你怎麼辦」→ 與計畫經理討論（管理參與）</td></tr>
+      <tr><td>監控利害關係人參與<br>Monitor Stakeholder Engagement</td><td>監控利害關係人的參與度，根據需要調整策略</td><td>持續監控參與度變化</td></tr>
+    </table></div>
+    <div class="box tip">
+      <div class="box-title">💡 PM 獲得章程後的第一步</div>
+      「PM 被指派負責一個新專案，並獲得了專案章程，PM 首先做什麼？」<br>
+      → 答案：<strong>確定所有的利害關係人都有參與（辨識利害關係人）</strong><br>
+      → 拿到章程代表起始階段，起始階段最重要的兩件事：發展章程 + 辨識利害關係人。
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>權力/利益方格（Power/Interest Grid）</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
+    <p>依據利害關係人的「權力（Power）」和「利益（Interest）」，分成四個象限，各有不同的管理策略：</p>
+    <div class="pi-grid">
+      <div class="pi-card pi-hh">
+        <div class="pi-strategy">Manage Closely</div>
+        <div class="pi-label">高權力 + 高利益<br>密切管理，積極參與</div>
+      </div>
+      <div class="pi-card pi-hl">
+        <div class="pi-strategy">Keep Satisfied</div>
+        <div class="pi-label">高權力 + 低利益<br>讓他們滿意，避免失去支持</div>
+      </div>
+      <div class="pi-card pi-lh">
+        <div class="pi-strategy">Keep Informed</div>
+        <div class="pi-label">低權力 + 高利益<br>定期告知，讓他們了解進度</div>
+      </div>
+      <div class="pi-card pi-ll">
+        <div class="pi-strategy">Monitor</div>
+        <div class="pi-label">低權力 + 低利益<br>監控即可，不需花太多心力</div>
+      </div>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 四格策略記憶</div>
+      <strong>高權力 + 高利益 → Manage Closely（密切管理）</strong><br>
+      <strong>高權力 + 低利益 → Keep Satisfied（讓他們滿意）</strong><br>
+      <strong>低權力 + 高利益 → Keep Informed（定期告知）</strong><br>
+      <strong>低權力 + 低利益 → Monitor（監控）</strong>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>辨識利害關係人的識別要素</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
+    <p>辨識利害關係人時，主要識別的要素包含：</p>
+    <ul>
+      <li>權力（Power）</li>
+      <li>利益（Interest）</li>
+      <li>關注（Concern）</li>
+    </ul>
+    <div class="box trap">
+      <div class="box-title">⚠️ 辨識利害關係人「不包含」什麼？</div>
+      「辨識利害關係人主要識別那些，不包含以下何者？」<br>
+      → 不包含：<strong>需求（Needs）</strong><br>
+      → 需求是在蒐集需求（Ch5）的範疇，不是辨識利害關係人時的識別要素。
+    </div>
+    <h3>利害關係人何時需要辨識？</h3>
+    <p>「專案何時需辨識利害關係人？」→ 答案：<strong>整個專案生命週期</strong>，不只是起始階段。新的利害關係人可能在任何時間點出現。</p>
+  </div>
+</div>
+
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>高頻情境題解析</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
+    <div class="box warn">
+      <div class="box-title">💡 發現專案延誤，Sponsor 被蒙在鼓裡</div>
+      接管一個進行中的專案，發現實際上延誤很多，但 Sponsor 一直被告知按時進行。<br>
+      → 最好的措施：<strong>把你的評估如實報告給 Sponsor</strong>，誠實揭露現況。
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 利害關係人要求增加範疇，Sponsor 不喜歡</div>
+      利害關係人要求增加範疇，但 PM 知道 Sponsor 不喜歡範疇增加。<br>
+      → 最佳選擇：<strong>評估增加範疇的影響</strong>，走正式變更流程，讓 Sponsor 知道代價再決定。
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 客戶指定使用品質不合格的子公司</div>
+      客戶說材料請發包給他的子公司，但該子公司品質不合格。<br>
+      → 正確做法：<strong>若子公司無法改善品質就更換廠商</strong>，品質不能妥協。
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 發現產品缺陷但客戶無法察覺</div>
+      PM 發現產品缺陷，但客戶沒有技術能力發現這個缺陷。<br>
+      → 正確做法：<strong>與團隊討論可行的解決方案，向客戶提供建議</strong>，不能密而不宣。
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 有機密資料被外部研究機構要求提供</div>
+      為完成專案向客戶取得機密資訊，研究機構希望你提供這些機密資料。<br>
+      → 正確做法：<strong>聯繫客戶並取得允許後才提供</strong>，機密資料需要資料主人授權。
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 新加入的利害關係人最後才表示產品不符需求</div>
+      考題（Q26）：一個複雜網站專案，有一位新加入的利害關係人在最終驗收時表示產品不符合需求，最可能造成這種情況的原因？<br>
+      → 答案：<strong>專案過程中未定期辨識及分析專案利害關係人</strong><br>
+      → 如果有定期辨識，這位利害關係人早就被納入管理，不會到最後才出現。
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>題目出題模式與陷阱彙整</span><span id="c5">▼</span></div>
+  <div class="section-body" id="b5">
+    <div class="qtype"><div class="qt-title">📝 題型1：「目前在哪個流程？」</div>
+      <ul>
+        <li>「釐清有哪些利害關係人」→ <strong>辨識利害關係人</strong></li>
+        <li>「說明如何讓利害關係人有效參與」→ <strong>規劃利害關係人參與</strong></li>
+        <li>「提高利害關係人支持、降低抗拒」→ 推動<strong>利害關係人參與計畫</strong></li>
+      </ul>
+    </div>
+    <div class="qtype"><div class="qt-title">📝 題型2：「這個利害關係人用哪種策略？」</div>
+      <ul>
+        <li>高權力 + 高利益 → <strong>Manage Closely</strong></li>
+        <li>高權力 + 低利益 → <strong>Keep Satisfied</strong></li>
+        <li>低權力 + 高利益 → <strong>Keep Informed</strong></li>
+        <li>低權力 + 低利益 → <strong>Monitor</strong></li>
+      </ul>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常答錯的考點</div>
+      <strong>「與上級主管意見不合，一直難以達成共識」→</strong> 正確做法：<strong>針對爭議點與上級主管討論</strong>，不是避免討論爭議點，也不是請求退出專案。<br><br>
+      <strong>「在重要會議上，另一 PM 的專案一切順利，但你的專案有很多延誤，你怎麼做？」</strong><br>
+      → 答案：<strong>與計畫經理（Program Manager）討論</strong>，不是和你的 Sponsor 討論，因為這是計畫層級的問題。
+    </div>
+  </div>
+</div>
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+<script>
+function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}
+function toggleToc(){const b=document.getElementById('toc-body');const c=document.getElementById('toc-chevron');const h=b.style.display==='none';b.style.display=h?'block':'none';c.textContent=h?'▼':'▲';}
+document.querySelectorAll('.section-body').forEach((b,i)=>{if(i>0){b.classList.remove('open');const n=b.id.replace('b','');const c=document.getElementById('c'+n);if(c)c.textContent='▼';}});
+</script>
+</body>
+</html>

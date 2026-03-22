@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Ch10 溝通管理</title>
+<style>
+  :root { --primary:#1F4E79;--secondary:#2E75B6;--accent:#2E5F8A;--warn-bg:#FFF9E6;--warn-border:#F0C040;--warn-text:#7A4F00;--tip-bg:#EAF5EA;--tip-border:#5CAF5C;--tip-text:#2E5E2E;--trap-bg:#FFF0F0;--trap-border:#E05050;--trap-text:#6E1010;--bg:#F4F7FB;--card:#FFFFFF;--border:#D0DCE8;--text:#222222; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;padding-bottom:60px;}
+  .hero{background:linear-gradient(135deg,#1F4E79 0%,#2E75B6 100%);color:white;padding:28px 20px 22px;text-align:center;}
+  .hero h1{font-size:22px;font-weight:700;margin-bottom:6px;}
+  .hero p{font-size:13px;opacity:.85;}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:12px;margin-top:8px;}
+  .nav-bar{background:white;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;}
+  .nav-bar a{color:var(--secondary);text-decoration:none;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:white;}
+  .nav-bar a.active{background:var(--primary);color:white;border-color:var(--primary);}
+  .toc{background:var(--card);margin:16px;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .toc-header{background:var(--primary);color:white;padding:12px 16px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;}
+  .toc-body{padding:12px 16px;}
+  .toc-body a{display:block;color:var(--secondary);text-decoration:none;padding:5px 0;font-size:14px;border-bottom:1px solid #f0f0f0;}
+  .toc-body a:last-child{border-bottom:none;}
+  .section{margin:0 16px 16px;background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .section-header{background:linear-gradient(90deg,var(--primary),var(--accent));color:white;padding:14px 16px;font-size:16px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .section-header .num{background:rgba(255,255,255,.25);border-radius:20px;padding:2px 10px;font-size:12px;margin-right:8px;}
+  .section-body{padding:16px;display:none;}
+  .section-body.open{display:block;}
+  h3{color:var(--primary);font-size:14px;font-weight:700;margin:18px 0 8px;padding-left:10px;border-left:4px solid var(--secondary);}
+  h3:first-child{margin-top:0;}
+  p{font-size:14px;margin-bottom:10px;}
+  .table-wrap{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid var(--border);}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{background:var(--primary);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  td{padding:9px 12px;border-bottom:1px solid #eef2f7;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#F8FAFD;}
+  td:first-child{font-weight:600;color:var(--accent);}
+  .box{border-radius:10px;padding:12px 14px;margin:10px 0;font-size:13.5px;line-height:1.65;}
+  .box .box-title{font-weight:700;margin-bottom:5px;font-size:13px;}
+  .warn{background:var(--warn-bg);border-left:4px solid var(--warn-border);color:var(--warn-text);}
+  .tip{background:var(--tip-bg);border-left:4px solid var(--tip-border);color:var(--tip-text);}
+  .trap{background:var(--trap-bg);border-left:4px solid var(--trap-border);color:var(--trap-text);}
+  ul{padding-left:18px;margin:8px 0;}
+  ul li{font-size:14px;margin-bottom:5px;}
+  .qtype{background:#F0F6FF;border:1px solid #C0D8F0;border-radius:10px;padding:12px 14px;margin:10px 0;}
+  .qtype .qt-title{font-weight:700;color:var(--primary);font-size:13px;margin-bottom:6px;}
+  .tag{display:inline-block;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;margin-right:4px;}
+  .tag-blue{background:#D6E8FF;color:#1a3a6e;}
+  .tag-green{background:#D6F0D6;color:#1a4a1a;}
+  .tag-orange{background:#FFE8CC;color:#6e3a00;}
+  .tag-red{background:#FFD6D6;color:#6e0000;}
+  .back-top{text-align:center;padding:20px 0 10px;font-size:13px;color:var(--secondary);cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 10｜溝通管理 Communication Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+<div class="nav-bar">
+  <a href="PMP_Ch1-Ch3.html">Ch1~3</a><a href="ch4.html">Ch4</a><a href="ch5.html">Ch5</a><a href="ch6.html">Ch6</a><a href="ch7.html">Ch7</a><a href="ch8.html">Ch8</a><a href="ch9.html">Ch9</a>
+  <a href="ch10.html" class="active">Ch10 溝通</a><a href="ch11.html">Ch11 風險</a><a href="ch12.html">Ch12 採購</a><a href="ch13.html">Ch13 利害關係人</a><a href="ch14.html">Ch14 敏捷</a>
+</div>
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、溝通管理概念與三種溝通技術</a>
+    <a href="#s2">二、溝通管理計畫的用途</a>
+    <a href="#s3">三、重要文件對照</a>
+    <a href="#s4">四、題目出題模式與陷阱彙整</a>
+  </div>
+</div>
+
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>溝通管理概念與三種溝通技術</span><span id="c1">▼</span></div>
+  <div class="section-body open" id="b1">
+    <p>溝通管理確保「對的資訊，在對的時間，透過對的管道，傳給對的人」。</p>
+    <div class="table-wrap"><table>
+      <tr><th>溝通技術</th><th>特性</th><th>適用情境</th></tr>
+      <tr><td>互動溝通<br>Interactive</td><td>雙向或多向即時交流，效率最高</td><td>跨國成員需要即時雙向交流；電話、視訊會議、面對面</td></tr>
+      <tr><td>推式溝通<br>Push</td><td>單向發送，確保對方收到但不保證讀了</td><td>組織內部公告、發行未來一年的注意事項；Email、公告</td></tr>
+      <tr><td>拉式溝通<br>Pull</td><td>將資訊放在某處，由接收者自行取用</td><td>會議結束後整理資料定期提供特定利害關係人；知識庫、入口網站</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 三種溝通技術判斷</div>
+      「跨國成員分散各國，需要雙向或多向即時交流」→ <strong>互動溝通</strong><br>
+      「組織內部發行了未來一年各部門相關注意事項與詳細說明」→ <strong>推式溝通</strong>（單向廣播）<br>
+      「會議後整理資訊，定期透過 Email 提供給特定利害關係人了解」→ <strong>拉式溝通</strong>（放著讓對方取用）<br><br>
+      合約管理中的溝通應傾向使用：<strong>正式書面溝通</strong>（Formal Written）
+    </div>
+    <h3>Lesson Learned（經驗學習）最大用途</h3>
+    <p>「作為<strong>未來專案參考的歷史記錄</strong>」，不是告知團隊現在的規劃，也不是告知行為。</p>
+    <p>Lesson Learned 最好由<strong>以上皆是</strong>（PM、Sponsor、Team）共同提供，不只是 PM 一人。</p>
+  </div>
+</div>
+
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>溝通管理計畫的用途</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
+    <div class="table-wrap"><table>
+      <tr><th>情境</th><th>應查文件</th></tr>
+      <tr><td>某部門未被包含在通知範圍，不知道專案延遲狀態</td><td><strong>溝通管理計畫</strong>（確認該利害關係人是否需要通知，計畫是否有瑕疵）</td></tr>
+      <tr><td>PM 和利害關係人都認為必須向上呈報，要做為分級上呈的依據</td><td><strong>溝通管理計畫</strong></td></tr>
+      <tr><td>專案有多個下包商，歸檔文件避免資料外洩</td><td><strong>溝通管理計畫</strong></td></tr>
+      <tr><td>成員向資深經理報告進度，資深經理應詢問 PM 以確保正確資訊</td><td>成員根據<strong>溝通管理計畫</strong>（RACI）回應應向誰報告</td></tr>
+      <tr><td>「為了讓專案資訊能在對的時間透過對的管道傳給正確對象，了解利害關係人對資訊的需求與期望」</td><td>正在使用<strong>溝通需求分析</strong>（規劃溝通管理時的方法）</td></tr>
+    </table></div>
+    <div class="box tip">
+      <div class="box-title">💡 遇到「利害關係人沒收到通知」怎麼辦？</div>
+      PM 依溝通管理計畫通知了所有人，但有一位利害關係人說沒收到。<br>
+      → 正確做法：<strong>查閱溝通管理計畫，確認該利害關係人是否需要通知，審查計畫是否有瑕疵</strong><br>
+      → 不是直接去查 Email，也不是質問功能經理。先確認計畫本身是否正確。
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 PM 在宴會上聽到有用資訊怎麼辦？</div>
+      考題（Q8）：PM 在宴會上碰巧聽到一位部門經理談論對專案有用的資訊。<br>
+      → 正確做法：<strong>在經驗分享文件中記錄宴會中收集來的專案成功資訊</strong><br>
+      → 不是立刻確保每個利害關係人都了解溝通計畫，不是評估計畫是否再加強。
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>重要文件對照</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
+    <div class="table-wrap"><table>
+      <tr><th>文件</th><th>用途</th></tr>
+      <tr><td>溝通管理計畫</td><td>說明誰、何時、如何、用什麼管道收到哪些資訊；分級上呈依據；下包商文件歸檔依據</td></tr>
+      <tr><td>議題紀錄<br>Issue Log</td><td>「有人碰到問題，發現大家都有這個議題但沒提出，避免再發生」→ 建立議題日誌定期追蹤</td></tr>
+      <tr><td>WBS</td><td>WBS 能有效地與專案團隊、Sponsor、客戶促進溝通（以上皆是）</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 成員在 Daily Scrum 提出技術問題</div>
+      Daily Scrum 不是解決技術問題的地方，只討論三個主題：昨天做了什麼、今天做什麼、什麼事情阻礙工作。<br>
+      → 遇到技術問題：<strong>Daily Scrum 結束後，另外排時間討論此問題</strong>。
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>題目出題模式與陷阱彙整</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
+    <div class="qtype"><div class="qt-title">📝 題型：「用哪種溝通技術？」</div>
+      <ul>
+        <li>即時雙向交流、跨國成員 → <strong>互動溝通</strong></li>
+        <li>組織公告、單向發送 → <strong>推式溝通</strong></li>
+        <li>整理後放在某處讓對方自取 → <strong>拉式溝通</strong></li>
+        <li>合約管理溝通 → <strong>正式書面溝通</strong></li>
+      </ul>
+    </div>
+    <div class="qtype"><div class="qt-title">📝 題型：「查哪份文件？」</div>
+      <ul>
+        <li>利害關係人沒收到通知 → <strong>溝通管理計畫</strong>（確認計畫是否有瑕疵）</li>
+        <li>問題大家都有但沒人提出，避免再發生 → <strong>建立議題日誌</strong></li>
+        <li>成員進度報告應向誰報告 → <strong>溝通管理計畫（RACI）</strong></li>
+      </ul>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 成員發現問題，最好的處理</div>
+      成員查看狀況報告，發現延誤，最好的做法：<strong>安排會議跟 PM 及相關人員共同討論</strong>，不是自己在下一份報告中寫上這個問題，不是要求寫在 issue log 中。
+    </div>
+  </div>
+</div>
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+<script>
+function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}
+function toggleToc(){const b=document.getElementById('toc-body');const c=document.getElementById('toc-chevron');const h=b.style.display==='none';b.style.display=h?'block':'none';c.textContent=h?'▼':'▲';}
+document.querySelectorAll('.section-body').forEach((b,i)=>{if(i>0){b.classList.remove('open');const n=b.id.replace('b','');const c=document.getElementById('c'+n);if(c)c.textContent='▼';}});
+</script>
+</body>
+</html>

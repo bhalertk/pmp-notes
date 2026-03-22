@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 重點整理 Ch6 時程管理</title>
+<style>
+  :root {
+    --primary: #1F4E79;
+    --secondary: #2E75B6;
+    --accent: #2E5F8A;
+    --warn-bg: #FFF9E6;
+    --warn-border: #F0C040;
+    --warn-text: #7A4F00;
+    --tip-bg: #EAF5EA;
+    --tip-border: #5CAF5C;
+    --tip-text: #2E5E2E;
+    --trap-bg: #FFF0F0;
+    --trap-border: #E05050;
+    --trap-text: #6E1010;
+    --bg: #F4F7FB;
+    --card: #FFFFFF;
+    --border: #D0DCE8;
+    --text: #222222;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    padding-bottom: 60px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 100%);
+    color: white;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .hero p { font-size: 13px; opacity: 0.85; }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .nav-bar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .nav-bar a {
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: white;
+  }
+  .nav-bar a.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .toc { background: var(--card); margin: 16px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .toc-header { background: var(--primary); color: white; padding: 12px 16px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; }
+  .toc-body { padding: 12px 16px; }
+  .toc-body a { display: block; color: var(--secondary); text-decoration: none; padding: 5px 0; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+  .toc-body a:last-child { border-bottom: none; }
+  .section { margin: 0 16px 16px; background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .section-header { background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 14px 16px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .section-header .num { background: rgba(255,255,255,0.25); border-radius: 20px; padding: 2px 10px; font-size: 12px; margin-right: 8px; }
+  .section-body { padding: 16px; display: none; }
+  .section-body.open { display: block; }
+  h3 { color: var(--primary); font-size: 14px; font-weight: 700; margin: 18px 0 8px; padding-left: 10px; border-left: 4px solid var(--secondary); }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 14px; margin-bottom: 10px; }
+  .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--primary); color: white; padding: 9px 12px; text-align: left; font-weight: 600; }
+  td { padding: 9px 12px; border-bottom: 1px solid #eef2f7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #F8FAFD; }
+  td:first-child { font-weight: 600; color: var(--accent); }
+  .box { border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 13.5px; line-height: 1.65; }
+  .box .box-title { font-weight: 700; margin-bottom: 5px; font-size: 13px; }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn-border); color: var(--warn-text); }
+  .tip  { background: var(--tip-bg);  border-left: 4px solid var(--tip-border);  color: var(--tip-text); }
+  .trap { background: var(--trap-bg); border-left: 4px solid var(--trap-border); color: var(--trap-text); }
+  ul { padding-left: 18px; margin: 8px 0; }
+  ul li { font-size: 14px; margin-bottom: 5px; }
+  .qtype { background: #F0F6FF; border: 1px solid #C0D8F0; border-radius: 10px; padding: 12px 14px; margin: 10px 0; }
+  .qtype .qt-title { font-weight: 700; color: var(--primary); font-size: 13px; margin-bottom: 6px; }
+  .timeline { position: relative; padding: 8px 0; margin: 12px 0; }
+  .tl-item { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+  .tl-dot { min-width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .tl-content { flex: 1; background: #F8FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .tl-content .tl-title { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 4px; }
+  .tl-content .tl-doc { font-size: 12px; color: var(--accent); margin-top: 6px; }
+  .tl-content p { font-size: 13px; margin: 0; color: #444; }
+  .tag { display: inline-block; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+  .tag-blue { background: #D6E8FF; color: #1a3a6e; }
+  .tag-green { background: #D6F0D6; color: #1a4a1a; }
+  .tag-orange { background: #FFE8CC; color: #6e3a00; }
+  .tag-red { background: #FFD6D6; color: #6e0000; }
+
+  /* CPM 圖示 */
+  .cpm-demo {
+    background: #F0F6FF;
+    border: 1px solid #C0D8F0;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .cpm-path { font-family: monospace; font-size: 13px; margin: 4px 0; padding: 6px 10px; border-radius: 6px; }
+  .cpm-critical { background: #FFE8E8; border-left: 3px solid #E05050; font-weight: 700; }
+  .cpm-normal { background: #F8FAFD; border-left: 3px solid #C0D8F0; }
+
+  .formula-box {
+    background: #F0F6FF;
+    border: 2px solid #2E75B6;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .back-top { text-align: center; padding: 20px 0 10px; font-size: 13px; color: var(--secondary); cursor: pointer; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 6｜時程管理 Schedule Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+
+<div class="nav-bar">
+  <a href="PMP_Ch1-Ch3.html">Ch1~3</a>
+  <a href="ch4.html">Ch4 整合</a>
+  <a href="ch5.html">Ch5 範疇</a>
+  <a href="ch6.html" class="active">Ch6 時程</a>
+  <a href="ch7.html">Ch7 成本</a>
+  <a href="ch8.html">Ch8 品質</a>
+  <a href="ch9.html">Ch9 資源</a>
+  <a href="ch10.html">Ch10 溝通</a>
+  <a href="ch11.html">Ch11 風險</a>
+  <a href="ch12.html">Ch12 採購</a>
+  <a href="ch13.html">Ch13 利害關係人</a>
+  <a href="ch14.html">Ch14 敏捷</a>
+</div>
+
+<!-- 目錄 -->
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、時程管理是什麼？</a>
+    <a href="#s2">二、時程管理的時間軸：六個流程全貌</a>
+    <a href="#s3">三、要徑法 CPM（超高頻考點）</a>
+    <a href="#s4">四、浮時 Float 計算</a>
+    <a href="#s5">五、壓縮時程的兩種方法</a>
+    <a href="#s6">六、資源優化技術</a>
+    <a href="#s7">七、活動工期估算方法</a>
+    <a href="#s8">八、三點估算 PERT</a>
+    <a href="#s9">九、題目出題模式與陷阱彙整</a>
+    <a href="#s10">十、核心思維總結</a>
+  </div>
+</div>
+
+<!-- 一、什麼是時程管理 -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')">
+    <span><span class="num">一</span>時程管理是什麼？</span>
+    <span id="c1">▼</span>
+  </div>
+  <div class="section-body open" id="b1">
+    <p>時程管理（Schedule Management）就是回答：<strong>「這個專案什麼時候完成？每個活動什麼順序做？要多久？」</strong></p>
+    <div class="box tip">
+      <div class="box-title">💡 對應您的銀行 AP 專案</div>
+      您接到一個新系統開發任務，要排出：需求分析要幾週、開發要幾週、測試要幾週、哪些工作可以同時進行、哪些要等前一個做完才能開始——這整套規劃就是時程管理。<br><br>
+      PMP 把這個過程加上了正式名稱和方法論，最核心的工具就是<strong>要徑法（CPM）</strong>。
+    </div>
+  </div>
+</div>
+
+<!-- 二、時間軸 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')">
+    <span><span class="num">二</span>時程管理的時間軸：六個流程全貌</span>
+    <span id="c2">▼</span>
+  </div>
+  <div class="section-body" id="b2">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">①</div>
+        <div class="tl-content">
+          <div class="tl-title">規劃時程管理 Plan Schedule Management <span class="tag tag-green">規劃</span></div>
+          <p>制定「如何定義、排序、估算、制定和控制時程」的計畫</p>
+          <div class="tl-doc">📄 時程管理計畫（包含：使用的方法工具、測量的準確度和單位、SPI 規則等）<br>⚠️ 不包含「定義專案成員個人績效的方法」</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">②</div>
+        <div class="tl-content">
+          <div class="tl-title">定義活動 Define Activities <span class="tag tag-green">規劃</span></div>
+          <p>把 WBS 的工作包（Work Package）進一步拆解成具體的活動清單</p>
+          <div class="tl-doc">📄 活動清單 Activity List + 活動屬性 Activity Attributes + 里程碑清單 Milestone List</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">③</div>
+        <div class="tl-content">
+          <div class="tl-title">排序活動 Sequence Activities <span class="tag tag-green">規劃</span></div>
+          <p>確定活動之間的依賴關係和執行順序，用 PDM 順序圖示法表示</p>
+          <div class="tl-doc">📄 專案時程網路圖 Project Schedule Network Diagram<br>→ 完成排序後主要得到這份文件</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">④</div>
+        <div class="tl-content">
+          <div class="tl-title">估算活動工期 Estimate Activity Durations <span class="tag tag-green">規劃</span></div>
+          <p>考量資源可用時間，估算每個活動需要多少時間完成</p>
+          <div class="tl-doc">由「專家或最熟悉該活動的人」提供估算資料</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">⑤</div>
+        <div class="tl-content">
+          <div class="tl-title">發展時程 Develop Schedule <span class="tag tag-green">規劃</span></div>
+          <p>整合所有活動、順序、工期、資源，產出正式的專案時程基準</p>
+          <div class="tl-doc">📄 專案時程（甘特圖 Gantt Chart 是最常見的呈現方式）<br>📄 時程基準 Schedule Baseline</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">⑥</div>
+        <div class="tl-content">
+          <div class="tl-title">控制時程 Control Schedule <span class="tag tag-orange">監控</span></div>
+          <p>監控時程執行狀況、管理時程變更、更新時程預測</p>
+          <div class="tl-doc">時程落後時啟動壓縮策略（趕工 Crashing 或快速跟進 Fast Tracking）</div>
+        </div>
+      </div>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 流程順序考點</div>
+      「確定安裝作業的先後順序」→ <strong>排序活動（Sequence Activities）</strong><br>
+      「規劃發電機精密零件完成所需進行的活動」→ <strong>定義活動（Define Activities）</strong><br>
+      「考量資源可用時間，計算所有活動的持續時間」→ <strong>估算活動工期</strong><br>
+      「針對專案活動開始及完成日達成協議」→ <strong>發展時程（Develop Schedule）</strong>
+    </div>
+  </div>
+</div>
+
+<!-- 三、要徑法 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')">
+    <span><span class="num">三</span>要徑法 CPM（超高頻考點）</span>
+    <span id="c3">▼</span>
+  </div>
+  <div class="section-body" id="b3">
+    <p>要徑法（Critical Path Method）是時程管理最核心的工具，考試必考。</p>
+
+    <h3>核心概念</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>概念</th><th>說明</th></tr>
+        <tr><td>要徑<br>Critical Path</td><td>時程網路圖中，從開始到結束「最長的路徑」，決定了專案的最短完工時間</td></tr>
+        <tr><td>浮時<br>Float / Slack</td><td>活動可以延遲而不影響專案完工日期的時間<br>要徑上的活動，浮時 = 0</td></tr>
+        <tr><td>要徑特性</td><td>要徑是浮時最小的路徑（正常情況下為0）<br>專案可以有多條要徑<br>多條要徑代表專案風險較高（因為沒有彈性空間）</td></tr>
+      </table>
+    </div>
+
+    <h3>用實際題目理解要徑計算</h3>
+    <div class="cpm-demo">
+      <p style="font-weight:700; margin-bottom:8px;">題目（Q11）：活動依賴關係如下</p>
+      <p>活動1：2週（起點）→ 活動2：5週（依賴活動1）→ 活動4：6週（依賴活動1）<br>
+      活動2 完成後 → 活動3：6週 → 活動3 和 4 都完成後專案結束</p>
+      <p style="margin-top:8px; font-weight:700;">各路徑計算：</p>
+      <div class="cpm-path cpm-critical">🔴 要徑：活動1 → 活動2 → 活動3 = 2+5+6 = <strong>13週</strong>（最長）</div>
+      <div class="cpm-path cpm-normal">路徑B：活動1 → 活動4 = 2+6 = 8週</div>
+      <p style="margin-top:8px; color:#666; font-size:12px;">所以專案總工期 = 13週（取最長路徑）</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 要徑計算的思路</div>
+      <strong>Step 1：</strong>畫出所有從頭到尾的路徑<br>
+      <strong>Step 2：</strong>算出每條路徑的總工期<br>
+      <strong>Step 3：</strong>最長的那條就是要徑，它的工期就是專案總工期<br>
+      <strong>Step 4：</strong>要縮短專案工期，只能從「要徑上的活動」下手
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 關於多條要徑</div>
+      「專案共有4條要徑，以下哪項是最佳描述？」<br>
+      → 答案：<strong>這提高了專案風險</strong>（因為有4條路徑都沒有浮時緩衝，任何一條出問題都會延誤專案）<br>
+      → 不是「使專案更加容易管理」，多條要徑反而更難管理！
+    </div>
+
+    <h3>時程網路圖的正確認識</h3>
+    <ul>
+      <li>最快的完工時程 = 時程網路圖中「最長的路徑」（要徑）</li>
+      <li>結束日期改變時，時程網路圖的邏輯也會跟著變化</li>
+      <li>多條要徑可以分散部分風險，但整體上會增加風險</li>
+      <li>⚠️ 要徑不一定只有一條，專案可以有多條要徑</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 四、浮時計算 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')">
+    <span><span class="num">四</span>浮時 Float 計算</span>
+    <span id="c4">▼</span>
+  </div>
+  <div class="section-body" id="b4">
+    <p>浮時（Float）= 活動可以延遲而不影響專案完工日的時間量。</p>
+
+    <div class="formula-box">
+      浮時（Float）= 最晚開始時間（LS）－ 最早開始時間（ES）<br>
+      或 = 最晚完成時間（LF）－ 最早完成時間（EF）
+    </div>
+
+    <h3>用題目理解浮時計算（Q19）</h3>
+    <div class="cpm-demo">
+      <p style="font-weight:700; margin-bottom:8px;">活動表：</p>
+      <div class="table-wrap" style="margin:0">
+        <table>
+          <tr><th>活動</th><th>工期</th><th>前項活動</th></tr>
+          <tr><td>A</td><td>2天</td><td>Start</td></tr>
+          <tr><td>B</td><td>7天</td><td>A（FS）</td></tr>
+          <tr><td>C</td><td>4天</td><td>A（FS）</td></tr>
+          <tr><td>D</td><td>5天</td><td>B、C（FS）</td></tr>
+          <tr><td>E</td><td>1天</td><td>D（FS）</td></tr>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-weight:700;">計算各路徑：</p>
+      <div class="cpm-path cpm-critical">🔴 要徑：A→B→D→E = 2+7+5+1 = <strong>15天</strong></div>
+      <div class="cpm-path cpm-normal">路徑B：A→C→D→E = 2+4+5+1 = 12天</div>
+      <p style="margin-top:8px;"><strong>B 活動的浮時 = 要徑長度 − B所在路徑長度 = 15 − 12 = 3天</strong></p>
+      <p style="color:#666; font-size:12px; margin-top:4px;">意思是：B 活動可以延遲最多3天，不會影響專案完工日</p>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 關於要徑與非要徑的浮時</div>
+      「要徑的浮時（Float）是所有路徑中最小，正常狀況下為零」→ <strong>這是正確的</strong><br>
+      「非要徑的活動有空閒時間（浮時），團隊成員可以自由使用」→ <strong>這是正確的</strong><br>
+      「使用資源優化進行資源平滑時，應優先確保要徑活動的資源」→ <strong>這是正確的</strong><br><br>
+      ⚠️ 錯誤說法：「要徑就是時程網路圖中最短的路徑」→ <strong>是最長的！</strong>
+    </div>
+  </div>
+</div>
+
+<!-- 五、壓縮時程 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')">
+    <span><span class="num">五</span>壓縮時程的兩種方法（高頻考點）</span>
+    <span id="c5">▼</span>
+  </div>
+  <div class="section-body" id="b5">
+    <p>當專案時程落後或需要提前完工時，PM 有兩種主要工具：</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>方法</th><th>做法</th><th>代價</th><th>適用情境</th></tr>
+        <tr><td>趕工<br>Crashing</td><td>投入更多資源（人力、錢）來縮短要徑上的活動時間</td><td>成本增加，但不增加風險</td><td>有額外人力資源可用時</td></tr>
+        <tr><td>快速跟進<br>Fast Tracking</td><td>把原本依序進行的活動改為同時（並行）進行</td><td>風險增加（因為前一個還沒完成就開始下一個），可能需要返工</td><td>網路邏輯和順序可以修改時</td></tr>
+      </table>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 判斷用哪種壓縮方法</div>
+      <strong>「時程落後，但網路圖邏輯及順序不能修改，有額外人力資源」</strong><br>
+      → 不能改順序（不能 Fast Tracking），有錢有人 → 選 <strong>Crashing（趕工）</strong><br><br>
+      <strong>「Sponsor 希望在不增加預算下提前完成」</strong><br>
+      → 不能加錢（不能 Crashing）→ 選 <strong>Fast Tracking（快速跟進）</strong><br><br>
+      <strong>「需要趕工，檢查每項活動縮程相關的成本，縮程的最佳方式還包括檢查哪些？」</strong><br>
+      → 縮程時應選「成本最低、效益最高」的活動，還要考量「<strong>活動發生在專案生命週期的哪個階段</strong>」
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 壓縮只對要徑有用</div>
+      要縮短專案工期，<strong>只能壓縮要徑上的活動</strong>。壓縮非要徑的活動不會縮短整體工期，只會增加成本或風險。
+    </div>
+
+    <h3>發現時程落後，PM 的正確做法</h3>
+    <div class="box warn">
+      <div class="box-title">💡 標準流程：先評估，再提方案</div>
+      考題問「PM 發現完成專案所需時間比原先預估長，該如何？」<br>
+      → 正確答案：<strong>評估壓縮時間的多個方案，向管理階層提出自己的建議方案</strong><br>
+      → 不是直接告知無法完工，不是減少產品範疇，不是自己默默加班觀察。
+    </div>
+  </div>
+</div>
+
+<!-- 六、資源優化 -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('b6')">
+    <span><span class="num">六</span>資源優化技術</span>
+    <span id="c6">▼</span>
+  </div>
+  <div class="section-body" id="b6">
+    <div class="table-wrap">
+      <table>
+        <tr><th>技術</th><th>做法</th><th>對時程的影響</th></tr>
+        <tr><td>資源平滑<br>Resource Smoothing</td><td>調整活動的開始與完成日期，讓每日累計使用的資源不超過可用資源上限<br>只調整「非要徑活動」的浮時範圍</td><td><strong>不改變要徑，不延後完工日期</strong><br>但可能延後非要徑活動</td></tr>
+        <tr><td>資源撫平<br>Resource Leveling</td><td>當資源需求超出限制時，調整活動時間（包含要徑活動）</td><td><strong>可能導致要徑改變，通常會延長工期</strong></td></tr>
+      </table>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 記憶方法：平滑 vs 撫平</div>
+      <strong>資源平滑（Smoothing）</strong>：只動「非要徑」的浮時 → 不影響完工日 → 比較溫和<br>
+      <strong>資源撫平（Leveling）</strong>：連要徑都動 → 通常會延後完工日 → 比較激烈<br><br>
+      使用順序：通常先試資源平滑，平滑後資源仍不足，才用資源撫平。
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 常見錯誤說法</div>
+      「資源平滑（Resource Smoothing）改變專案要徑，完工日期也會延遲」→ <strong>錯！</strong><br>
+      資源平滑不改變要徑，也不延後完工日。會延後完工日的是「資源撫平（Resource Leveling）」。<br><br>
+      「資源需求超出限制時，應優先確保要徑活動的資源，通常會先進行資源平滑」→ <strong>正確！</strong>
+    </div>
+
+    <h3>要徑上浮時和非要徑都為 0 的特殊情況</h3>
+    <p>「目前要徑與非要徑的浮時（Float）皆為 0，資源仍不足，請問該如何？」</p>
+    <p>→ 浮時都是 0，代表所有路徑都沒有彈性空間，這時無法用資源平滑（沒有浮時可用），也無法用快速跟進。<br>
+    → 只能選 <strong>Crashing（趕工）</strong>，投入更多資源。</p>
+  </div>
+</div>
+
+<!-- 七、估算方法 -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggle('b7')">
+    <span><span class="num">七</span>活動工期估算方法</span>
+    <span id="c7">▼</span>
+  </div>
+  <div class="section-body" id="b7">
+    <div class="table-wrap">
+      <table>
+        <tr><th>方法</th><th>做法</th><th>適用時機 / 特點</th></tr>
+        <tr><td>類比估算<br>Analogous</td><td>參考過去類似專案的歷史資料來估算</td><td>專案初期、資料不足時使用。<strong>速度快、成本低，但準確度較差</strong>。高階主管在專案初期快速評估時最適合。</td></tr>
+        <tr><td>參數估算<br>Parametric</td><td>用「單位工期/成本 × 數量」的公式計算<br>例：每坪需0.25小時，200坪 = 50小時</td><td>有可靠的歷史數據和明確公式時使用。<strong>準確度較高</strong>。可以從眾多類似資料中分析每單位投入的人力成本。</td></tr>
+        <tr><td>三點估算<br>Three-Point / PERT</td><td>用最樂觀(O)、最可能(M)、最悲觀(P)三個值估算</td><td>估算資料非常分散（不確定性高）時使用。<br>計算公式見下方。</td></tr>
+        <tr><td>由下而上估算<br>Bottom-up</td><td>從最底層的工作包逐一估算，再向上加總</td><td>最準確，但最耗時。適合有充分時間做詳細規劃時。</td></tr>
+      </table>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 類比估算 vs 參數估算容易混淆</div>
+      <strong>類比估算</strong>：「向 PMO 索取過去類似的專案資料，以便快速估算整個專案的工期」→ 參考整體歷史，快速但不精確<br><br>
+      <strong>參數估算</strong>：「從過去眾多類似資料中，分析每單位所投入的人力成本估算」→ 有公式計算，較精確<br><br>
+      關鍵區別：有沒有「單位 × 數量」的公式計算。有就是參數估算，沒有就是類比估算。
+    </div>
+
+    <div class="box warn">
+      <div class="box-title">💡 估算資料由誰提供？</div>
+      「為了得到比較接近實際狀況的活動工期，估算活動工期時會由誰提供估算資料？」<br>
+      → 答案：<strong>專家或最熟悉該活動的人</strong>（不是 PM 自己，不是高階主管）<br><br>
+      PM 自己一個人估算所有活動工期是常見錯誤，應該讓「最懂那個活動的人」來估算。
+    </div>
+  </div>
+</div>
+
+<!-- 八、三點估算 -->
+<div class="section" id="s8">
+  <div class="section-header" onclick="toggle('b8')">
+    <span><span class="num">八</span>三點估算 PERT</span>
+    <span id="c8">▼</span>
+  </div>
+  <div class="section-body" id="b8">
+    <p>三點估算（Three-Point Estimating）用於不確定性高、資料分散的情況。</p>
+
+    <div class="formula-box">
+      PERT 期望值 = (O + 4M + P) ÷ 6<br>
+      <span style="font-size:12px; font-weight:400;">O = 最樂觀（Optimistic）｜M = 最可能（Most Likely）｜P = 最悲觀（Pessimistic）</span>
+    </div>
+
+    <h3>實際計算（Q29）</h3>
+    <div class="cpm-demo">
+      <p>「一項活動完工時間通常為 <strong>10天（M）</strong>，如果人手不夠最差要 <strong>12天（P）</strong>，有燒香最順的情況 <strong>8天（O）</strong>」</p>
+      <p style="margin-top:8px;"><strong>PERT = (8 + 4×10 + 12) ÷ 6 = (8 + 40 + 12) ÷ 6 = 60 ÷ 6 = <span style="color:#1F4E79">10天</span></strong></p>
+      <p style="color:#666; font-size:12px; margin-top:4px;">這個例子剛好對稱，所以結果等於 M 值。實際考題答案會因 O、P 不對稱而有所不同。</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 什麼時候用三點估算？</div>
+      題目關鍵字：「估算資料非常分散」、「不確定性高」、「有多種路線有路況不確定性」<br>
+      → 選三點估算（PERT），因為它同時考慮了樂觀、最可能、悲觀三種情境，比單一估算更可靠。
+    </div>
+  </div>
+</div>
+
+<!-- 九、題目出題模式 -->
+<div class="section" id="s9">
+  <div class="section-header" onclick="toggle('b9')">
+    <span><span class="num">九</span>題目出題模式與陷阱彙整</span>
+    <span id="c9">▼</span>
+  </div>
+  <div class="section-body" id="b9">
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型1：「目前在哪個流程？」</div>
+      <ul>
+        <li>「規劃活動進行的順序」→ <strong>排序活動</strong></li>
+        <li>「規劃要完成零件所需進行的活動」→ <strong>定義活動</strong></li>
+        <li>「考量資源可用時間，計算所有活動持續時間」→ <strong>估算活動工期</strong></li>
+        <li>「針對活動開始及完成日達成協議」→ <strong>發展時程</strong></li>
+        <li>「了解活動流程的詳細內容與工作」→ 查 <strong>活動屬性（Activity Attributes）</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型2：「要縮短工期，該怎麼做？」</div>
+      <ul>
+        <li>有額外預算和人力，網路順序不能改 → <strong>趕工（Crashing）</strong></li>
+        <li>不能增加預算，可以調整活動順序 → <strong>快速跟進（Fast Tracking）</strong></li>
+        <li>要徑和非要徑浮時都是0，資源不足 → <strong>趕工（Crashing），唯一選擇</strong></li>
+        <li>只有試圖提前完工 → <strong>與團隊討論要徑上縮程或快速跟進</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型3：「用哪種估算方法？」</div>
+      <ul>
+        <li>初期快速評估、資料不足 → <strong>類比估算</strong></li>
+        <li>有公式，單位×數量 → <strong>參數估算</strong></li>
+        <li>資料分散、不確定性高 → <strong>三點估算（PERT）</strong></li>
+        <li>最詳細準確，由底層向上加總 → <strong>由下而上估算</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型4：「資源不足，怎麼處理？」</div>
+      <ul>
+        <li>調整非要徑活動，不影響完工日 → <strong>資源平滑（Smoothing）</strong></li>
+        <li>連要徑都要動，可能延後完工 → <strong>資源撫平（Leveling）</strong></li>
+        <li>要徑活動的資源應優先確保 → 先試平滑，不夠再用撫平</li>
+      </ul>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常答錯的考點整理</div>
+      <strong>「要徑是網路圖中最短的路徑」→ 錯！是最長的路徑</strong><br><br>
+      <strong>「PM 自己估算所有活動的工期」→ 錯！應由最熟悉活動的人估算</strong><br><br>
+      <strong>「資源平滑會改變要徑和完工日」→ 錯！只有資源撫平才會</strong><br><br>
+      <strong>「時程管理計畫包含定義成員個人績效的方法」→ 錯！那不屬於時程管理計畫的內容</strong>
+    </div>
+  </div>
+</div>
+
+<!-- 十、核心思維 -->
+<div class="section" id="s10">
+  <div class="section-header" onclick="toggle('b10')">
+    <span><span class="num">十</span>核心思維總結</span>
+    <span id="c10">▼</span>
+  </div>
+  <div class="section-body" id="b10">
+    <div class="box tip">
+      <div class="box-title">💡 Ch6 時程管理的核心思維</div>
+      <ul>
+        <li><strong>要徑 = 最長路徑 = 專案最短完工時間</strong>，要縮短工期只能從要徑下手</li>
+        <li><strong>浮時 = 非要徑活動的彈性空間</strong>，要徑浮時為0</li>
+        <li><strong>壓縮工期</strong>：有錢有人用趕工；不能加預算就快速跟進（但增加風險）</li>
+        <li><strong>資源優化</strong>：平滑不影響完工日；撫平通常會延長工期</li>
+        <li><strong>估算</strong>：讓最懂的人估，初期用類比，有公式用參數，不確定性高用三點</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 對應您的實戰經驗</div>
+      您做 AP 開發時，應該很熟悉「哪些工作要等上一個做完才能開始、哪些可以同時進行」這種判斷——這就是要徑法的核心思維。<br><br>
+      PMP 把這個直覺系統化了：畫出網路圖 → 找要徑 → 壓縮要徑 → 記錄在正式時程中。<br><br>
+      考試記得：<strong>遇到時程落後的題目，第一步永遠是「評估多個方案，提出建議」，不是直接加班也不是告訴主管沒辦法</strong>。
+    </div>
+  </div>
+</div>
+
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById(id);
+  const num = id.replace('b','');
+  const chevron = document.getElementById('c' + num);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if (chevron) chevron.textContent = isOpen ? '▼' : '▲';
+}
+function toggleToc() {
+  const body = document.getElementById('toc-body');
+  const chevron = document.getElementById('toc-chevron');
+  const isHidden = body.style.display === 'none';
+  body.style.display = isHidden ? 'block' : 'none';
+  chevron.textContent = isHidden ? '▼' : '▲';
+}
+document.querySelectorAll('.section-body').forEach((b, i) => {
+  if (i > 0) {
+    b.classList.remove('open');
+    const num = b.id.replace('b','');
+    const chevron = document.getElementById('c' + num);
+    if (chevron) chevron.textContent = '▼';
+  }
+});
+</script>
+</body>
+</html>

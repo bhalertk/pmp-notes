@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 重點整理 Ch1~Ch3</title>
+<style>
+  :root {
+    --primary: #1F4E79;
+    --secondary: #2E75B6;
+    --accent: #2E5F8A;
+    --warn-bg: #FFF9E6;
+    --warn-border: #F0C040;
+    --warn-text: #7A4F00;
+    --tip-bg: #EAF5EA;
+    --tip-border: #5CAF5C;
+    --tip-text: #2E5E2E;
+    --trap-bg: #FFF0F0;
+    --trap-border: #E05050;
+    --trap-text: #6E1010;
+    --tag-blue: #D6E8FF;
+    --tag-green: #D6F0D6;
+    --tag-orange: #FFE8CC;
+    --tag-red: #FFD6D6;
+    --bg: #F4F7FB;
+    --card: #FFFFFF;
+    --border: #D0DCE8;
+    --text: #222222;
+    --muted: #666666;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    padding-bottom: 60px;
+  }
+
+  /* ===== 頂部標題 ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .hero p { font-size: 13px; opacity: 0.85; }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  /* ===== 目錄 ===== */
+  .toc {
+    background: var(--card);
+    margin: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .toc-header {
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toc-body { padding: 12px 16px; }
+  .toc-body a {
+    display: block;
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .toc-body a:last-child { border-bottom: none; }
+  .toc-body a:hover { color: var(--primary); }
+
+  /* ===== 章節卡片 ===== */
+  .section {
+    margin: 0 16px 16px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .section-header {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: white;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .section-header .num {
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  .section-body { padding: 16px; display: none; }
+  .section-body.open { display: block; }
+  .chevron { transition: transform 0.3s; font-size: 12px; }
+  .chevron.open { transform: rotate(180deg); }
+
+  /* ===== 子標題 ===== */
+  h3 {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 18px 0 8px;
+    padding-left: 10px;
+    border-left: 4px solid var(--secondary);
+  }
+  h3:first-child { margin-top: 0; }
+
+  /* ===== 文字 ===== */
+  p { font-size: 14px; margin-bottom: 10px; color: var(--text); }
+
+  /* ===== 表格 ===== */
+  .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #eef2f7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #F8FAFD; }
+  td:first-child { font-weight: 600; color: var(--accent); white-space: nowrap; }
+
+  /* ===== 提示框 ===== */
+  .box {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .box .box-title {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn-border); color: var(--warn-text); }
+  .tip  { background: var(--tip-bg);  border-left: 4px solid var(--tip-border);  color: var(--tip-text); }
+  .trap { background: var(--trap-bg); border-left: 4px solid var(--trap-border); color: var(--trap-text); }
+
+  /* ===== 清單 ===== */
+  ul { padding-left: 18px; margin: 8px 0; }
+  ul li { font-size: 14px; margin-bottom: 5px; }
+
+  /* ===== 標籤 ===== */
+  .tag {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .tag-blue   { background: var(--tag-blue);   color: #1a3a6e; }
+  .tag-green  { background: var(--tag-green);  color: #1a4a1a; }
+  .tag-orange { background: var(--tag-orange); color: #6e3a00; }
+  .tag-red    { background: var(--tag-red);    color: #6e0000; }
+
+  /* ===== 題型區塊 ===== */
+  .qtype {
+    background: #F0F6FF;
+    border: 1px solid #C0D8F0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 10px 0;
+  }
+  .qtype .qt-title {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .qtype ul { margin: 0; }
+
+  /* ===== 回頂部 ===== */
+  .back-top {
+    text-align: center;
+    padding: 20px 0 10px;
+    font-size: 13px;
+    color: var(--secondary);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 1 ~ Chapter 3 ｜ Introduction to Project Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+
+<!-- 目錄 -->
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">
+    📋 本章目錄 <span id="toc-chevron">▼</span>
+  </div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、什麼是專案？與非專案的區別</a>
+    <a href="#s2">二、組織架構與專案型態</a>
+    <a href="#s3">三、PMO 的角色</a>
+    <a href="#s4">四、五大流程群組</a>
+    <a href="#s5">五、重要文件與用途對照</a>
+    <a href="#s6">六、四種管理方法論</a>
+    <a href="#s7">七、Portfolio / Program / Project</a>
+    <a href="#s8">八、商業價值</a>
+    <a href="#s9">九、題目出題模式與陷阱彙整</a>
+    <a href="#s10">十、核心思維總結</a>
+  </div>
+</div>
+
+<!-- 一、什麼是專案 -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')">
+    <span><span class="num">一</span>什麼是專案？與非專案的區別</span>
+    <span class="chevron" id="c1">▼</span>
+  </div>
+  <div class="section-body open" id="b1">
+    <p>專案 (Project) 的定義：為了創造獨特的產品、服務或結果，所進行的「<strong>臨時性</strong>」工作。</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>特性</th><th>說明</th></tr>
+        <tr><td>臨時性</td><td>有明確的開始與結束日期，完成後就解散</td></tr>
+        <tr><td>獨特性</td><td>每個專案都不相同，有別於例行重複工作</td></tr>
+        <tr><td>漸進精化</td><td>隨著資訊越來越多，計畫會逐步細化</td></tr>
+      </table>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 常考陷阱：訂單處理 ≠ 專案</div>
+      「每天重複處理客戶訂單、解決問題，並確認30天內接受產品」這種重複性、例行性工作，不是專案，而是「重疊進行的工作（Operations）」。<br><br>
+      <strong>判斷關鍵：有沒有明確終點？每次是否不同？</strong> → 都是「是」才算專案。
+    </div>
+  </div>
+</div>
+
+<!-- 二、組織架構 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')">
+    <span><span class="num">二</span>組織架構與專案型態</span>
+    <span class="chevron" id="c2">▼</span>
+  </div>
+  <div class="section-body" id="b2">
+    <p>考題常考：在不同組織架構下，PM 的權力和資源取得方式有很大差異。</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>組織類型</th><th>PM 特徵與考點</th></tr>
+        <tr><td>職能型<br>Functional</td><td>PM 幾乎沒有權力，資源由功能部門經理控制，PM 只做協調。</td></tr>
+        <tr><td>矩陣型<br>Matrix</td><td>PM 與功能經理共享資源。<br>弱矩陣 → PM 較無權；強矩陣 → PM 較有權。</td></tr>
+        <tr><td>專案型<br>Projectized</td><td>PM 權力最大，資源完全在專案下，專案結束後人員解散或移轉。</td></tr>
+      </table>
+    </div>
+
+    <h3>📌 專案型組織的四個特徵（常考）</h3>
+    <ul>
+      <li>需要向多位主管報告</li>
+      <li>會同時兼任多個專案</li>
+      <li>需要對功能經理報告專案績效</li>
+      <li>專案結束後會解編歸建，或加入其他專案</li>
+    </ul>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 矩陣型組織的「抱怨」是正常現象</div>
+      考題中出現「PM 抱怨利害關係人太多、變更造成的問題過多」或「難以讓成員合作執行工作」，這是矩陣型組織的特徵，不代表組織有問題。<br><br>
+      矩陣型的優點是：<strong>「能整合並協調跨領域的人力資源」</strong>。
+    </div>
+  </div>
+</div>
+
+<!-- 三、PMO -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')">
+    <span><span class="num">三</span>PMO 的角色</span>
+    <span class="chevron" id="c3">▼</span>
+  </div>
+  <div class="section-body" id="b3">
+    <p>PMO 不是做專案的人，而是「管理專案管理」的單位。核心職責：</p>
+    <ul>
+      <li>制定專案管理政策、流程、工具範本與最佳實務標準</li>
+      <li>確保專案遵守標準、政策與程序</li>
+      <li>對共用資源進行管理，實施專案稽核</li>
+    </ul>
+
+    <div class="box warn">
+      <div class="box-title">💡 PM vs PMO vs 功能經理 vs Sponsor — 角色分工</div>
+      <div class="table-wrap" style="margin-top:8px;">
+        <table>
+          <tr><th>角色</th><th>核心職責</th></tr>
+          <tr><td>PM</td><td>負責「實現專案目標、進行專案整合」</td></tr>
+          <tr><td>PMO</td><td>制定標準、稽核、管理共用資源</td></tr>
+          <tr><td>功能經理</td><td>管理特定部門的人員，不直接管理專案</td></tr>
+          <tr><td>Sponsor</td><td>批准商業企劃案和效益管理計畫，授權給 PM</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 四、五大流程群組 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')">
+    <span><span class="num">四</span>五大流程群組</span>
+    <span class="chevron" id="c4">▼</span>
+  </div>
+  <div class="section-body" id="b4">
+    <p>記憶口訣：<strong>「起規執監結」</strong></p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>流程群組</th><th>核心工作 / 常考考點</th></tr>
+        <tr><td>起始<br>Initiating</td><td>識別利害關係人、發展專案章程（Project Charter）。<br>注意：利害關係人在整個專案生命週期都可被識別，但<strong>最早從起始階段開始</strong>。</td></tr>
+        <tr><td>規劃<br>Planning</td><td>制定詳細計畫。範疇聲明書在此產出。詳細的 PM 計畫需在「<strong>專案章程發佈後</strong>」才能開始。</td></tr>
+        <tr><td>執行<br>Executing</td><td>實際執行工作、管理團隊。<strong>Kick-off Meeting 在此階段舉行</strong>。</td></tr>
+        <tr><td>監控<br>Monitoring & Controlling</td><td>確認專案產品是否照計畫完成。PM 收到通知後先評估影響，再決定是否變更。</td></tr>
+        <tr><td>結案<br>Closing</td><td>確認客戶驗收、解散團隊、歸檔文件、進行經驗學習分享（Lessons Learned）。</td></tr>
+      </table>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 陷阱：結案「最重要的工作」是什麼？</div>
+      答案是：<strong>確認客戶已正式驗收（Obtain Formal Acceptance）</strong>，而不是舉辦慶功宴、解散團隊或算成本效益。完成 Lessons Learned 也是重要工作，但「正式驗收」排第一。
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 快速判斷目前在哪個流程群組</div>
+      <ul>
+        <li>確認章程 / 授權 → <span class="tag tag-blue">起始</span></li>
+        <li>制定計畫 / 確認範疇聲明書 → <span class="tag tag-green">規劃</span></li>
+        <li>實際執行 / 舉辦 Kick-off → <span class="tag tag-orange">執行</span></li>
+        <li>監控進度 / 評估是否變更 → <span class="tag tag-red">監控</span></li>
+        <li>驗收 / 歸檔 / 解散 → <span class="tag tag-blue">結案</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 五、重要文件 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')">
+    <span><span class="num">五</span>重要文件與用途對照</span>
+    <span class="chevron" id="c5">▼</span>
+  </div>
+  <div class="section-body" id="b5">
+    <p>這是 Ch1~Ch3 考最多的考點，務必搞清楚每份文件的用途與產生時機：</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>文件</th><th>用途 / 考試關鍵</th></tr>
+        <tr><td>商業企劃案<br>Business Case</td><td>記錄「經濟可行性評估與成本效益分析」。決定是否啟動，並在進行中持續確認是否繼續。由 <strong>Sponsor 批准</strong>。</td></tr>
+        <tr><td>效益管理計畫<br>Benefit Mgmt Plan</td><td>記錄專案目標與組織策略目標的連結、預期效益。與 Business Case 都是在「專案章程之前」的輸入文件，由 <strong>Sponsor 確認批准</strong>。</td></tr>
+        <tr><td>專案章程<br>Project Charter</td><td>正式授權專案存在，給予 PM 職權。在「<strong>起始</strong>」階段制定。內容：商業需求、高層次需求、PM 職責與職權。<br>⚠️ 不含詳細資源估計或詳細風險。</td></tr>
+        <tr><td>專案管理計畫<br>Project Mgmt Plan</td><td>說明「如何規劃、執行、監控與結束專案」的完整文件。<br>利害關係人想了解整個計畫 → 給這份。<br>需在「<strong>專案章程發佈後</strong>」才能詳細制定。</td></tr>
+        <tr><td>組織流程資產<br>OPA</td><td>組織過去累積的文件、範本、流程。PM 對新專案沒經驗時，最應先查閱 OPA（包含過去類似專案的記錄）。</td></tr>
+        <tr><td>變更日誌<br>Change Log</td><td>記錄「已批准的變更請求（Approved Change Request）」的執行狀況。利害關係人問「某個變更目前執行到哪」→ 查 Change Log。</td></tr>
+        <tr><td>議題紀錄<br>Issue Log</td><td>記錄目前專案中尚未解決的問題。</td></tr>
+        <tr><td>假設日誌<br>Assumption Log</td><td>記錄專案規劃時的假設條件與限制。</td></tr>
+      </table>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 最容易混淆的三組文件</div>
+      <strong>Q：利害關係人想了解「商業可行性」→</strong> Business Case（不是 Charter）<br><br>
+      <strong>Q：專案章程尚未批准前，想了解專案需求 →</strong> Business Case（章程還沒有，只能看商業論證）<br><br>
+      <strong>Q：想了解 PM 的職權和授權 →</strong> Project Charter<br><br>
+      <strong>Q：想了解整個專案怎麼規劃、執行、監控 →</strong> Project Management Plan
+    </div>
+  </div>
+</div>
+
+<!-- 六、四種管理方法論 -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('b6')">
+    <span><span class="num">六</span>四種管理方法論</span>
+    <span class="chevron" id="c6">▼</span>
+  </div>
+  <div class="section-body" id="b6">
+    <p>考題會根據「情境描述」讓你選出正確的方法論，關鍵是抓住兩個維度：</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>方法論</th><th>判斷條件 / 情境關鍵字</th></tr>
+        <tr><td>計畫型<br>Plan-Driven</td><td>交付頻率低 + 變動性低 + 目標是「管理成本」。需求穩定、合規要求高。</td></tr>
+        <tr><td>迭代式<br>Iterative</td><td>交付頻率低 + 變動性低 + 目標是「交付速度」。反覆修正同一產品，每次更完整。</td></tr>
+        <tr><td>增量式<br>Incremental</td><td>交付頻率高，每次交付一個新的可用功能，像蓋房子一層一層蓋。</td></tr>
+        <tr><td>敏捷式<br>Agile</td><td>交付頻率高 + 變動性高，快速短期交付重要價值，給客戶回饋持續調整。<br>例：新冠疫苗研發（動態需求 + 重複活動到正確）也選 Agile。</td></tr>
+        <tr><td>混合式<br>Hybrid</td><td>利害關係人對 Agile 感興趣，但不願全面採用，需同時結合多種手法。</td></tr>
+      </table>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 判斷方法論的兩步驟</div>
+      <strong>Step 1：</strong> 看「交付頻率」高或低<br>
+      <strong>Step 2：</strong> 看「變動性」高或低 + 目標是成本還是速度<br><br>
+      低頻 + 低變 + 成本目標 → 計畫型<br>
+      低頻 + 低變 + 速度目標 → 迭代式<br>
+      高頻 → 增量式<br>
+      高頻 + 高變 → 敏捷式<br>
+      想用又不敢全用 → 混合式
+    </div>
+  </div>
+</div>
+
+<!-- 七、Portfolio/Program/Project -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggle('b7')">
+    <span><span class="num">七</span>Portfolio / Program / Project 的層級</span>
+    <span class="chevron" id="c7">▼</span>
+  </div>
+  <div class="section-body" id="b7">
+    <div class="table-wrap">
+      <table>
+        <tr><th>層級</th><th>定義</th></tr>
+        <tr><td>專案<br>Project</td><td>獨特、臨時性的工作，產出特定的產品、服務或結果。</td></tr>
+        <tr><td>計畫<br>Program</td><td>一群相互關聯的專案，統一管理以獲得個別管理無法達到的效益。</td></tr>
+        <tr><td>組合<br>Portfolio</td><td>為了「實現組織策略目標」，將專案、計畫及營運組合起來，優先配置資源、使價值最大化的過程。</td></tr>
+      </table>
+    </div>
+    <div class="box tip">
+      <div class="box-title">💡 記憶方式</div>
+      Portfolio（組合）= 公司整體戰略層級，最大<br>
+      Program（計畫）= 一群相關專案的集合<br>
+      Project（專案）= 單一獨特任務，最小
+    </div>
+  </div>
+</div>
+
+<!-- 八、商業價值 -->
+<div class="section" id="s8">
+  <div class="section-header" onclick="toggle('b8')">
+    <span><span class="num">八</span>商業價值 Business Value</span>
+    <span class="chevron" id="c8">▼</span>
+  </div>
+  <div class="section-body" id="b8">
+    <p>商業價值包含「有形與無形的價值」，範圍非常廣：</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>類型</th><th>例子</th></tr>
+        <tr><td>有形價值</td><td>貨幣、公司股東權益、公共事業與公共利益、固定設施、工具、市場</td></tr>
+        <tr><td>無形價值</td><td>商譽、品牌、商標、聲譽</td></tr>
+      </table>
+    </div>
+    <div class="box tip">
+      <div class="box-title">💡 考題提示</div>
+      題目通常問「何者屬於商業價值的一部份？」，有形 + 無形都算，答案通常是「以上包含有形及無形的價值都屬於商業價值的一部份」。
+    </div>
+  </div>
+</div>
+
+<!-- 九、題目出題模式 -->
+<div class="section" id="s9">
+  <div class="section-header" onclick="toggle('b9')">
+    <span><span class="num">九</span>題目出題模式與陷阱彙整</span>
+    <span class="chevron" id="c9">▼</span>
+  </div>
+  <div class="section-body" id="b9">
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型 1：「這是哪種組織架構？」</div>
+      <ul>
+        <li>「需要向多位主管報告」→ 矩陣型</li>
+        <li>「專案結束後解編歸建或加入其他專案」→ 專案型</li>
+        <li>「功能經理掌控資源，PM 只協調」→ 職能型</li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型 2：「目前在哪個流程群組？」</div>
+      <ul>
+        <li>確認章程 / 授權 → 起始</li>
+        <li>制定計畫 / 確認範疇聲明書 → 規劃</li>
+        <li>實際執行 / Kick-off → 執行</li>
+        <li>監控進度 / 評估是否變更 → 監控</li>
+        <li>驗收 / 歸檔 / 解散 → 結案</li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型 3：「這種情況用哪種管理方法？」</div>
+      <p style="margin:4px 0 0;">對照「四種管理方法論」表格，抓住：頻率高低、變動高低、成本 vs 速度。</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型 4：「應該查哪份文件？」</div>
+      <ul>
+        <li>了解「為什麼要做、值不值得做」→ Business Case</li>
+        <li>了解「效益和組織策略連結」→ Benefit Management Plan</li>
+        <li>了解「PM 的職權和授權」→ Project Charter</li>
+        <li>了解「整個專案怎麼規劃、執行、監控」→ Project Management Plan</li>
+        <li>找「過去類似專案的記錄與範本」→ OPA（組織流程資產）</li>
+        <li>查「已批准的變更執行狀況」→ Change Log</li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型 5：「PM 沒有相關專案經驗，應該怎麼辦？」</div>
+      <p style="margin:4px 0 0;">標準答案：<strong>先從 OPA（組織流程資產）中調閱類似專案的文件參考</strong>，不是直接找人問、不是安排培訓。</p>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 高頻陷阱：「PM 自己跳下去做」通常是錯的</div>
+      PMP 的思維是「按流程、照文件、走正式管道」。遇到問題的標準流程是：<br>
+      <strong>評估影響 → 走變更流程 → 通知相關人員</strong>，不是自己直接行動解決。<br><br>
+      這對有18年實戰經驗的您來說最需要注意——實戰直覺是「自己搞定」，考題答案是「通知團隊、走程序」。
+    </div>
+  </div>
+</div>
+
+<!-- 十、核心思維 -->
+<div class="section" id="s10">
+  <div class="section-header" onclick="toggle('b10')">
+    <span><span class="num">十</span>核心思維總結</span>
+    <span class="chevron" id="c10">▼</span>
+  </div>
+  <div class="section-body" id="b10">
+    <div class="box tip">
+      <div class="box-title">💡 Ch1~Ch3 的核心思維</div>
+      <ul>
+        <li>PMP 的世界裡，一切都要「按流程、照文件、走正式管道」</li>
+        <li>PM 的職責是「整合、協調、實現目標」，不是自己把所有事做完</li>
+        <li>遇到問題，第一步通常是「評估影響 → 走變更流程 → 通知相關人員」</li>
+        <li>文件是一切的基礎，不同文件有不同用途，搞清楚「誰批准、誰產出、誰使用」</li>
+      </ul>
+    </div>
+    <div class="box tip">
+      <div class="box-title">💡 您的銀行業背景是優勢</div>
+      銀行工作對「流程合規、稽核、文件管理」有天然的感覺，和 PMP 強調「依流程行事」非常接近。善用這個直覺，但記得考題的世界比較美好——答案永遠比實際工作更理想化 😄
+    </div>
+  </div>
+</div>
+
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById(id);
+  const num = id.replace('b','');
+  const chevron = document.getElementById('c' + num);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  chevron.textContent = isOpen ? '▼' : '▲';
+}
+
+function toggleToc() {
+  const body = document.getElementById('toc-body');
+  const chevron = document.getElementById('toc-chevron');
+  const isHidden = body.style.display === 'none';
+  body.style.display = isHidden ? 'block' : 'none';
+  chevron.textContent = isHidden ? '▼' : '▲';
+}
+
+// 預設展開第一個區塊，其餘收起
+document.querySelectorAll('.section-body').forEach((b, i) => {
+  if (i > 0) {
+    b.classList.remove('open');
+    const num = b.id.replace('b','');
+    const chevron = document.getElementById('c' + num);
+    if (chevron) chevron.textContent = '▼';
+  }
+});
+</script>
+</body>
+</html>

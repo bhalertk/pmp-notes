@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 重點整理 Ch4 整合管理</title>
+<style>
+  :root {
+    --primary: #1F4E79;
+    --secondary: #2E75B6;
+    --accent: #2E5F8A;
+    --warn-bg: #FFF9E6;
+    --warn-border: #F0C040;
+    --warn-text: #7A4F00;
+    --tip-bg: #EAF5EA;
+    --tip-border: #5CAF5C;
+    --tip-text: #2E5E2E;
+    --trap-bg: #FFF0F0;
+    --trap-border: #E05050;
+    --trap-text: #6E1010;
+    --bg: #F4F7FB;
+    --card: #FFFFFF;
+    --border: #D0DCE8;
+    --text: #222222;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    padding-bottom: 60px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 100%);
+    color: white;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .hero p { font-size: 13px; opacity: 0.85; }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .nav-bar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .nav-bar a {
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: white;
+  }
+  .nav-bar a.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .toc {
+    background: var(--card);
+    margin: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .toc-header {
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+  .toc-body { padding: 12px 16px; }
+  .toc-body a {
+    display: block;
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .toc-body a:last-child { border-bottom: none; }
+  .section {
+    margin: 0 16px 16px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .section-header {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: white;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .section-header .num {
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  .section-body { padding: 16px; display: none; }
+  .section-body.open { display: block; }
+  h3 {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 18px 0 8px;
+    padding-left: 10px;
+    border-left: 4px solid var(--secondary);
+  }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 14px; margin-bottom: 10px; }
+  .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--primary); color: white; padding: 9px 12px; text-align: left; font-weight: 600; }
+  td { padding: 9px 12px; border-bottom: 1px solid #eef2f7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #F8FAFD; }
+  td:first-child { font-weight: 600; color: var(--accent); }
+  .box {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .box .box-title { font-weight: 700; margin-bottom: 5px; font-size: 13px; }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn-border); color: var(--warn-text); }
+  .tip  { background: var(--tip-bg);  border-left: 4px solid var(--tip-border);  color: var(--tip-text); }
+  .trap { background: var(--trap-bg); border-left: 4px solid var(--trap-border); color: var(--trap-text); }
+  ul { padding-left: 18px; margin: 8px 0; }
+  ul li { font-size: 14px; margin-bottom: 5px; }
+  .qtype {
+    background: #F0F6FF;
+    border: 1px solid #C0D8F0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 10px 0;
+  }
+  .qtype .qt-title { font-weight: 700; color: var(--primary); font-size: 13px; margin-bottom: 6px; }
+
+  /* 時間軸 */
+  .timeline { position: relative; padding: 8px 0; margin: 12px 0; }
+  .tl-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .tl-dot {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .tl-line {
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .tl-content {
+    flex: 1;
+    background: #F8FAFD;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .tl-content .tl-title { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 4px; }
+  .tl-content .tl-doc { font-size: 12px; color: var(--accent); margin-top: 4px; }
+  .tl-content p { font-size: 13px; margin: 0; color: #444; }
+
+  .back-top { text-align: center; padding: 20px 0 10px; font-size: 13px; color: var(--secondary); cursor: pointer; text-decoration: underline; }
+  .tag { display: inline-block; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+  .tag-blue { background: #D6E8FF; color: #1a3a6e; }
+  .tag-green { background: #D6F0D6; color: #1a4a1a; }
+  .tag-orange { background: #FFE8CC; color: #6e3a00; }
+  .tag-red { background: #FFD6D6; color: #6e0000; }
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 4｜整合管理 Integration Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+
+<div class="nav-bar">
+  <a href="PMP_Ch1-Ch3.html">Ch1~3</a>
+  <a href="ch4.html" class="active">Ch4 整合</a>
+  <a href="ch5.html">Ch5 範疇</a>
+  <a href="ch6.html">Ch6 時程</a>
+  <a href="ch7.html">Ch7 成本</a>
+  <a href="ch8.html">Ch8 品質</a>
+  <a href="ch9.html">Ch9 資源</a>
+  <a href="ch10.html">Ch10 溝通</a>
+  <a href="ch11.html">Ch11 風險</a>
+  <a href="ch12.html">Ch12 採購</a>
+  <a href="ch13.html">Ch13 利害關係人</a>
+  <a href="ch14.html">Ch14 敏捷</a>
+</div>
+
+<!-- 目錄 -->
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、整合管理是什麼？為什麼它最重要？</a>
+    <a href="#s2">二、整合管理的時間軸：文件與流程全貌</a>
+    <a href="#s3">三、關鍵文件詳解</a>
+    <a href="#s4">四、變更管理流程（超高頻考點）</a>
+    <a href="#s5">五、專案結案</a>
+    <a href="#s6">六、題目出題模式與陷阱彙整</a>
+    <a href="#s7">七、核心思維總結</a>
+  </div>
+</div>
+
+<!-- 一、整合管理是什麼 -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')">
+    <span><span class="num">一</span>整合管理是什麼？為什麼它最重要？</span>
+    <span id="c1">▼</span>
+  </div>
+  <div class="section-body open" id="b1">
+    <p>整合管理（Integration Management）是 PM 的核心職責，貫穿專案的整個生命週期。簡單說就是：</p>
+    <div class="box tip">
+      <div class="box-title">💡 一句話理解整合管理</div>
+      「把所有知識領域的工作兜在一起，確保專案作為一個整體順利運作」。<br><br>
+      其他九個知識領域（範疇、時程、成本…）各管各的，<strong>整合管理就是把這九個都串在一起的那條線</strong>。專案中發生的任何衝突、變更、優先順序問題，最終都由 PM 透過整合管理來協調決定。
+    </div>
+    <p>這也是為什麼考題問「負責整合的人是誰？」答案永遠是 <strong>PM（專案經理）</strong>，不是 PMO、不是 Sponsor、不是功能經理。</p>
+  </div>
+</div>
+
+<!-- 二、時間軸 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')">
+    <span><span class="num">二</span>整合管理的時間軸：文件與流程全貌</span>
+    <span id="c2">▼</span>
+  </div>
+  <div class="section-body" id="b2">
+    <p>整合管理的精華就是這條時間軸，理解了這條線，文件考題就不用死背：</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">①</div>
+        <div class="tl-content">
+          <div class="tl-title">組織決定要不要做這個專案 <span class="tag tag-orange">啟動前</span></div>
+          <p>評估商業可行性與效益，與組織策略目標對齊</p>
+          <div class="tl-doc">📄 商業企劃案 Business Case ＋ 效益管理計畫 Benefit Management Plan<br>→ 由 Sponsor 批准</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">②</div>
+        <div class="tl-content">
+          <div class="tl-title">Sponsor 正式授權，PM 被指派 <span class="tag tag-blue">起始</span></div>
+          <p>專案正式存在，PM 獲得職權，可以開始動用資源</p>
+          <div class="tl-doc">📄 專案章程 Project Charter<br>→ 由 Sponsor 簽發，給予 PM 授權</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">③</div>
+        <div class="tl-content">
+          <div class="tl-title">PM 開始規劃整個專案 <span class="tag tag-green">規劃</span></div>
+          <p>制定所有計畫，確認範疇、時程、成本、風險等</p>
+          <div class="tl-doc">📄 專案管理計畫 Project Management Plan<br>→ PM 主導產出，涵蓋所有子計畫</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">④</div>
+        <div class="tl-content">
+          <div class="tl-title">召開啟動大會，正式開工 <span class="tag tag-green">執行</span></div>
+          <p>讓所有團隊成員和利害關係人了解專案目標與各自職責</p>
+          <div class="tl-doc">📅 Kick-off Meeting（啟動大會）<br>→ 目的是「讓大家取得共識」，不是授權 PM</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">⑤</div>
+        <div class="tl-content">
+          <div class="tl-title">執行與監控過程中出現變更 <span class="tag tag-red">監控</span></div>
+          <p>有人提出變更 → 走變更流程 → CCB 決定是否核准</p>
+          <div class="tl-doc">📄 變更日誌 Change Log（記錄已批准的變更）<br>📄 議題紀錄 Issue Log（記錄未解決的問題）<br>📄 假設日誌 Assumption Log（記錄假設與限制）</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">⑥</div>
+        <div class="tl-content">
+          <div class="tl-title">專案完成，正式結案 <span class="tag tag-blue">結案</span></div>
+          <p>確認客戶驗收、歸檔文件、整理經驗、解散團隊</p>
+          <div class="tl-doc">📄 結案報告 Final Report ＋ 經驗學習 Lessons Learned<br>→ 成為未來專案的 OPA（組織流程資產）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 用您的銀行 AP 專案來對應</div>
+      您過去做銀行 AP 專案，大概的流程是：主管說要做一個新系統（Business Case） → 指派您負責（Charter 授權） → 您規劃時程和需求（PM Plan） → 開發途中客戶改需求（變更管理） → 上線驗收（結案）。<br><br>
+      PMP 只是把這個自然發生的流程，<strong>加上正式名稱和文件</strong>。
+    </div>
+  </div>
+</div>
+
+<!-- 三、關鍵文件 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')">
+    <span><span class="num">三</span>關鍵文件詳解</span>
+    <span id="c3">▼</span>
+  </div>
+  <div class="section-body" id="b3">
+
+    <h3>📄 專案章程 Project Charter</h3>
+    <p>這是整合管理最常考的文件，要記住它的核心功能和內容邊界：</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>項目</th><th>說明</th></tr>
+        <tr><td>作用</td><td>正式授權專案存在，賦予 PM 使用資源的職權</td></tr>
+        <tr><td>由誰發出</td><td>Sponsor（發起人）</td></tr>
+        <tr><td>在哪個流程</td><td>起始（Initiating）</td></tr>
+        <tr><td>包含什麼</td><td>商業需求、高層次目標、PM 的職責與職權、重要利害關係人</td></tr>
+        <tr><td>不包含什麼</td><td>詳細資源估計、詳細風險清單、詳細的交付成果說明</td></tr>
+        <tr><td>輸入文件</td><td>Business Case + Benefit Management Plan（章程是根據這兩份做出來的）</td></tr>
+      </table>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 常考陷阱：章程 vs 管理計畫</div>
+      「想了解 PM 被授予的職權」→ 專案章程（Charter）<br>
+      「想了解整個專案如何規劃、執行、監控」→ 專案管理計畫（PM Plan）<br><br>
+      章程是「授權書」，管理計畫是「操作手冊」，兩份文件時機和用途完全不同。
+    </div>
+
+    <h3>📄 專案管理計畫 Project Management Plan</h3>
+    <p>PM 在規劃階段產出的最重要文件，是整個專案的「作戰手冊」：</p>
+    <ul>
+      <li>說明專案如何被規劃、執行、監控與結束</li>
+      <li>包含所有子計畫（範疇計畫、時程計畫、成本計畫、風險計畫…）</li>
+      <li>是利害關係人想了解「整個專案怎麼運作」時的最佳參考文件</li>
+      <li>必須在「專案章程發佈後」才能開始詳細制定</li>
+    </ul>
+
+    <h3>📄 組織流程資產 OPA</h3>
+    <p>組織過去累積的所有文件、範本、流程、歷史記錄。考題常見情境：</p>
+    <div class="box tip">
+      <div class="box-title">💡 什麼時候用 OPA？</div>
+      「PM 被指派負責一個陌生領域的專案，應該先做什麼？」→ <strong>從 OPA 中調閱類似專案的歷史記錄與指導方針</strong>。<br><br>
+      「公司最近委任一位新 PM，想查過去專案的重要經驗及技術」→ <strong>查經驗學習知識庫（Lessons Learned Repository，屬於 OPA 的一部份）</strong>。
+    </div>
+
+    <h3>📄 變更相關文件</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>文件</th><th>記錄什麼</th><th>什麼時候查</th></tr>
+        <tr><td>變更日誌<br>Change Log</td><td>已批准的變更請求及其執行狀況</td><td>利害關係人問「某個變更目前執行到哪了？」</td></tr>
+        <tr><td>議題紀錄<br>Issue Log</td><td>尚未解決的問題、衝突</td><td>專案有問題需要追蹤解決時</td></tr>
+        <tr><td>假設日誌<br>Assumption Log</td><td>規劃時的假設條件與限制</td><td>需要確認當初的假設是否還成立</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 四、變更管理 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')">
+    <span><span class="num">四</span>變更管理流程（超高頻考點）</span>
+    <span id="c4">▼</span>
+  </div>
+  <div class="section-body" id="b4">
+    <p>變更管理是整合管理考題出現最多的主題，幾乎每次考試都有。核心流程：</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">①</div>
+        <div class="tl-content">
+          <div class="tl-title">有人提出變更</div>
+          <p>可能來自客戶、團隊成員、利害關係人，任何人都可以提出</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">②</div>
+        <div class="tl-content">
+          <div class="tl-title">PM 評估影響</div>
+          <p>評估這個變更對「範疇、時程、成本、品質、風險」的影響<br>⚠️ <strong>不管變更看起來多小、多容易，都要先評估，不能直接執行</strong></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">③</div>
+        <div class="tl-content">
+          <div class="tl-title">送交 CCB 審查</div>
+          <p>變更控制委員會（Change Control Board）決定是否核准<br>⚠️ <strong>不是 PM 自己決定，不是 Sponsor 決定，是 CCB 決定</strong></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">④</div>
+        <div class="tl-content">
+          <div class="tl-title">CCB 核准後執行，更新相關文件</div>
+          <p>核准的變更才能執行，並記錄在變更日誌（Change Log）中</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 變更管理最常見的三個陷阱</div>
+      <strong>陷阱1：「變更很小、不影響範疇時程，PM 可以直接做」→ 錯！</strong><br>
+      任何變更都要走流程，PM 收到變更的第一步永遠是「評估影響」，不是直接執行。<br><br>
+      <strong>陷阱2：「影響專案基準（Baseline）的變更，由 PM 決定是否核准」→ 錯！</strong><br>
+      影響基準的變更一定要送 CCB，PM 沒有單獨核准的權力。<br><br>
+      <strong>陷阱3：「客戶提出範疇變更，PM 應該先重新協商合約」→ 錯！</strong><br>
+      正確步驟是先「與客戶會面了解問題」，再決定下一步，不是直接跳到合約談判。
+    </div>
+
+    <div class="box warn">
+      <div class="box-title">💡 不同角色在變更管理中的職責</div>
+      <div class="table-wrap" style="margin-top:8px">
+        <table>
+          <tr><th>角色</th><th>變更管理中的職責</th></tr>
+          <tr><td>PM</td><td>評估變更影響、協調討論、追蹤變更執行狀況，注意力最好集中在「評估防止不必要的變更」</td></tr>
+          <tr><td>CCB</td><td>審查並決定是否核准影響基準的變更</td></tr>
+          <tr><td>Sponsor</td><td>批准專案章程的變更，是 PM 向上升報的對象</td></tr>
+          <tr><td>團隊成員</td><td>可以提出變更，但執行矯正措施後必須做紀錄，避免類似問題再發生</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3>📌 整合變更控制流程（Perform Integrated Change Control）</h3>
+    <p>這是監控階段的一個重要流程，考題會描述「專案在進行整合變更控制流程」，你要知道它的時機和目的：</p>
+    <ul>
+      <li>發生在「監控」流程群組</li>
+      <li>目的是審查、核准或拒絕所有變更請求</li>
+      <li>確保變更對所有專案目標的影響都被評估過</li>
+      <li>任何對已核准基準的變更，都必須通過這個流程</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 五、專案結案 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')">
+    <span><span class="num">五</span>專案結案</span>
+    <span id="c5">▼</span>
+  </div>
+  <div class="section-body" id="b5">
+    <p>結案（Closing）看起來簡單，但考題很愛在這裡出陷阱。</p>
+
+    <h3>結案的正確順序</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">①</div>
+        <div class="tl-content">
+          <div class="tl-title">確認客戶已正式驗收交付成果</div>
+          <p>「取得正式驗收（Obtain Formal Acceptance）」是結案最優先的工作</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">②</div>
+        <div class="tl-content">
+          <div class="tl-title">確認所有專案文件已歸檔</div>
+          <p>更新專案文件及組織流程資產，確保按公司規定歸檔</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">③</div>
+        <div class="tl-content">
+          <div class="tl-title">完成經驗學習分享（Lessons Learned）</div>
+          <p>整理成功與失敗的經驗，存入 OPA，幫助未來專案改善</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">④</div>
+        <div class="tl-content">
+          <div class="tl-title">解散團隊</div>
+          <p>釋放資源，成員回到各自部門或下一個專案</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 結案的常見陷阱</div>
+      <strong>「專案非常成功，公司想立即開始下一個專案，PM 最重要的工作是什麼？」</strong><br>
+      → 答案：<strong>確認專案相關文件都已按照公司規定歸檔</strong>，並收集分享經驗學習。<br>
+      不是開始規劃新專案，不是舉辦慶功宴，要先把這個專案收尾收好。<br><br>
+      <strong>「結案的描述，何者為非？」</strong><br>
+      → 「只有專案結束時，才會進行經驗學習分享」→ 這是錯的！<br>
+      Lessons Learned 在整個專案生命週期都可以進行，不只是結案時。
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 Kick-off Meeting vs 結案</div>
+      <strong>Kick-off Meeting（啟動大會）</strong>：在執行階段，目的是讓團隊成員和利害關係人了解目標、取得共識。不是授權 PM，授權是 Charter 的工作。<br><br>
+      <strong>結案</strong>：Lessons Learned 不只是結案時才做，但一定要在結案前完成。
+    </div>
+  </div>
+</div>
+
+<!-- 六、題目出題模式 -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('b6')">
+    <span><span class="num">六</span>題目出題模式與陷阱彙整</span>
+    <span id="c6">▼</span>
+  </div>
+  <div class="section-body" id="b6">
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型1：「這個變更由誰決定？」</div>
+      <ul>
+        <li>影響「專案基準（Baseline）」的變更 → <strong>CCB</strong></li>
+        <li>影響「專案章程」的變更 → <strong>Sponsor</strong></li>
+        <li>幾乎不影響任何基準的小變更 → 理論上也要走流程，但考題若說「通常會議決定」→ <strong>通常會議（通常由PM協調）</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型2：「收到變更，PM 第一步做什麼？」</div>
+      <p style="margin:4px 0 0">永遠是：<strong>評估這個變更對專案的影響（範疇、時程、成本、風險）</strong>，然後再送 CCB。不是直接執行，不是先去報告 Sponsor，不是直接拒絕。</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型3：「目前在哪個流程？文件是什麼？」</div>
+      <ul>
+        <li>發展專案章程 → 起始</li>
+        <li>發展專案管理計畫 → 規劃</li>
+        <li>指導與管理專案工作 → 執行</li>
+        <li>監督與控制專案工作 / 整合變更控制 → 監控</li>
+        <li>結束專案或階段 → 結案</li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型4：「誰負責整合？」</div>
+      <p style="margin:4px 0 0">答案永遠是 <strong>PM（專案經理）</strong>。整合是 PM 最核心的職責，沒有例外。</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型5：「接手一個進行中的專案，第一步做什麼？」</div>
+      <p style="margin:4px 0 0">答案：<strong>了解專案執行現況（Review the Project Management Plan）</strong>。先搞清楚目前狀態，再做其他事。不是確認預算，不是找團隊討論問題。</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型6：「團隊執行矯正措施沒做記錄，PM 如何避免再發生？」</div>
+      <p style="margin:4px 0 0">答案：<strong>補做紀錄，查明原因後進行經驗分享，避免類似事件再發生</strong>。不是懲處人員，不是向功能經理報告違反情況。</p>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常被誤選的答案</div>
+      <strong>「Kick-off Meeting 的主要目的是什麼？」</strong><br>
+      錯誤答案：「授權專案經理職權與職責」→ 這是 Charter 的工作！<br>
+      正確答案：「說明專案目標、讓大家取得共識（Align）」<br><br>
+      <strong>「客戶提出變更，會影響專案基準，PM 首先應該做什麼？」</strong><br>
+      錯誤答案：「召集團隊及相關利害關係人開會討論可行的解決方案」<br>
+      正確答案：<strong>「依照變更程序交由 CCB 進行審查」</strong><br>
+      → 影響基準的變更，一定要送 CCB，不是 PM 自己召集開會決定。
+    </div>
+  </div>
+</div>
+
+<!-- 七、核心思維 -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggle('b7')">
+    <span><span class="num">七</span>核心思維總結</span>
+    <span id="c7">▼</span>
+  </div>
+  <div class="section-body" id="b7">
+    <div class="box tip">
+      <div class="box-title">💡 Ch4 整合管理的核心思維</div>
+      <ul>
+        <li><strong>PM 是整合的核心</strong>，所有知識領域都由 PM 串在一起</li>
+        <li><strong>變更一定要走流程</strong>，不管多小的變更，先評估、再送 CCB</li>
+        <li><strong>文件有時間順序</strong>：Business Case → Charter → PM Plan → 執行/監控文件 → 結案文件</li>
+        <li><strong>結案最重要的是「正式驗收」</strong>，不是慶功，不是解散，是確認客戶簽字</li>
+        <li><strong>Lessons Learned 整個生命週期都可做</strong>，不只結案時</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 對應您的實戰經驗</div>
+      您在銀行帶 AP 專案，客戶改需求是家常便飯。實戰中您可能直接評估後就改了，但 PMP 的答案是：<strong>不管多小，都要走變更流程、送 CCB</strong>。<br><br>
+      這不是說實戰做法是錯的，而是 PMP 強調「有紀錄、有審查、有授權」，才能保護 PM 自己，也保護專案不失控。考試記得選「走流程」的答案。
+    </div>
+  </div>
+</div>
+
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById(id);
+  const num = id.replace('b','');
+  const chevron = document.getElementById('c' + num);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if (chevron) chevron.textContent = isOpen ? '▼' : '▲';
+}
+function toggleToc() {
+  const body = document.getElementById('toc-body');
+  const chevron = document.getElementById('toc-chevron');
+  const isHidden = body.style.display === 'none';
+  body.style.display = isHidden ? 'block' : 'none';
+  chevron.textContent = isHidden ? '▼' : '▲';
+}
+document.querySelectorAll('.section-body').forEach((b, i) => {
+  if (i > 0) {
+    b.classList.remove('open');
+    const num = b.id.replace('b','');
+    const chevron = document.getElementById('c' + num);
+    if (chevron) chevron.textContent = '▼';
+  }
+});
+</script>
+</body>
+</html>

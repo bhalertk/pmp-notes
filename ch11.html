@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Ch11 風險管理</title>
+<style>
+  :root{--primary:#1F4E79;--secondary:#2E75B6;--accent:#2E5F8A;--warn-bg:#FFF9E6;--warn-border:#F0C040;--warn-text:#7A4F00;--tip-bg:#EAF5EA;--tip-border:#5CAF5C;--tip-text:#2E5E2E;--trap-bg:#FFF0F0;--trap-border:#E05050;--trap-text:#6E1010;--bg:#F4F7FB;--card:#FFFFFF;--border:#D0DCE8;--text:#222222;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;padding-bottom:60px;}
+  .hero{background:linear-gradient(135deg,#1F4E79 0%,#2E75B6 100%);color:white;padding:28px 20px 22px;text-align:center;}
+  .hero h1{font-size:22px;font-weight:700;margin-bottom:6px;}
+  .hero p{font-size:13px;opacity:.85;}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:12px;margin-top:8px;}
+  .nav-bar{background:white;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;}
+  .nav-bar a{color:var(--secondary);text-decoration:none;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:white;}
+  .nav-bar a.active{background:var(--primary);color:white;border-color:var(--primary);}
+  .toc{background:var(--card);margin:16px;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .toc-header{background:var(--primary);color:white;padding:12px 16px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;}
+  .toc-body{padding:12px 16px;}
+  .toc-body a{display:block;color:var(--secondary);text-decoration:none;padding:5px 0;font-size:14px;border-bottom:1px solid #f0f0f0;}
+  .toc-body a:last-child{border-bottom:none;}
+  .section{margin:0 16px 16px;background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .section-header{background:linear-gradient(90deg,var(--primary),var(--accent));color:white;padding:14px 16px;font-size:16px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .section-header .num{background:rgba(255,255,255,.25);border-radius:20px;padding:2px 10px;font-size:12px;margin-right:8px;}
+  .section-body{padding:16px;display:none;}
+  .section-body.open{display:block;}
+  h3{color:var(--primary);font-size:14px;font-weight:700;margin:18px 0 8px;padding-left:10px;border-left:4px solid var(--secondary);}
+  h3:first-child{margin-top:0;}
+  p{font-size:14px;margin-bottom:10px;}
+  .table-wrap{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid var(--border);}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{background:var(--primary);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  td{padding:9px 12px;border-bottom:1px solid #eef2f7;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#F8FAFD;}
+  td:first-child{font-weight:600;color:var(--accent);}
+  .box{border-radius:10px;padding:12px 14px;margin:10px 0;font-size:13.5px;line-height:1.65;}
+  .box .box-title{font-weight:700;margin-bottom:5px;font-size:13px;}
+  .warn{background:var(--warn-bg);border-left:4px solid var(--warn-border);color:var(--warn-text);}
+  .tip{background:var(--tip-bg);border-left:4px solid var(--tip-border);color:var(--tip-text);}
+  .trap{background:var(--trap-bg);border-left:4px solid var(--trap-border);color:var(--trap-text);}
+  ul{padding-left:18px;margin:8px 0;}
+  ul li{font-size:14px;margin-bottom:5px;}
+  .qtype{background:#F0F6FF;border:1px solid #C0D8F0;border-radius:10px;padding:12px 14px;margin:10px 0;}
+  .qtype .qt-title{font-weight:700;color:var(--primary);font-size:13px;margin-bottom:6px;}
+  .formula-box{background:#F0F6FF;border:2px solid #2E75B6;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:14px;font-weight:700;color:var(--primary);text-align:center;}
+  .tl-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start;}
+  .tl-dot{min-width:32px;height:32px;border-radius:50%;background:var(--primary);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .tl-content{flex:1;background:#F8FAFD;border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .tl-content .tl-title{font-weight:700;font-size:13px;color:var(--primary);margin-bottom:4px;}
+  .tl-content .tl-doc{font-size:12px;color:var(--accent);margin-top:6px;}
+  .tl-content p{font-size:13px;margin:0;color:#444;}
+  .tag{display:inline-block;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;margin-right:4px;}
+  .tag-green{background:#D6F0D6;color:#1a4a1a;}
+  .tag-orange{background:#FFE8CC;color:#6e3a00;}
+  .back-top{text-align:center;padding:20px 0 10px;font-size:13px;color:var(--secondary);cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 11｜風險管理 Risk Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+<div class="nav-bar">
+  <a href="PMP_Ch1-Ch3.html">Ch1~3</a><a href="ch4.html">Ch4</a><a href="ch5.html">Ch5</a><a href="ch6.html">Ch6</a><a href="ch7.html">Ch7</a><a href="ch8.html">Ch8</a><a href="ch9.html">Ch9</a><a href="ch10.html">Ch10 溝通</a>
+  <a href="ch11.html" class="active">Ch11 風險</a><a href="ch12.html">Ch12 採購</a><a href="ch13.html">Ch13 利害關係人</a><a href="ch14.html">Ch14 敏捷</a>
+</div>
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、風險管理流程時間軸</a>
+    <a href="#s2">二、風險應對策略（正負風險）</a>
+    <a href="#s3">三、EMV 預期貨幣價值計算</a>
+    <a href="#s4">四、重要文件對照</a>
+    <a href="#s5">五、題目出題模式與陷阱彙整</a>
+  </div>
+</div>
+
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>風險管理流程時間軸</span><span id="c1">▼</span></div>
+  <div class="section-body open" id="b1">
+    <div class="tl-item"><div class="tl-dot">①</div><div class="tl-content"><div class="tl-title">規劃風險管理 Plan Risk Management <span class="tag tag-green">規劃</span></div><p>決定如何進行風險管理活動，定義風險機率和衝擊的層級</p><div class="tl-doc">📄 風險管理計畫（定義風險機率與衝擊的層級定義）</div></div></div>
+    <div class="tl-item"><div class="tl-dot">②</div><div class="tl-content"><div class="tl-title">辨識風險 Identify Risk <span class="tag tag-green">規劃</span></div><p>找出可能影響專案的所有風險，記錄在風險登錄表中。工具：SWOT分析、腦力激盪、檢核表</p><div class="tl-doc">📄 風險登錄表 Risk Register（記錄辨識出的風險）<br>⚠️ 辨識風險和監控風險這兩個流程都會進行風險識別</div></div></div>
+    <div class="tl-item"><div class="tl-dot">③</div><div class="tl-content"><div class="tl-title">定性風險分析 Qualitative Risk Analysis <span class="tag tag-green">規劃</span></div><p>依據對專案目標的影響進行排序，評估輕重緩急，決定哪些風險要進一步分析</p><div class="tl-doc">用「機率與衝擊矩陣」評估排序；低風險→紀錄在觀察清單（Watch List）持續追蹤</div></div></div>
+    <div class="tl-item"><div class="tl-dot">④</div><div class="tl-content"><div class="tl-title">定量風險分析 Quantitative Risk Analysis <span class="tag tag-green">規劃</span></div><p>對高影響風險進行數值化分析，估算詳細的機率與風險數值，提供風險應對的好參考</p><div class="tl-doc">工具：蒙地卡羅（Monte Carlo）模擬、敏感性分析、決策樹分析<br>→「進一步估算詳細機率與風險數值，為風險應對提供良好參考資訊」→ 定量分析</div></div></div>
+    <div class="tl-item"><div class="tl-dot">⑤</div><div class="tl-content"><div class="tl-title">規劃風險應對 Plan Risk Response <span class="tag tag-green">規劃</span></div><p>決定每個風險的應對策略，決定進行風險轉移（Transfer）等應對方式</p><div class="tl-doc">✅ 已識別風險的應對策略在此決定</div></div></div>
+    <div class="tl-item"><div class="tl-dot">⑥</div><div class="tl-content"><div class="tl-title">實施風險應對 Implement Risk Response <span class="tag tag-orange">執行</span></div><p>執行已規劃的風險應對措施</p></div></div>
+    <div class="tl-item"><div class="tl-dot">⑦</div><div class="tl-content"><div class="tl-title">監控風險 Monitor Risk <span class="tag tag-orange">監控</span></div><p>追蹤已識別風險、識別新風險、評估應對有效性。颱風來了執行應對計畫→實施風險應對</p><div class="tl-doc">確保風險應對措施有正常實施 → 使用「風險稽核（Risk Audit）」</div></div></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 流程判斷常見陷阱</div>
+      「說明如何規劃、執行及管控風險活動的流程」→ <strong>規劃風險管理</strong>（不是辨識風險）<br>
+      「辨識風險來源，記錄在風險登錄表，定義方法」→ <strong>辨識風險</strong><br>
+      「依據對專案目標的影響進行排序，決定緊急應對順序」→ <strong>定性風險分析</strong><br>
+      「進一步估算詳細機率數值，為應對提供良好資訊」→ <strong>定量風險分析</strong><br>
+      「颱風警報發布，PM 執行預先規劃的沙包加固措施」→ <strong>實施風險應對</strong>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>風險應對策略（正負風險）</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
+    <div class="table-wrap"><table>
+      <tr><th>類型</th><th>策略</th><th>說明 / 考試關鍵字</th></tr>
+      <tr><td rowspan="4">負面風險<br>（威脅）</td><td>規避 Avoidance</td><td>改變計畫以消除風險。把董事長和總經理分開搭飛機→規避</td></tr>
+      <tr><td>轉移 Transfer</td><td>把風險轉給第三方。購買保險→轉移；將部份工作外包給合作夥伴並簽訂合約→轉移</td></tr>
+      <tr><td>減輕 Mitigation</td><td>降低風險發生機率或影響。颱風來了用沙包加固→減輕（事先有規劃的）</td></tr>
+      <tr><td>接受 Acceptance</td><td>承認風險存在但不採取行動。低風險紀錄在觀察清單持續追蹤→被動接受</td></tr>
+      <tr><td rowspan="4">正面風險<br>（機會）</td><td>開拓 Exploit</td><td>確保機會一定發生</td></tr>
+      <tr><td>分享 Share</td><td>與他人共享機會，如合資。景氣不好接單過剩，PM將部份工作請合作夥伴製造→分享</td></tr>
+      <tr><td>加強 Enhance</td><td>增加機會發生的機率或影響</td></tr>
+      <tr><td>接受 Acceptance</td><td>機會出現就接受，但不主動爭取</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常混淆的風險應對</div>
+      <strong>「購買保險」→ 轉移（Transfer）</strong>，把財務風險轉給保險公司<br>
+      <strong>「公司秘書將董事長及總經理分開搭台飛機」→ 規避（Avoidance）</strong>，消除兩人同時出意外的風險<br>
+      <strong>「景氣不好，PM 將部份工作請合作夥伴製造並簽訂合約」→ 轉移（負面風險）或分享（正面機會）</strong><br>
+      考題（Q8）：「以下何者為負面的風險應對措施？」→ <strong>接受（Acceptance）</strong>，因為沒有採取任何行動<br>
+      「低風險如何應對」→ <strong>紀錄於觀察清單（Watch List），持續追蹤</strong>（被動接受）
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>EMV 預期貨幣價值計算</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
+    <div class="formula-box">EMV = 機率（P）× 影響金額（I）</div>
+    <h3>實際計算（Q21）</h3>
+    <div class="box tip">
+      <div class="box-title">💡 解題步驟</div>
+      「70% 機率獲利 90 萬，30% 機率損失 110 萬」<br><br>
+      EMV = (0.7 × +90萬) + (0.3 × -110萬)<br>
+      = 63萬 + (-33萬) = <strong>獲利 30 萬（Profit）</strong><br><br>
+      正數 = 獲利；負數 = 損失。有正有負時要分別計算再相加。
+    </div>
+    <div class="box tip">
+      <div class="box-title">💡 Q17：80% 機率發生，影響 15,000，則 12,000 代表什麼？</div>
+      EMV = 0.8 × 15,000 = 12,000<br>
+      → 12,000 就是<strong>預期風險貨幣值（EMV）</strong>
+    </div>
+    <h3>找出額外風險的處理</h3>
+    <div class="box warn">
+      <div class="box-title">💡 找出額外風險時怎麼做？（Q12）</div>
+      「進行風險管理時，找出了額外的風險」<br>
+      → 正確做法：<strong>記錄風險，依據風險的機率和影響，估算預期貨幣值（EMV），並將此成本加到預算上作為儲備金</strong><br>
+      → 不是直接增加管理儲備，不是通知管理階層，不是增加應變儲備15%
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>重要文件對照</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
+    <div class="table-wrap"><table>
+      <tr><th>文件</th><th>用途</th></tr>
+      <tr><td>風險管理計畫<br>Risk Management Plan</td><td>定義風險機率與衝擊的層級資訊（為有效排序辨識出的風險輕重緩急，需先制定此文件）</td></tr>
+      <tr><td>風險登錄表<br>Risk Register</td><td>記錄所有識別出的風險、機率、影響、應對策略</td></tr>
+      <tr><td>觀察清單<br>Watch List</td><td>記錄低風險，定期持續追蹤但暫時不主動應對</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>題目出題模式與陷阱彙整</span><span id="c5">▼</span></div>
+  <div class="section-body" id="b5">
+    <div class="qtype"><div class="qt-title">📝 題型1：「這個應對方式是哪種策略？」</div>
+      <ul>
+        <li>買保險 → <strong>轉移</strong></li>
+        <li>董事長和總經理搭不同飛機 → <strong>規避</strong></li>
+        <li>外包給合作夥伴製造（景氣不好接單過剩）→ <strong>分享（正面）</strong></li>
+        <li>低風險記錄在觀察清單 → <strong>被動接受</strong></li>
+        <li>颱風用沙包加固（事先規劃）→ <strong>減輕</strong></li>
+      </ul>
+    </div>
+    <div class="qtype"><div class="qt-title">📝 題型2：「目前在哪個流程？」</div>
+      <ul>
+        <li>有風險在登錄表外發生，要避免 → 應<strong>定期辨識及評估新風險</strong>（監控風險）</li>
+        <li>原先未辨識出的風險出現，接近結案 → 先<strong>評估風險的影響</strong></li>
+        <li>被指派為新 PM，存在許多風險但無人評估 → 先做<strong>規劃風險管理</strong></li>
+        <li>已識別並評估等級，下一步 → <strong>規劃風險應對</strong></li>
+      </ul>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 「解決方案有效但問題還是出現」</div>
+      考題（Q30）：PM 分析出原因，執行解決方案幾個月後，問題仍然出現。最可能沒做什麼？<br>
+      → 答案：<strong>未確認方案是否有效，僅確認方案有執行</strong><br>
+      → 執行≠有效，需要驗證應對方案的效果，這是「監控風險」的職責。
+    </div>
+  </div>
+</div>
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+<script>
+function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}
+function toggleToc(){const b=document.getElementById('toc-body');const c=document.getElementById('toc-chevron');const h=b.style.display==='none';b.style.display=h?'block':'none';c.textContent=h?'▼':'▲';}
+document.querySelectorAll('.section-body').forEach((b,i)=>{if(i>0){b.classList.remove('open');const n=b.id.replace('b','');const c=document.getElementById('c'+n);if(c)c.textContent='▼';}});
+</script>
+</body>
+</html>

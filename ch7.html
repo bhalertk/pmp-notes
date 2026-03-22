@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 重點整理 Ch7 成本管理</title>
+<style>
+  :root {
+    --primary: #1F4E79;
+    --secondary: #2E75B6;
+    --accent: #2E5F8A;
+    --warn-bg: #FFF9E6;
+    --warn-border: #F0C040;
+    --warn-text: #7A4F00;
+    --tip-bg: #EAF5EA;
+    --tip-border: #5CAF5C;
+    --tip-text: #2E5E2E;
+    --trap-bg: #FFF0F0;
+    --trap-border: #E05050;
+    --trap-text: #6E1010;
+    --bg: #F4F7FB;
+    --card: #FFFFFF;
+    --border: #D0DCE8;
+    --text: #222222;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+    background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; padding-bottom: 60px;
+  }
+  .hero { background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 100%); color: white; padding: 28px 20px 22px; text-align: center; }
+  .hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .hero p { font-size: 13px; opacity: 0.85; }
+  .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 3px 12px; font-size: 12px; margin-top: 8px; }
+  .nav-bar { background: white; border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+  .nav-bar a { color: var(--secondary); text-decoration: none; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border); background: white; }
+  .nav-bar a.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .toc { background: var(--card); margin: 16px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .toc-header { background: var(--primary); color: white; padding: 12px 16px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; }
+  .toc-body { padding: 12px 16px; }
+  .toc-body a { display: block; color: var(--secondary); text-decoration: none; padding: 5px 0; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+  .toc-body a:last-child { border-bottom: none; }
+  .section { margin: 0 16px 16px; background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .section-header { background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 14px 16px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .section-header .num { background: rgba(255,255,255,0.25); border-radius: 20px; padding: 2px 10px; font-size: 12px; margin-right: 8px; }
+  .section-body { padding: 16px; display: none; }
+  .section-body.open { display: block; }
+  h3 { color: var(--primary); font-size: 14px; font-weight: 700; margin: 18px 0 8px; padding-left: 10px; border-left: 4px solid var(--secondary); }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 14px; margin-bottom: 10px; }
+  .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--primary); color: white; padding: 9px 12px; text-align: left; font-weight: 600; }
+  td { padding: 9px 12px; border-bottom: 1px solid #eef2f7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #F8FAFD; }
+  td:first-child { font-weight: 600; color: var(--accent); }
+  .box { border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 13.5px; line-height: 1.65; }
+  .box .box-title { font-weight: 700; margin-bottom: 5px; font-size: 13px; }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn-border); color: var(--warn-text); }
+  .tip  { background: var(--tip-bg);  border-left: 4px solid var(--tip-border);  color: var(--tip-text); }
+  .trap { background: var(--trap-bg); border-left: 4px solid var(--trap-border); color: var(--trap-text); }
+  ul { padding-left: 18px; margin: 8px 0; }
+  ul li { font-size: 14px; margin-bottom: 5px; }
+  .qtype { background: #F0F6FF; border: 1px solid #C0D8F0; border-radius: 10px; padding: 12px 14px; margin: 10px 0; }
+  .qtype .qt-title { font-weight: 700; color: var(--primary); font-size: 13px; margin-bottom: 6px; }
+  .timeline { position: relative; padding: 8px 0; margin: 12px 0; }
+  .tl-item { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+  .tl-dot { min-width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .tl-content { flex: 1; background: #F8FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .tl-content .tl-title { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 4px; }
+  .tl-content .tl-doc { font-size: 12px; color: var(--accent); margin-top: 6px; }
+  .tl-content p { font-size: 13px; margin: 0; color: #444; }
+  .tag { display: inline-block; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+  .tag-blue { background: #D6E8FF; color: #1a3a6e; }
+  .tag-green { background: #D6F0D6; color: #1a4a1a; }
+  .tag-orange { background: #FFE8CC; color: #6e3a00; }
+  .tag-red { background: #FFD6D6; color: #6e0000; }
+  .formula-box { background: #F0F6FF; border: 2px solid #2E75B6; border-radius: 10px; padding: 12px 16px; margin: 10px 0; font-size: 14px; font-weight: 700; color: var(--primary); }
+  .formula-box .f-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .formula-box .f-item { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 13px; flex: 1; min-width: 140px; text-align: center; }
+  .formula-box .f-item .f-label { font-size: 11px; color: var(--muted); font-weight: 400; display: block; margin-bottom: 4px; }
+
+  /* 預算結構圖 */
+  .budget-pyramid { margin: 12px 0; }
+  .bp-row { border-radius: 8px; padding: 10px 14px; margin-bottom: 4px; font-size: 13px; font-weight: 600; }
+  .bp-1 { background: #1F4E79; color: white; }
+  .bp-2 { background: #2E75B6; color: white; margin-left: 20px; }
+  .bp-3 { background: #D6E8FF; color: #1F4E79; margin-left: 40px; }
+  .bp-4 { background: #EAF5EA; color: #2E5E2E; margin-left: 60px; }
+  .bp-note { font-size: 12px; font-weight: 400; opacity: 0.85; }
+
+  .evm-card { background: #F8FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin: 6px 0; }
+  .evm-card .evm-name { font-weight: 700; color: var(--primary); font-size: 13px; }
+  .evm-card .evm-formula { font-family: monospace; font-size: 13px; background: white; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; display: inline-block; margin: 4px 0; }
+  .evm-card .evm-meaning { font-size: 12px; color: #555; margin-top: 4px; }
+  .evm-good { border-left: 4px solid #5CAF5C; }
+  .evm-bad  { border-left: 4px solid #E05050; }
+
+  .back-top { text-align: center; padding: 20px 0 10px; font-size: 13px; color: var(--secondary); cursor: pointer; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <h1>PMP 平日練習題重點整理</h1>
+  <p>Chapter 7｜成本管理 Cost Management</p>
+  <span class="badge">仕新管理顧問 黃喆 PMP 特訓班 · 118屆</span>
+</div>
+
+<div class="nav-bar">
+  <a href="PMP_Ch1-Ch3.html">Ch1~3</a>
+  <a href="ch4.html">Ch4 整合</a>
+  <a href="ch5.html">Ch5 範疇</a>
+  <a href="ch6.html">Ch6 時程</a>
+  <a href="ch7.html" class="active">Ch7 成本</a>
+  <a href="ch8.html">Ch8 品質</a>
+  <a href="ch9.html">Ch9 資源</a>
+  <a href="ch10.html">Ch10 溝通</a>
+  <a href="ch11.html">Ch11 風險</a>
+  <a href="ch12.html">Ch12 採購</a>
+  <a href="ch13.html">Ch13 利害關係人</a>
+  <a href="ch14.html">Ch14 敏捷</a>
+</div>
+
+<!-- 目錄 -->
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、成本管理是什麼？</a>
+    <a href="#s2">二、成本管理的時間軸：四個流程</a>
+    <a href="#s3">三、預算架構全貌（最重要考點）</a>
+    <a href="#s4">四、儲備金：應變儲備 vs 管理儲備</a>
+    <a href="#s5">五、成本基準 vs 成本預算</a>
+    <a href="#s6">六、EVM 實獲值管理（計算題）</a>
+    <a href="#s7">七、估算方法與管理層級</a>
+    <a href="#s8">八、題目出題模式與陷阱彙整</a>
+    <a href="#s9">九、核心思維總結</a>
+  </div>
+</div>
+
+<!-- 一、成本管理是什麼 -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')">
+    <span><span class="num">一</span>成本管理是什麼？</span>
+    <span id="c1">▼</span>
+  </div>
+  <div class="section-body open" id="b1">
+    <p>成本管理（Cost Management）就是回答：<strong>「這個專案要花多少錢？怎麼控制不超支？」</strong></p>
+    <div class="box tip">
+      <div class="box-title">💡 對應您的銀行 AP 專案</div>
+      銀行系統開發都有預算限制，您應該熟悉：預算是怎麼估出來的？開發途中遇到突發狀況要追加費用怎麼辦？最後結案時實際花了多少？<br><br>
+      PMP 把這些問題系統化，特別是用 <strong>EVM（實獲值管理）</strong> 這套工具，可以隨時知道「目前進度好不好、成本超了沒」。
+    </div>
+  </div>
+</div>
+
+<!-- 二、時間軸 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')">
+    <span><span class="num">二</span>成本管理的時間軸：四個流程</span>
+    <span id="c2">▼</span>
+  </div>
+  <div class="section-body" id="b2">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">①</div>
+        <div class="tl-content">
+          <div class="tl-title">規劃成本管理 Plan Cost Management <span class="tag tag-green">規劃</span></div>
+          <p>制定「如何估算、編列預算、管理、監控成本」的計畫</p>
+          <div class="tl-doc">📄 成本管理計畫（包含：測量單位、控制臨界點、測量績效規則等）<br>⚠️ 注意：以 WBS 作為基礎進行成本估算、制定及控制預算，並說明預算的計量單位、控制的臨界點與測量績效規則，這些都是「規劃成本管理」的工作</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">②</div>
+        <div class="tl-content">
+          <div class="tl-title">估算成本 Estimate Cost <span class="tag tag-green">規劃</span></div>
+          <p>估算完成每個活動、工作包所需的費用</p>
+          <div class="tl-doc">📄 成本估算（Activity Cost Estimates）<br>→ 評估手機介面設計的自行開發與委外設計的成本，考量所有資源的相關成本 → 這是「估算成本」</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">③</div>
+        <div class="tl-content">
+          <div class="tl-title">制定預算 Determine Budget <span class="tag tag-green">規劃</span></div>
+          <p>將各活動成本加總，建立成本基準（Cost Baseline）</p>
+          <div class="tl-doc">📄 成本基準 Cost Baseline（用於監控專案績效的基準）<br>→ 將資源及活動的成本加總至 WBS 工作包，再向上加總到控制帳戶 → 這叫「成本匯總（Cost Aggregation）」，屬於制定預算的技術<br>→ 取得成本基準必須進行「制定預算」流程</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">④</div>
+        <div class="tl-content">
+          <div class="tl-title">控制成本 Control Cost <span class="tag tag-orange">監控</span></div>
+          <p>監控成本執行狀況，管理成本基準的變更，使用 EVM 評估績效</p>
+          <div class="tl-doc">使用實獲值管理（EVM）計算 CPI、SPI、EAC 等指標</div>
+        </div>
+      </div>
+    </div>
+    <div class="box tip">
+      <div class="box-title">💡 詳細時間及成本估算在哪個流程群組進行？</div>
+      答案：<strong>專案規劃階段</strong>。起始階段只做高層次估算，詳細估算要等到規劃階段才能進行。
+    </div>
+  </div>
+</div>
+
+<!-- 三、預算架構 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')">
+    <span><span class="num">三</span>預算架構全貌（最重要考點）</span>
+    <span id="c3">▼</span>
+  </div>
+  <div class="section-body" id="b3">
+    <p>Ch7 最重要的概念就是這個預算架構，由下到上一層一層堆疊：</p>
+
+    <div class="budget-pyramid">
+      <div class="bp-row bp-1">💰 成本預算 Cost Budget（最大範圍）<span class="bp-note">= 成本基準 + 管理儲備</span></div>
+      <div class="bp-row bp-2">📊 成本基準 Cost Baseline<span class="bp-note">= 工作包成本 + 應變儲備（已批准的預算基準，用於績效監控）</span></div>
+      <div class="bp-row bp-3">🗂️ 控制帳戶成本 Control Account<span class="bp-note">= 工作包成本 + 規劃包 + 應變儲備</span></div>
+      <div class="bp-row bp-4">📦 工作包成本 Work Package Cost<span class="bp-note">= 各活動成本加總</span></div>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 一句話記住差異</div>
+      <strong>成本基準</strong>：PM 負責管理的預算範圍，包含「已知風險的應變儲備」<br>
+      <strong>成本預算</strong>：比成本基準再加一層「管理儲備」（未知風險準備金），由 Sponsor 負責<br><br>
+      所以：<strong>預算 = 成本基準 + 管理儲備</strong>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 「成本基準與成本預算的差異是什麼？」</div>
+      答案：差異就是「<strong>管理儲備（Management Reserve）</strong>」<br>
+      成本基準 + 管理儲備 = 成本預算<br><br>
+      預算包含「範疇及時程」嗎？→ <strong>是的！預算包含範疇、時程及成本</strong>（因為預算是根據範疇和時程制定的）
+    </div>
+
+    <h3>各層級的管理點</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>層級</th><th>誰用來做什麼</th></tr>
+        <tr><td>控制帳戶<br>Control Account</td><td>PM 一般狀況估算工期、成本及資源的管理點；客戶驗收績效基準的主要管控點；Sponsor 驗收管理的點</td></tr>
+        <tr><td>工作包<br>Work Package</td><td>利害關係人無法信任工作包的估算時，PM 會估算到更細的「活動（Activity）」層級</td></tr>
+        <tr><td>活動<br>Activity</td><td>主管希望 PM 詳細估算時，最準確的估算應做到「工作包（Work Package）」層級<br>（注意：工作包比活動更高一層，但最詳細的估算是到活動層）</td></tr>
+      </table>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 最容易混淆的考點</div>
+      <strong>「主管希望 PM 詳細估算，應估算到那一層最準確？」</strong><br>
+      → 答案：<strong>工作包（Work Package）</strong>，不是活動。Work Package 是 WBS 最底層，是成本估算的基本單位。<br><br>
+      <strong>「利害關係人無法信任工作包的工期、成本及資源的估算，PM 應估算至哪層？」</strong><br>
+      → 答案：<strong>活動（Activity）</strong>，比工作包更細一層，給利害關係人更詳細的數據。
+    </div>
+  </div>
+</div>
+
+<!-- 四、儲備金 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')">
+    <span><span class="num">四</span>儲備金：應變儲備 vs 管理儲備（超高頻考點）</span>
+    <span id="c4">▼</span>
+  </div>
+  <div class="section-body" id="b4">
+    <div class="table-wrap">
+      <table>
+        <tr><th>類型</th><th>應對什麼風險</th><th>誰負責</th><th>如何使用</th><th>在哪層</th></tr>
+        <tr><td>應變儲備<br>Contingency Reserve</td><td><strong>已知</strong>風險（Known Unknowns）<br>已識別、已評估的風險</td><td>PM</td><td>PM 可以直接使用，不需要提出變更申請</td><td>成本基準內</td></tr>
+        <tr><td>管理儲備<br>Management Reserve</td><td><strong>未知</strong>風險（Unknown Unknowns）<br>無法預期的突發事件</td><td>Sponsor / 高階管理層</td><td>發生時由 PM 提出申請，獲得核准後才能使用，並移入成本基準</td><td>成本基準外（預算內）</td></tr>
+      </table>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 記憶方法：已知 vs 未知</div>
+      <strong>應變儲備</strong> = 「我知道可能會出這個問題，先準備一筆錢」→ PM 自己管<br>
+      <strong>管理儲備</strong> = 「我不知道會出什麼問題，先留一筆備用金」→ Sponsor 管，用的時候要申請<br><br>
+      考題情境：「專案受到颱風影響，通常會用砂包來加固，當颱風警報發布，PM 如何？」<br>
+      颱風是「<strong>已知</strong>風險」（事先能預期）→ 用<strong>應變儲備</strong>，<strong>PM 可直接使用</strong>，不需送 CCB。
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常答錯的儲備金題目</div>
+      <strong>「專案執行中成員辨識出未曾預見的重大事件，PM 應如何？」</strong><br>
+      未曾預見 = 未知風險 → 用<strong>管理儲備</strong>，送給 <strong>Sponsor（贊助人）核准</strong>，不是送 CCB！<br><br>
+      <strong>「應變儲備是哪種風險？」→ 已知高風險 or 已知低風險？</strong><br>
+      應變儲備應對的是「已知的」風險，至於高低都有可能。考題選「<strong>已知高風險</strong>」。<br><br>
+      管理儲備 = 未知成本，先編列預算「發生時才提計畫，計畫核准後才執行」（C選項）
+    </div>
+  </div>
+</div>
+
+<!-- 五、成本基準 vs 成本預算 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')">
+    <span><span class="num">五</span>成本基準 vs 成本預算</span>
+    <span id="c5">▼</span>
+  </div>
+  <div class="section-body" id="b5">
+    <div class="table-wrap">
+      <table>
+        <tr><th>概念</th><th>組成</th><th>用途</th></tr>
+        <tr><td>成本基準<br>Cost Baseline</td><td>工作包成本 + 應變儲備</td><td>作為監控專案成本績效的基準，由「制定預算」流程產出</td></tr>
+        <tr><td>成本預算<br>Cost Budget</td><td>成本基準 + 管理儲備</td><td>整個專案批准的資金上限</td></tr>
+      </table>
+    </div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 關於成本基準的錯誤說法</div>
+      考題（Q22）：「關於成本基準的敘述，何者不正確？」<br><br>
+      ❌ 錯誤：「未知風險，由 Sponsor 負責，編列管理儲備；發生時由 PM 提出風險回應計畫，獲得變更核准後，將管理儲備移入成本基準」<br>
+      → 這其實是<strong>正確</strong>的描述！所以這個選項不是「不正確」的那個。<br><br>
+      ✅ 真正不正確的說法：「已知風險，由 PM 負責，並編列活動或工作包的應變儲備，<strong>發生時 PM 需要提出變更申請獲得核准才能使用</strong>」<br>
+      → 錯誤在於：應變儲備是 <strong>PM 可以直接使用</strong>的，不需要提出變更申請！
+    </div>
+  </div>
+</div>
+
+<!-- 六、EVM -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('b6')">
+    <span><span class="num">六</span>EVM 實獲值管理（計算題）</span>
+    <span id="c6">▼</span>
+  </div>
+  <div class="section-body" id="b6">
+    <p>EVM（Earned Value Management）是用數字來評估專案「進度好不好、成本超了沒」的工具。Ch7 一定有計算題。</p>
+
+    <h3>三個基本數值</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>縮寫</th><th>全名</th><th>意思</th></tr>
+        <tr><td>PV</td><td>Planned Value<br>計畫值</td><td>到目前為止，計畫應該完成多少工作（值多少錢）</td></tr>
+        <tr><td>EV</td><td>Earned Value<br>實獲值</td><td>到目前為止，實際完成了多少工作（值多少錢）</td></tr>
+        <tr><td>AC</td><td>Actual Cost<br>實際成本</td><td>到目前為止，實際花了多少錢</td></tr>
+        <tr><td>BAC</td><td>Budget at Completion<br>完工預算</td><td>整個專案原始核定的總預算</td></tr>
+      </table>
+    </div>
+
+    <h3>四個核心指標與公式</h3>
+    <div class="evm-card evm-good">
+      <div class="evm-name">CV（成本差異 Cost Variance）</div>
+      <div class="evm-formula">CV = EV − AC</div>
+      <div class="evm-meaning">正數 = 成本節省（好）｜負數 = 成本超支（不好）</div>
+    </div>
+    <div class="evm-card evm-good">
+      <div class="evm-name">SV（時程差異 Schedule Variance）</div>
+      <div class="evm-formula">SV = EV − PV</div>
+      <div class="evm-meaning">正數 = 進度超前（好）｜負數 = 進度落後（不好）</div>
+    </div>
+    <div class="evm-card evm-good">
+      <div class="evm-name">CPI（成本績效指標 Cost Performance Index）</div>
+      <div class="evm-formula">CPI = EV ÷ AC</div>
+      <div class="evm-meaning">&gt;1 = 成本效率好（每花1元做了超過1元的事）｜&lt;1 = 成本超支</div>
+    </div>
+    <div class="evm-card evm-good">
+      <div class="evm-name">SPI（時程績效指標 Schedule Performance Index）</div>
+      <div class="evm-formula">SPI = EV ÷ PV</div>
+      <div class="evm-meaning">&gt;1 = 進度超前｜&lt;1 = 進度落後｜= 1 = 準時</div>
+    </div>
+
+    <h3>完工估算 EAC</h3>
+    <div class="evm-card evm-bad">
+      <div class="evm-name">EAC（完工估算 Estimate at Completion）</div>
+      <div class="evm-formula">EAC = BAC ÷ CPI</div>
+      <div class="evm-meaning">預測整個專案最終總花費（假設未來績效和目前相同）</div>
+    </div>
+
+    <h3>實際計算（Q13）</h3>
+    <div class="box tip">
+      <div class="box-title">💡 解題步驟</div>
+      題目：BAC = 10萬元，CPI = 0.9，請問 EAC 如何？<br><br>
+      <strong>EAC = BAC ÷ CPI = 10萬 ÷ 0.9 = 11.1萬</strong><br><br>
+      CPI = 0.9 代表「每花1元只做了0.9元的事」，成本效率不好，所以最終預計會<strong>超支</strong>，EAC 大於 BAC（10萬）。<br>
+      → 答案選「大於10萬」。
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 快速判斷：不用計算的 EAC 方向判斷</div>
+      CPI &gt; 1 → 成本效率好 → EAC &lt; BAC（最終花費比預算少）<br>
+      CPI &lt; 1 → 成本超支 → EAC &gt; BAC（最終花費比預算多）<br>
+      CPI = 1 → 剛好 → EAC = BAC
+    </div>
+
+    <h3>專案進度落後、成本有結餘的情況</h3>
+    <div class="box warn">
+      <div class="box-title">💡 「一個專案進度落後，成本有結餘，PM 該如何？」</div>
+      進度落後（SPI &lt; 1）但成本有結餘（CPI &gt; 1）→ 代表做得比較慢但比較省錢。<br>
+      PM 的正確做法：<strong>趕工（Crashing）</strong>，用省下的錢來加速進度，在不增加總預算的情況下提前完成。
+    </div>
+  </div>
+</div>
+
+<!-- 七、估算方法與管理層級 -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggle('b7')">
+    <span><span class="num">七</span>估算方法與管理層級</span>
+    <span id="c7">▼</span>
+  </div>
+  <div class="section-body" id="b7">
+    <h3>成本估算方法（與時程估算相同）</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>方法</th><th>特點</th><th>考題關鍵字</th></tr>
+        <tr><td>類比估算<br>Analogous</td><td>參考過去類似專案，快速但準確度低</td><td>「以前多個案子的資料，快速估算整體工期」</td></tr>
+        <tr><td>參數估算<br>Parametric</td><td>單位 × 數量，有公式計算，較準確</td><td>「統計分析取得製程及材料單價」、「每坪×坪數」、「每模組美元數」</td></tr>
+        <tr><td>三點估算<br>PERT</td><td>(O+4M+P)÷6，資料分散時用</td><td>「資料非常分散」、「不確定性高」</td></tr>
+        <tr><td>由下而上估算<br>Bottom-up</td><td>最詳細準確，從最小單位向上加總</td><td>「最詳細、最準確」</td></tr>
+      </table>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ Sponsor 不滿意估算，要求砍10%，PM 應如何？</div>
+      考題（Q7）：「Sponsor 對提供的成本估算不滿意，要求砍掉10%成本估算」<br><br>
+      ❌ 錯誤做法：要求團隊直接將估計值降低10%、開始尋求節省費用的方法<br>
+      ✅ 正確做法：<strong>與 Sponsor 討論，說明可能有部分工作範圍無法納入</strong><br><br>
+      成本估算是根據範疇算出來的，直接砍預算等於縮減範疇，要讓 Sponsor 清楚這個代價。
+    </div>
+
+    <h3>供應商提出成本增加，PM 應如何？</h3>
+    <div class="box warn">
+      <div class="box-title">💡 正確做法</div>
+      考題（Q12）：「供應商告訴你，你的專案活動增加了他們的成本」<br>
+      → 正確做法：<strong>向該供應商詢問更進一步的細部資訊</strong>（先了解原因）<br>
+      → 不是直接否認、不是立刻召開變更管理會議、不是直接提出變更成本的建議
+    </div>
+  </div>
+</div>
+
+<!-- 八、題目出題模式 -->
+<div class="section" id="s8">
+  <div class="section-header" onclick="toggle('b8')">
+    <span><span class="num">八</span>題目出題模式與陷阱彙整</span>
+    <span id="c8">▼</span>
+  </div>
+  <div class="section-body" id="b8">
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型1：「目前在哪個流程？」</div>
+      <ul>
+        <li>「評估自行開發與委外的成本，考量所有資源相關成本」→ <strong>估算成本</strong></li>
+        <li>「將成本分派至每項交付成果，建立成本基準」→ <strong>制定預算</strong></li>
+        <li>「以 WBS 作為基礎進行成本估算、制定及控制預算，說明計量單位、控制臨界點」→ <strong>規劃成本管理</strong></li>
+        <li>「監控成本績效，用 CPI、EAC 評估」→ <strong>控制成本</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型2：「用哪種儲備金？由誰核准？」</div>
+      <ul>
+        <li>已知風險發生 → <strong>應變儲備</strong>，PM 直接用，不需申請</li>
+        <li>未知/未曾預見的風險發生 → <strong>管理儲備</strong>，送 <strong>Sponsor</strong> 核准</li>
+        <li>颱風（事先可預期）→ 已知風險 → <strong>應變儲備，PM 直接使用</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型3：EVM 指標判讀</div>
+      <ul>
+        <li>CPI = 0.9 → 成本超支，EAC 大於 BAC</li>
+        <li>CPI = 1.1 → 成本節省，EAC 小於 BAC</li>
+        <li>SPI &gt; 1 → 進度超前；SPI &lt; 1 → 進度落後</li>
+        <li>進度落後 + 成本有結餘 → 用省下的錢 <strong>趕工（Crashing）</strong></li>
+      </ul>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 題型4：「估算到哪個層級最準確？」</div>
+      <ul>
+        <li>主管要詳細估算 → <strong>工作包（Work Package）</strong></li>
+        <li>利害關係人無法信任工作包估算 → <strong>活動（Activity）</strong>（更細一層）</li>
+        <li>客戶驗收績效基準的主要管控點 → <strong>控制帳戶（Control Account）</strong></li>
+        <li>預算是以什麼為基礎編列？→ <strong>WBS（工作分解結構）</strong></li>
+      </ul>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常答錯的考點</div>
+      <strong>「應變儲備是已知還是未知風險？」</strong><br>
+      → 應變儲備 = <strong>已知</strong>風險（Known Unknowns）<br>
+      → 管理儲備 = <strong>未知</strong>風險（Unknown Unknowns）<br><br>
+      <strong>「應變儲備發生時，PM 需要提出變更申請才能使用」→ 錯！</strong><br>
+      應變儲備 PM 可直接使用；要提申請才能用的是管理儲備。<br><br>
+      <strong>「成本基準和成本預算的差異是什麼？」→ 管理儲備</strong>
+    </div>
+  </div>
+</div>
+
+<!-- 九、核心思維 -->
+<div class="section" id="s9">
+  <div class="section-header" onclick="toggle('b9')">
+    <span><span class="num">九</span>核心思維總結</span>
+    <span id="c9">▼</span>
+  </div>
+  <div class="section-body" id="b9">
+    <div class="box tip">
+      <div class="box-title">💡 Ch7 成本管理的核心思維</div>
+      <ul>
+        <li><strong>預算架構有層次</strong>：Work Package → Control Account → Cost Baseline（含應變儲備）→ Cost Budget（含管理儲備）</li>
+        <li><strong>兩種儲備金</strong>：已知風險用應變儲備（PM 管）；未知風險用管理儲備（Sponsor 管）</li>
+        <li><strong>EVM 是健康指標</strong>：CPI、SPI 大於1是好的；EAC = BAC ÷ CPI</li>
+        <li><strong>預算不能直接砍</strong>：成本估算根據範疇，砍預算等於縮範疇，要讓 Sponsor 清楚代價</li>
+        <li><strong>詳細估算在規劃階段</strong>，起始階段只做粗略估算</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <div class="box-title">💡 對應您的實戰經驗</div>
+      銀行 IT 專案一定有預算限制，您應該很熟悉「預算超了怎麼辦」的壓力。<br><br>
+      PMP 的思維是：超支不是 PM 自己扛，而是透過 EVM 提早發現問題，<strong>即時向管理層提出預測（EAC）和應對方案</strong>，讓決策者做決定。<br><br>
+      考試記得：<strong>看到成本超支的題目，答案通常是「評估影響、提出方案、向上報告」，不是自己默默想辦法省錢</strong>。
+    </div>
+  </div>
+</div>
+
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById(id);
+  const num = id.replace('b','');
+  const chevron = document.getElementById('c' + num);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if (chevron) chevron.textContent = isOpen ? '▼' : '▲';
+}
+function toggleToc() {
+  const body = document.getElementById('toc-body');
+  const chevron = document.getElementById('toc-chevron');
+  const isHidden = body.style.display === 'none';
+  body.style.display = isHidden ? 'block' : 'none';
+  chevron.textContent = isHidden ? '▼' : '▲';
+}
+document.querySelectorAll('.section-body').forEach((b, i) => {
+  if (i > 0) {
+    b.classList.remove('open');
+    const num = b.id.replace('b','');
+    const chevron = document.getElementById('c' + num);
+    if (chevron) chevron.textContent = '▼';
+  }
+});
+</script>
+</body>
+</html>

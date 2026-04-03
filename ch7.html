@@ -129,6 +129,7 @@
     <a href="#s6">六、EVM 實獲值管理（計算題）</a>
     <a href="#s7">七、估算方法與管理層級</a>
     <a href="#s8">八、題目出題模式與陷阱彙整</a>
+    <a href="#s_evm_chart">★ EVM 圖表判讀（歷屆考點）</a>
     <a href="#s9">九、核心思維總結</a>
   </div>
 </div>
@@ -470,6 +471,61 @@
       <strong>「應變儲備發生時，PM 需要提出變更申請才能使用」→ 錯！</strong><br>
       應變儲備 PM 可直接使用；要提申請才能用的是管理儲備。<br><br>
       <strong>「成本基準和成本預算的差異是什麼？」→ 管理儲備</strong>
+    </div>
+  </div>
+</div>
+
+<!-- EVM 圖表判讀 -->
+<div class="section" id="s_evm_chart">
+  <div class="section-header" onclick="toggle('b_evm')"><span><span class="num">★</span>EVM 圖表判讀（歷屆考點）</span><span id="c_evm">▼</span></div>
+  <div class="section-body" id="b_evm">
+    <p>歷屆題型有多題是「給你一張 EVM 圖，問你現在專案狀況如何、PM 應如何？」，不只考公式，要能看圖說故事。</p>
+
+    <h3>標準 EVM 圖的組成</h3>
+    <div class="table-wrap"><table>
+      <tr><th>線條</th><th>代表</th><th>特徵</th></tr>
+      <tr><td>PV 線（計畫值）</td><td>計畫應該完成多少</td><td>通常是一條平滑向上的曲線，最終等於 BAC</td></tr>
+      <tr><td>EV 線（實獲值）</td><td>實際完成了多少</td><td>和 PV 比較看進度快慢</td></tr>
+      <tr><td>AC 線（實際成本）</td><td>實際花了多少錢</td><td>和 EV 比較看成本效率</td></tr>
+    </table></div>
+
+    <h3>看圖判斷的四種情境</h3>
+    <div class="table-wrap"><table>
+      <tr><th>圖上看到</th><th>代表</th><th>CPI/SPI</th><th>PM 應如何</th></tr>
+      <tr><td>EV 低於 PV<br>AC 高於 EV</td><td>進度落後 + 成本超支（最糟）</td><td>SPI &lt; 1<br>CPI &lt; 1</td><td>立即分析原因，向管理層報告，評估趕工或縮減範疇</td></tr>
+      <tr><td>EV 低於 PV<br>AC 低於 EV</td><td>進度落後 + 成本節省</td><td>SPI &lt; 1<br>CPI &gt; 1</td><td>用省下的錢趕工（Crashing），加速進度</td></tr>
+      <tr><td>EV 高於 PV<br>AC 高於 EV</td><td>進度超前 + 成本超支</td><td>SPI &gt; 1<br>CPI &lt; 1</td><td>注意成本控制，分析超支原因</td></tr>
+      <tr><td>EV 高於 PV<br>AC 低於 EV</td><td>進度超前 + 成本節省（最好）</td><td>SPI &gt; 1<br>CPI &gt; 1</td><td>維持現狀，向管理層報告好消息</td></tr>
+    </table></div>
+
+    <div class="box tip">
+      <div class="box-title">💡 看圖的口訣</div>
+      <strong>EV vs PV → 看進度（時程）</strong><br>
+      EV 在 PV 上方 = 進度超前（SPI &gt; 1）<br>
+      EV 在 PV 下方 = 進度落後（SPI &lt; 1）<br><br>
+      <strong>EV vs AC → 看成本</strong><br>
+      EV 在 AC 上方 = 成本節省（CPI &gt; 1，做了比花的多）<br>
+      EV 在 AC 下方 = 成本超支（CPI &lt; 1，做的沒有花的多）<br><br>
+      記憶方法：<strong>EV 是主角</strong>，EV 和誰比就看哪個指標。
+    </div>
+
+    <h3>Management Reserve（管理儲備）在圖上的位置</h3>
+    <div class="box warn">
+      <div class="box-title">💡 Cost Budget vs Cost Baseline 在圖上的差異</div>
+      圖上通常會看到兩條水平線：<br>
+      <strong>上方那條</strong> = Cost Budget（成本預算）= 包含管理儲備<br>
+      <strong>下方那條</strong> = Cost Baseline（成本基準）= 不含管理儲備<br><br>
+      EAC 預測線若超過 Cost Baseline 但低於 Cost Budget → 還在可接受範圍內<br>
+      EAC 預測線若超過 Cost Budget → 需要向 Sponsor 申請追加預算
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ 歷屆考題情境</div>
+      「圖上顯示 AC 一直高於 EV，EV 也低於 PV，PM 應如何？」<br>
+      → 進度落後且成本超支 → <strong>立即分析原因，評估影響，向管理層提出應對方案</strong><br>
+      → 不是默默繼續工作，不是直接縮減範疇，要先分析原因再提方案<br><br>
+      「CPI = 0.7，SPI = 0.8，PM 最好應做什麼？」<br>
+      → 兩個都小於 1，情況嚴重 → <strong>向 Sponsor 報告，討論可行的應對策略</strong>
     </div>
   </div>
 </div>

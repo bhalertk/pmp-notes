@@ -130,6 +130,7 @@
     <a href="#s7">七、估算方法與管理層級</a>
     <a href="#s8">八、題目出題模式與陷阱彙整</a>
     <a href="#s_evm_chart">★ EVM 圖表判讀（歷屆考點）</a>
+    <a href="#s_aexam7">★ A卷補強：計算題全解析</a>
     <a href="#s9">九、核心思維總結</a>
   </div>
 </div>
@@ -526,6 +527,131 @@
       → 不是默默繼續工作，不是直接縮減範疇，要先分析原因再提方案<br><br>
       「CPI = 0.7，SPI = 0.8，PM 最好應做什麼？」<br>
       → 兩個都小於 1，情況嚴重 → <strong>向 Sponsor 報告，討論可行的應對策略</strong>
+    </div>
+  </div>
+</div>
+
+<!-- A卷補強 -->
+<div class="section" id="s_aexam7">
+  <div class="section-header" onclick="toggle('b_aexam7')"><span><span class="num">★</span>A卷補強：計算題全解析</span><span id="c_aexam7">▼</span></div>
+  <div class="section-body" id="b_aexam7">
+
+    <h3>EVM 公式快速複習</h3>
+    <div style="background:#F0F6FF;border:2px solid #2E75B6;border-radius:10px;padding:14px;margin:10px 0;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;">
+          <div style="font-weight:700;color:#1F4E79;">CV（成本差異）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">CV = EV − AC</div>
+          <div style="font-size:11px;color:#555;">正數=節省 負數=超支</div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;">
+          <div style="font-weight:700;color:#1F4E79;">SV（時程差異）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">SV = EV − PV</div>
+          <div style="font-size:11px;color:#555;">正數=超前 負數=落後</div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;">
+          <div style="font-weight:700;color:#1F4E79;">CPI（成本績效）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">CPI = EV ÷ AC</div>
+          <div style="font-size:11px;color:#555;">&gt;1好 &lt;1超支</div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;">
+          <div style="font-weight:700;color:#1F4E79;">SPI（時程績效）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">SPI = EV ÷ PV</div>
+          <div style="font-size:11px;color:#555;">&gt;1超前 &lt;1落後</div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;">
+          <div style="font-weight:700;color:#1F4E79;">EAC（完工估算）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">EAC = BAC ÷ CPI</div>
+          <div style="font-size:11px;color:#555;">預測最終總花費</div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;">
+          <div style="font-weight:700;color:#1F4E79;">ETC（剩餘工作估算）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">ETC = EAC − AC</div>
+          <div style="font-size:11px;color:#555;">還需要花多少錢</div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:10px;border:1px solid #D0DCE8;grid-column:1/-1;">
+          <div style="font-weight:700;color:#1F4E79;">VAC（完工差異）</div>
+          <div style="font-family:monospace;font-size:14px;margin:4px 0;">VAC = BAC − EAC</div>
+          <div style="font-size:11px;color:#555;">正數=最終會節省 負數=最終會超支</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>A卷實際計算題解析</h3>
+
+    <div class="qtype">
+      <div class="qt-title">📝 Q138：BAC=$200,000，AC=$160,000，已完成$128,000工作，CPI=？</div>
+      <p>已知：EV = $128,000（已完成的工作值多少）、AC = $160,000（實際花了多少）</p>
+      <p><strong>CPI = EV ÷ AC = 128,000 ÷ 160,000 = 0.8</strong></p>
+      <p>→ 答案 B（0.85 是陷阱，0.8 才對）</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 Q139：BAC=$200,000，EV=$128,000，AC=$160,000，SPI=？</div>
+      <p>SPI = EV ÷ PV，但題目沒給 PV？→ 要看題目敘述，PV 通常由「計畫完成的工作量」算出</p>
+      <p>如果 SPI=0.85，代表：EV = PV × 0.85，進度落後 15%</p>
+      <div class="box trap">
+        <div class="box-title">⚠️ 您答錯的關鍵</div>
+        CPI 和 SPI 的分子都是 EV，但分母不同：<br>
+        CPI = EV ÷ <strong>AC</strong>（和錢比）<br>
+        SPI = EV ÷ <strong>PV</strong>（和計畫比）<br>
+        看題目問的是成本還是時程，再對應分母。
+      </div>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 Q140：CPI=2，BAC=$150,000，SPI=1，EAC=？</div>
+      <p><strong>EAC = BAC ÷ CPI = 150,000 ÷ 2 = $75,000</strong></p>
+      <p>CPI=2 代表每花 1 元做了 2 元的事，效率超高，最終只需花一半的預算。</p>
+      <p>→ 答案 B（$75,000）</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 Q152：EV=300，AC=400，BAC=$325，CV=？</div>
+      <p><strong>CV = EV − AC = 300 − 400 = −100</strong></p>
+      <p>負數代表成本超支 $100。</p>
+      <p>→ 答案 D（-100）</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 Q144：SPI=0.75，CPI=0.8，專案目前狀況和 PM 應如何？</div>
+      <p>SPI=0.75 → 進度落後（完成了計畫的 75%）<br>
+      CPI=0.8 → 成本超支（每花 1 元只做了 0.8 元的事）</p>
+      <p>兩個都小於 1，是雙重問題。PM 應該：<strong>向 Sponsor 報告，一起評估可行的應對方案</strong>（不是自己默默趕工，不是縮減範疇）</p>
+    </div>
+
+    <div class="qtype">
+      <div class="qt-title">📝 Q158：EAC預測線到 $1,000來算，SPI=1，Sponsor 批准了 PM 建議的應對方案，CPI 會是多少？</div>
+      <p>這類題型的邏輯：SPI=1 代表進度剛好，成本如果改善後 CPI 回到 1，則 EAC = BAC。</p>
+      <p>關鍵：<strong>當 SPI=1 且應對後假設未來績效正常，EAC = AC + (BAC - EV)</strong></p>
+    </div>
+
+    <h3>成本基準層次計算（Q146、Q162、Q163）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>層次</th><th>計算方式</th></tr>
+      <tr><td>Activity Cost</td><td>最底層的活動成本</td></tr>
+      <tr><td>Work Package Cost</td><td>= 活動成本加總</td></tr>
+      <tr><td>Control Account</td><td>= Work Package + Planning Package</td></tr>
+      <tr><td>Cost Baseline（成本基準）</td><td>= Control Account + Contingency Reserve（應變儲備）</td></tr>
+      <tr><td>Cost Budget（成本預算）</td><td>= Cost Baseline + Management Reserve（管理儲備）</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ 最常混淆：誰在 Baseline 內？誰在外？</div>
+      <strong>應變儲備（Contingency Reserve）在 Cost Baseline 內</strong>，PM 可直接動用<br>
+      <strong>管理儲備（Management Reserve）在 Cost Baseline 外</strong>，需 Sponsor 核准才能動用<br><br>
+      Cost Baseline 是監控績效的基準，包含應變儲備但不含管理儲備。
+    </div>
+
+    <h3>EAC 的不同計算方式（Q159、Q161）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>情境</th><th>公式</th></tr>
+      <tr><td>假設未來績效和目前一樣</td><td>EAC = BAC ÷ CPI（最常考）</td></tr>
+      <tr><td>假設未來績效會回到計畫水準</td><td>EAC = AC + (BAC − EV)</td></tr>
+      <tr><td>假設未來用特定效率完成</td><td>EAC = AC + [(BAC − EV) ÷ CPI]</td></tr>
+    </table></div>
+    <div class="box tip">
+      <div class="box-title">💡 考試大多數情況用第一個公式</div>
+      除非題目特別說「假設未來績效回到正常」，否則預設用 <strong>EAC = BAC ÷ CPI</strong>。
     </div>
   </div>
 </div>

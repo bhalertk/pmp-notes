@@ -166,6 +166,7 @@
     <a href="#s7">七、活動工期估算方法</a>
     <a href="#s8">八、三點估算 PERT</a>
     <a href="#s9">九、題目出題模式與陷阱彙整</a>
+    <a href="#s_aexam6">★ A卷補強：時程管理考點</a>
     <a href="#s10">十、核心思維總結</a>
   </div>
 </div>
@@ -545,6 +546,66 @@
       <strong>「PM 自己估算所有活動的工期」→ 錯！應由最熟悉活動的人估算</strong><br><br>
       <strong>「資源平滑會改變要徑和完工日」→ 錯！只有資源撫平才會</strong><br><br>
       <strong>「時程管理計畫包含定義成員個人績效的方法」→ 錯！那不屬於時程管理計畫的內容</strong>
+    </div>
+  </div>
+</div>
+
+<!-- A卷補強 -->
+<div class="section" id="s_aexam6">
+  <div class="section-header" onclick="toggle('b_aexam6')"><span><span class="num">★</span>A卷補強：時程管理考點</span><span id="c_aexam6">▼</span></div>
+  <div class="section-body" id="b_aexam6">
+
+    <h3>SPI 計算（A卷Q100）</h3>
+    <div class="box tip">
+      <div class="box-title">💡 SPI 考題公式再確認</div>
+      Q100：「一個工程估算 SPI 一直是 0.8，工程師告訴你 SPI 在接下來的工作中不會改善，BAC=$100,000，AC=$80,000，EAC=？」<br><br>
+      如果 SPI=0.8 代表工作效率固定，這時要用：<br>
+      <strong>EAC = AC + [(BAC - EV) ÷ CPI]</strong><br><br>
+      先求 EV：CPI × AC = EV，但沒有直接給 CPI... 這題實際上是考 SPI 持續不佳時的 EAC 判斷，答案選 C（$125,000 = 100,000 ÷ 0.8）
+    </div>
+
+    <h3>資源優化複習（A卷Q106）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>技術</th><th>對要徑的影響</th><th>對完工日的影響</th></tr>
+      <tr><td>資源平滑 Resource Smoothing</td><td>不改變</td><td>不延後</td></tr>
+      <tr><td>資源撫平 Resource Leveling</td><td>可能改變</td><td>通常延後</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ A卷Q106：「哪種資源優化技術可能改變要徑？」</div>
+      → 答案：<strong>資源撫平（Resource Leveling）</strong><br>
+      資源平滑只調整非要徑活動的浮時，不影響要徑。資源撫平連要徑都可能動到。
+    </div>
+
+    <h3>時程網路圖相關工具（A卷Q99、Q103）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>工具</th><th>用途</th></tr>
+      <tr><td>PDM（Precedence Diagramming Method）</td><td>用節點表示活動，箭頭表示依賴關係。現在最常用的方法。</td></tr>
+      <tr><td>要徑法 CPM</td><td>找出最長路徑（要徑），決定最短完工時間</td></tr>
+      <tr><td>甘特圖 Gantt Chart</td><td>以時間軸呈現活動時程，直觀易懂，常用於溝通</td></tr>
+      <tr><td>時程網路圖</td><td>顯示活動間的依賴關係，用於計算要徑和浮時</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ A卷Q103：快速跟進 vs 趕工</div>
+      「專案時程落後，想提前幾天完成，最佳措施？」<br>
+      → 如果網路邏輯可以調整 → <strong>快速跟進（Fast Tracking）</strong>（平行執行活動）<br>
+      → 如果需要增加人力 → <strong>趕工（Crashing）</strong>（加入更多資源）<br><br>
+      Q103 答案：<strong>快速跟進（Fast Tracking）</strong>，因為題目說「減少原本依序進行的活動」
+    </div>
+
+    <h3>里程碑清單（Milestone List）（A卷Q102）</h3>
+    <p>里程碑是專案中的重要時間節點（如完成某階段、客戶審查），沒有工期（Duration = 0）。</p>
+    <div class="box tip">
+      <div class="box-title">💡 考試情境</div>
+      「專案有哪些重要的交付點、審查點」→ <strong>里程碑清單（Milestone List）</strong><br>
+      「確認時程是否符合進度」→ <strong>SPI（時程績效指標）</strong>
+    </div>
+
+    <h3>A卷Q86：資源優化後要徑消失的情境</h3>
+    <div class="box warn">
+      <div class="box-title">💡 要徑浮時和非要徑都為 0 時</div>
+      「要徑與非要徑的浮時皆為 0，資源仍不足，PM 應如何？」<br>
+      → 答案：<strong>趕工（Crashing）</strong><br>
+      浮時都為 0 代表沒有任何彈性空間，無法用資源平滑或快速跟進，只能趕工加入更多資源。
     </div>
   </div>
 </div>

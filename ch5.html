@@ -212,6 +212,7 @@
     <a href="#s5">五、關鍵文件詳解</a>
     <a href="#s6">六、範疇潛變 Scope Creep（高頻考點）</a>
     <a href="#s7">七、題目出題模式與陷阱彙整</a>
+    <a href="#s_aexam5">★ A卷補強：範疇管理考點</a>
     <a href="#s8">八、核心思維總結</a>
   </div>
 </div>
@@ -519,6 +520,79 @@
       需求文件記錄需求內容和如何滿足目標；追溯矩陣是追蹤「連結關係」的。<br><br>
       <strong>Q：「完成定義範疇（Define Scope）後，必須將相關結果記錄在哪份文件？」</strong><br>
       → 答案：<strong>範疇聲明書（Scope Statement）</strong>，不是 WBS，也不是需求文件。
+    </div>
+  </div>
+</div>
+
+<!-- A卷補強 -->
+<div class="section" id="s_aexam5">
+  <div class="section-header" onclick="toggle('b_aexam5')"><span><span class="num">★</span>A卷補強：範疇管理考點</span><span id="c_aexam5">▼</span></div>
+  <div class="section-body" id="b_aexam5">
+
+    <h3>確認範疇 vs 控制品質（A卷Q67、Q82）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>流程</th><th>做什麼</th><th>誰來做</th><th>關鍵字</th></tr>
+      <tr><td>確認範疇<br>Validate Scope</td><td>客戶正式驗收交付成果</td><td>客戶/利害關係人</td><td>客戶驗收、正式接受、簽字</td></tr>
+      <tr><td>控制品質<br>Control Quality</td><td>團隊內部確認成果符合品質標準</td><td>專案團隊</td><td>團隊檢驗、符合標準、檢查</td></tr>
+    </table></div>
+    <div class="box trap">
+      <div class="box-title">⚠️ A卷Q67、Q82 的關鍵</div>
+      Q67：「PM 確認專案的 WBS 和工作包符合需求」→ 這是 <strong>控制範疇（Control Scope）</strong>，監控範疇有沒有蔓延<br><br>
+      Q82：「客戶驗收交付成果」→ <strong>確認範疇（Validate Scope）</strong><br>
+      順序：先控制品質（團隊內部確認）→ 再確認範疇（客戶正式驗收）
+    </div>
+
+    <h3>WBS Dictionary（WBS 字典）（A卷Q65）</h3>
+    <p>WBS 字典是每個工作包的詳細說明文件，包含：</p>
+    <ul>
+      <li>工作包的描述、負責人</li>
+      <li>預計時程和成本</li>
+      <li>所需資源</li>
+      <li>驗收標準</li>
+    </ul>
+    <div class="box tip">
+      <div class="box-title">💡 什麼時候查 WBS Dictionary？</div>
+      「工程團隊需要了解 WBS 工作包的詳細工作內容、工作的時間和費用」→ <strong>WBS Dictionary</strong><br>
+      不是 WBS 圖（圖只顯示結構），字典才有詳細內容。
+    </div>
+
+    <h3>蒐集需求工具（A卷Q87、Q93）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>工具</th><th>適用情境</th></tr>
+      <tr><td>腦力激盪 Brainstorming</td><td>快速收集大量創意，沒有對錯之分</td></tr>
+      <tr><td>訪談 Interview</td><td>深入了解個別利害關係人的需求</td></tr>
+      <tr><td>焦點團體 Focus Group</td><td>讓同類利害關係人一起討論，收集群體意見</td></tr>
+      <tr><td>問卷調查 Questionnaires and Survey</td><td>利害關係人人數多，需要快速收集大量意見</td></tr>
+      <tr><td>引導 Facilitation</td><td>PM 引導各方達成共識</td></tr>
+      <tr><td>親和圖 Affinity Diagram</td><td>將大量想法分類整理</td></tr>
+      <tr><td>心智圖 Mind Mapping</td><td>視覺化呈現需求之間的關係</td></tr>
+      <tr><td>原型法 Prototype</td><td>先做出雛形讓使用者試用，收集回饋</td></tr>
+    </table></div>
+
+    <h3>WBS 建立方式（A卷Q77）</h3>
+    <div class="table-wrap"><table>
+      <tr><th>方式</th><th>說明</th></tr>
+      <tr><td>由上而下 Top-down</td><td>從最高層開始分解，逐層往下細化。最常見的方式。</td></tr>
+      <tr><td>由下而上 Bottom-up</td><td>先列出所有工作項目，再向上歸納整理</td></tr>
+      <tr><td>原型法 Prototype</td><td>先做雛形再根據回饋調整 WBS</td></tr>
+      <tr><td>分解 Decomposition</td><td>WBS 建立的核心技術，把大工作分解成小工作</td></tr>
+    </table></div>
+
+    <h3>滾浪式規劃（Rolling Wave Planning）（A卷Q78）</h3>
+    <p>對近期工作做詳細規劃，對遠期工作只做高層次規劃，隨著時間推進再逐步細化。</p>
+    <div class="box tip">
+      <div class="box-title">💡 考試情境</div>
+      「PM 目前只能規劃近期的工作細節，遠期的工作還不確定，這種規劃方式叫什麼？」<br>
+      → <strong>滾浪式規劃（Rolling Wave Planning）</strong>
+    </div>
+
+    <h3>需求追溯矩陣（A卷Q75、Q76）</h3>
+    <p>Requirements Traceability Matrix 追蹤每個需求的來源，確保每個需求都有對應的交付成果。</p>
+    <div class="box trap">
+      <div class="box-title">⚠️ 確認範疇需要用哪份文件？</div>
+      「確認範疇（Validate Scope）時需要查哪份文件，確認交付成果符合需求？」<br>
+      → 除了 PM Plan 之外，重要的還有 <strong>需求追溯矩陣（Requirements Traceability Matrix）</strong><br>
+      它記錄了每個需求和對應的交付成果，驗收時可以逐一核對。
     </div>
   </div>
 </div>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 歷屆重點題型</title>
+<style>
+  :root{--primary:#1F4E79;--secondary:#2E75B6;--accent:#2E5F8A;--warn-bg:#FFF9E6;--warn-border:#F0C040;--warn-text:#7A4F00;--tip-bg:#EAF5EA;--tip-border:#5CAF5C;--tip-text:#2E5E2E;--trap-bg:#FFF0F0;--trap-border:#E05050;--trap-text:#6E1010;--bg:#F4F7FB;--card:#FFFFFF;--border:#D0DCE8;--text:#222222;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;padding-bottom:60px;}
+  .hero{background:linear-gradient(135deg,#0D3B6B 0%,#1F4E79 60%,#2E75B6 100%);color:white;padding:28px 20px 22px;text-align:center;}
+  .hero h1{font-size:22px;font-weight:700;margin-bottom:6px;}
+  .hero p{font-size:13px;opacity:.85;}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:12px;margin-top:6px;}
+  .hero .important{display:inline-block;background:#E05050;border-radius:20px;padding:3px 14px;font-size:12px;margin-top:6px;font-weight:700;}
+  .nav-bar{background:white;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;}
+  .nav-bar a{color:var(--secondary);text-decoration:none;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:white;}
+  .nav-bar a.active{background:var(--primary);color:white;border-color:var(--primary);}
+  .toc{background:var(--card);margin:16px;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .toc-header{background:var(--primary);color:white;padding:12px 16px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;}
+  .toc-body{padding:12px 16px;}
+  .toc-body a{display:block;color:var(--secondary);text-decoration:none;padding:5px 0;font-size:14px;border-bottom:1px solid #f0f0f0;}
+  .toc-body a:last-child{border-bottom:none;}
+  .section{margin:0 16px 16px;background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  .section-header{background:linear-gradient(90deg,var(--primary),var(--accent));color:white;padding:14px 16px;font-size:16px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .section-header .num{background:rgba(255,255,255,.25);border-radius:20px;padding:2px 10px;font-size:12px;margin-right:8px;}
+  .section-body{padding:16px;display:none;}
+  .section-body.open{display:block;}
+  h3{color:var(--primary);font-size:14px;font-weight:700;margin:18px 0 8px;padding-left:10px;border-left:4px solid var(--secondary);}
+  h3:first-child{margin-top:0;}
+  p{font-size:14px;margin-bottom:10px;}
+  .box{border-radius:10px;padding:12px 14px;margin:10px 0;font-size:13.5px;line-height:1.65;}
+  .box .box-title{font-weight:700;margin-bottom:5px;font-size:13px;}
+  .warn{background:var(--warn-bg);border-left:4px solid var(--warn-border);color:var(--warn-text);}
+  .tip{background:var(--tip-bg);border-left:4px solid var(--tip-border);color:var(--tip-text);}
+  .trap{background:var(--trap-bg);border-left:4px solid var(--trap-border);color:var(--trap-text);}
+  ul{padding-left:18px;margin:8px 0;}
+  ul li{font-size:14px;margin-bottom:5px;}
+  .q-card{background:#F8FAFD;border:1px solid var(--border);border-radius:12px;margin:10px 0;overflow:hidden;}
+  .q-header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:white;border-bottom:1px solid var(--border);cursor:pointer;}
+  .q-num{min-width:28px;height:28px;border-radius:50%;background:var(--primary);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .q-tag{font-size:11px;font-weight:600;border-radius:4px;padding:2px 8px;}
+  .tag-agile{background:#D6E8FF;color:#1a3a6e;}
+  .tag-pm{background:#D6F0D6;color:#1a4a1a;}
+  .tag-risk{background:#FFE8CC;color:#6e3a00;}
+  .tag-cost{background:#FFD6D6;color:#6e0000;}
+  .tag-comm{background:#E8D6FF;color:#3a006e;}
+  .tag-scope{background:#D6F0F0;color:#006e5a;}
+  .q-text{font-size:14px;font-weight:600;color:#1a1a1a;flex:1;}
+  .q-body{padding:12px 14px;display:none;}
+  .q-body.open{display:block;}
+  .ans-label{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;}
+  .ans-body{font-size:13.5px;line-height:1.7;}
+  .key-word{display:inline-block;background:var(--primary);color:white;border-radius:4px;padding:1px 7px;font-size:12px;font-weight:700;margin:2px;}
+  .back-top{text-align:center;padding:20px 0 10px;font-size:13px;color:var(--secondary);cursor:pointer;text-decoration:underline;}
+  .freq-badge{display:inline-block;background:#E05050;color:white;border-radius:10px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;}
+</style>
+</head>
+<body>
+<div class="hero" id="top">
+  <h1>歷屆重點題型整理</h1>
+  <p>仕新管理顧問 黃喆 PMP 特訓班 · 118屆</p>
+  <span class="badge">L7~L13 歷屆考試高頻考點</span><br>
+  <span class="important">⚡ 老師說這份熟了，B卷就能達標！</span>
+</div>
+<div class="nav-bar">
+  <a href="index.html">🏠 首頁</a>
+  <a href="ch1-ch3.html">Ch1~3</a><a href="ch4.html">Ch4</a><a href="ch5.html">Ch5</a>
+  <a href="ch6.html">Ch6</a><a href="ch7.html">Ch7</a><a href="ch8.html">Ch8</a>
+  <a href="ch14.html">Ch14 敏捷</a>
+  <a href="key-questions.html" class="active">歷屆重點題型</a>
+</div>
+
+<div class="toc">
+  <div class="toc-header" onclick="toggleToc()">📋 本頁目錄 <span id="toc-chevron">▼</span></div>
+  <div class="toc-body" id="toc-body">
+    <a href="#s1">一、敏捷管理 Agile（最高頻）</a>
+    <a href="#s2">二、PM 角色與情境判斷（整合管理）</a>
+    <a href="#s3">三、EVM 成本管理計算題</a>
+    <a href="#s4">四、風險管理</a>
+    <a href="#s5">五、溝通與利害關係人管理</a>
+    <a href="#s6">六、範疇與時程管理</a>
+    <a href="#s7">七、採購管理</a>
+  </div>
+</div>
+
+<div class="box warn" style="margin:0 16px 16px;">
+  <div class="box-title">📌 這份題目怎麼用</div>
+  這些是歷屆真實考試的高頻情境題，不是選擇題。<br>
+  <strong>建議：先看題目想自己的答案，再展開看標準答案方向。</strong><br>
+  看過一遍後，找出您不確定的題目，和我一問一答練習。
+</div>
+
+<!-- 一、敏捷 -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>敏捷管理 Agile <span class="freq-badge">最高頻</span></span><span id="c1">▼</span></div>
+  <div class="section-body open" id="b1">
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q1')">
+        <div class="q-num">1</div>
+        <div class="q-text">Sponsor 想組建有效的 Agile Team，PM 該如何？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">引導</span> 不是自己去組團隊，而是引導 Sponsor 和團隊理解敏捷原則。<br><br>
+          PM 應：① 向 Sponsor 說明敏捷團隊的特性（自組織、跨職能、3~9人）② 協助組建跨功能團隊 ③ 確保 PO 角色明確，由熟悉業務需求的人擔任 ④ 確保 SM 到位，負責保護敏捷原則
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q2')">
+        <div class="q-num">2</div>
+        <div class="q-text">看 Burndown/Burnup Chart：哪邊 team 工作速率大於計畫？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">燃盡圖 Burndown</span>：實際線在計畫線<strong>下方</strong> → 剩餘工作比計畫少 → 進度超前<br>
+          <span class="key-word">燃升圖 Burnup</span>：實際線在計畫線<strong>上方</strong> → 完成工作比計畫多 → 進度超前<br><br>
+          口訣：燃盡圖「低於計畫線 = 好事」；燃升圖「高於計畫線 = 好事」
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q3')">
+        <div class="q-num">3</div>
+        <div class="q-text">公司想用視訊來溝通，成員不想，PM 應該如何？（複選）</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q3">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">先了解原因</span> 再決定做法。<br><br>
+          ① 了解成員不想用視訊的原因（技術問題？習慣？隱私？）<br>
+          ② 向成員說明公司政策的原因和好處<br>
+          ③ 提供替代方案讓成員選擇<br>
+          ④ 若有正當理由，向管理層反映並尋求彈性<br><br>
+          核心：<strong>不是強迫，也不是直接拒絕公司政策</strong>，先溝通了解，再找平衡點。
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q4')">
+        <div class="q-num">4</div>
+        <div class="q-text">Agile 專案，某位成員一再保證可以完成被交付的任務，最後還是沒有完成，PM 該如何？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q4">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">建立 DoD</span>（Definition of Done，完成的定義）<br><br>
+          根本原因：沒有明確的「完成」定義，成員和 PM 對「完成」的認知不同。<br><br>
+          PM 應：① 與團隊共同建立清楚的 DoD ② 在 Sprint Planning 時確認每個故事的驗收標準 ③ 使用 Sprint Review 讓 PO 正式驗收，而不是靠成員的口頭保證
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q5')">
+        <div class="q-num">5</div>
+        <div class="q-text">PM 主辦 Workshop，Stakeholder 及 Scrum Team 均辦了，因為已交付以往任務，各自</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q5">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">促進協作</span> Workshop 的目的是讓利害關係人和 Scrum Team 對齊。<br><br>
+          PM（或 SM）應：① 引導（Facilitate）而非主導 ② 確保每個人都有發言機會 ③ 聚焦在目標和期望上 ④ 將討論結果整理成行動項目
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q7')">
+        <div class="q-num">7</div>
+        <div class="q-text">PM 要主 Workshop，Stakeholder 及 Scrum Team 不相識，因為已交付以往任務，各自感到滿好？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q7">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">增進透明度</span> 讓雙方了解彼此的工作和期望。<br><br>
+          PM 應：① 在 Workshop 開始時介紹雙方 ② 說明各自的角色和貢獻 ③ 建立共同語言和目標 ④ 促進後續持續溝通機制
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q15')">
+        <div class="q-num">15</div>
+        <div class="q-text">要建立 Team 互信，來增強 Team 合作，PM 如何協助 Team？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q15">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">心理安全感</span>（Psychological Safety）是建立互信的基礎。<br><br>
+          PM 應：① 鼓勵開放溝通，不懲罰犯錯 ② 建立 Retrospective 文化，定期反思改善 ③ 讓成員參與決策，增加主人翁意識 ④ 公開認可成員的貢獻
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q16')">
+        <div class="q-num">16</div>
+        <div class="q-text">敏捷專案，有個 Issue 已提出後，已解決問題後回到原狀，PM 如何協助 Team 回應？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q16">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">根本原因分析</span> + <span class="key-word">Retrospective</span><br><br>
+          問題解決後又回到原點，代表只解決了表象，沒有解決根本原因。<br><br>
+          PM 應：① 在 Retrospective 中帶領團隊分析根本原因（Root Cause Analysis）② 使用魚骨圖（Ishikawa）找出真正原因 ③ 制定系統性解決方案，不只是修補症狀
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q17')">
+        <div class="q-num">17</div>
+        <div class="q-text">已到到第三次 Iteration，每次都三個目標，目前第三次 Iteration 不能達成 Iteration 之外的一些問題，PM 如何應對？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q17">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">重新排序 Backlog</span> 不是中途改變 Sprint 目標。<br><br>
+          敏捷原則：Sprint 進行中不應改變目標。<br><br>
+          PM 應：① 確保本次 Sprint 完成已承諾的工作 ② 將 Sprint 外的問題記錄到 Product Backlog ③ 由 PO 在下次 Sprint Planning 重新排序優先順序
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q18')">
+        <div class="q-num">18</div>
+        <div class="q-text">一個一百名人的公司，一份一份一份，PM 該如何？（L9-3）</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q18">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">分批交付</span>（Incremental Delivery）<br><br>
+          大型組織導入敏捷時，PM 應：① 從小規模試行（Pilot）開始 ② 收集回饋再擴大範圍 ③ 確保管理層支持（Sponsor 支持很重要）
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q19')">
+        <div class="q-num">19</div>
+        <div class="q-text">敏捷環境，加入成員，最後確定工作量是誰？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q19">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">Development Team</span>（開發團隊）確定 Sprint Backlog 內的工作量。<br><br>
+          這是敏捷最常考的考點：<br>
+          PO 決定「做什麼（目標和優先順序）」<br>
+          Dev Team 決定「做多少（本次 Sprint 能完成的工作量）」
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('q20')">
+        <div class="q-num">20</div>
+        <div class="q-text">Sponsor 要求，……，Teams，確認 Sponsor 要求是，PM 如何應對？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="q20">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">讓 PO 處理</span> Sponsor 的需求通過 PO 進入 Backlog。<br><br>
+          PM 應：① 引導 Sponsor 了解敏捷流程 ② 確保 Sponsor 需求透過 PO 轉換成 Product Backlog 項目 ③ 讓 PO 依照價值排序，不是 Sponsor 直接指定優先順序
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 二、PM 角色與情境判斷 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>PM 角色與情境判斷（整合管理）</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp1')">
+        <div class="q-num">5</div>
+        <div class="q-text">專案在起始(I)階段，已指派 PM，下一步該做什麼？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          起始階段 PM 被指派後的下一步：<span class="key-word">辨識利害關係人</span><br><br>
+          起始階段有兩個流程：① 發展專案章程（已完成，PM 被指派）→ ② 辨識利害關係人（下一步）<br><br>
+          辨識利害關係人越早做越好，越晚發現遺漏的利害關係人，影響越難處理。
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp2')">
+        <div class="q-num">6</div>
+        <div class="q-text">公司常與一家供應商長期合作，只有那家供應商有相關知識，但常常遲交，PM 該如何？</div>
+        <span class="q-tag tag-pm">採購</span>
+      </div>
+      <div class="q-body" id="qp2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">正式化管理</span> 不是盲目依賴，也不是立刻換供應商。<br><br>
+          PM 應：① 在合約中明確訂定交付時程和違約條款 ② 建立績效追蹤機制 ③ 同時評估是否培養其他供應商（降低單一供應商風險）④ 若持續遲交，依合約追責
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp3')">
+        <div class="q-num">8</div>
+        <div class="q-text">敬告管理階層（Management）要求，要更有效的溝通需求，Scrum Team 辦好了，PM 如何應對？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp3">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">建立溝通管道</span> 確保管理層和 Scrum Team 的資訊對稱。<br><br>
+          PM 應：① 建立定期的狀態報告機制 ② 邀請管理層參與 Sprint Review ③ 用視覺化工具（看板、燃盡圖）讓管理層隨時了解進度
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp4')">
+        <div class="q-num">9</div>
+        <div class="q-text">敬告接到工作，PM 立刻著手工作，聲稱 PM 來不及成功完成，PM 如何評估？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp4">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">先評估影響，再溝通</span>，不是直接接受不可能的任務。<br><br>
+          PM 應：① 評估現有資源、時程是否能達成 ② 識別風險和限制 ③ 向 Sponsor 報告實際情況，提出可行的替代方案 ④ 如果無法達成，誠實說明，不是承諾做不到的事
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp5')">
+        <div class="q-num">10</div>
+        <div class="q-text">圖：一個專案設施目前有多個工作包（workpackage），某些交付物工作的工作不能完成，PM 如何應對？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp5">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">評估影響→走變更流程</span><br><br>
+          PM 應：① 評估哪些工作包受影響，影響的範疇、時程、成本 ② 向 CCB 提出變更請求 ③ 通知相關利害關係人 ④ 更新專案管理計畫
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp6')">
+        <div class="q-num">11</div>
+        <div class="q-text">圖：一個設施目前有多個工作包（workpackage），一個可能被完成但另一個可能完成不了，PM 如何重置計畫？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp6">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">重新排優先順序</span> 先確保最重要的工作包完成。<br><br>
+          PM 應：① 與利害關係人確認優先順序 ② 資源重新分配到高優先工作包 ③ 對低優先工作包提出延期或縮減方案 ④ 送 CCB 核准計畫變更
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp7')">
+        <div class="q-num">12</div>
+        <div class="q-text">當一位 PM 手上有多個到交付物A、B，其中A 有些已交付，C 案還要完成，PM 如何重置計畫？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp7">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">整合資源管理</span> 多專案 PM 的核心挑戰是資源分配。<br><br>
+          PM 應：① 盤點所有專案的優先順序 ② 與 Sponsor 和功能經理協商資源 ③ 若資源不足，向上升報（Escalate）④ 更新計畫，設定實際可達成的期望
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp8')">
+        <div class="q-num">13</div>
+        <div class="q-text">圖：目前有兩份交付文件，已簽字，PM 如何應對？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp8">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">確認範疇一致性</span> 確保兩份文件沒有衝突。<br><br>
+          PM 應：① 比較兩份文件找出差異 ② 與利害關係人確認哪份為準 ③ 透過正式變更流程解決衝突 ④ 確保最終版本在所有相關文件中同步更新
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qp9')">
+        <div class="q-num">14</div>
+        <div class="q-text">有一 issue，發現已經積累一段時間，自己已同組的一個部門多位利害關係人，PM 如何應對？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qp9">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">記錄到 Issue Log + 正式處理</span><br><br>
+          PM 應：① 將 Issue 正式記錄到議題紀錄（Issue Log）② 召集相關利害關係人開會 ③ 分析根本原因 ④ 制定行動計畫並追蹤到解決
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 三、EVM 成本管理 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>EVM 成本管理計算題</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
+
+    <div class="box tip">
+      <div class="box-title">💡 EVM 公式快速記憶</div>
+      CPI = EV ÷ AC（Cost Performance Index）<br>
+      SPI = EV ÷ PV（Schedule Performance Index）<br>
+      EAC = BAC ÷ CPI（Estimate At Completion）<br>
+      ETC = EAC - AC（Estimate To Complete）<br>
+      VAC = BAC - EAC（Variance At Completion）<br>
+      CV = EV - AC（Cost Variance，正=省錢）<br>
+      SV = EV - PV（Schedule Variance，正=超前）
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qe1')">
+        <div class="q-num">22</div>
+        <div class="q-text">給EVM圖，工程師告知CPI，最後成本是多少，PM如何向PM提報（Sponsor匯報）？</div>
+        <span class="q-tag tag-cost">成本</span>
+      </div>
+      <div class="q-body" id="qe1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">計算 EAC 後向 Sponsor 報告</span><br><br>
+          步驟：① 用 EAC = BAC ÷ CPI 計算完工估算 ② 計算 VAC = BAC - EAC（是否超支）③ 向 Sponsor 報告目前狀況和預測完工成本 ④ 提出應對方案
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qe2')">
+        <div class="q-num">23</div>
+        <div class="q-text">SPI 某表，CPI 某表，PM 如何向 Sponsor 匯報？</div>
+        <span class="q-tag tag-cost">成本</span>
+      </div>
+      <div class="q-body" id="qe2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          判斷 SPI 和 CPI 的狀況：<br>
+          <strong>SPI &gt; 1</strong>：進度超前；<strong>SPI &lt; 1</strong>：進度落後<br>
+          <strong>CPI &gt; 1</strong>：成本節省；<strong>CPI &lt; 1</strong>：成本超支<br><br>
+          向 Sponsor 報告時，要說明：① 目前狀況（SPI/CPI數值）② 預測完工成本（EAC）③ 建議的應對方案
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qe3')">
+        <div class="q-num">24</div>
+        <div class="q-text">圖：兩個燃升圖，哪個燃升圖表示目前 Sponsor 知道這個，PM 如何應對？</div>
+        <span class="q-tag tag-cost">成本</span>
+      </div>
+      <div class="q-body" id="qe3">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">燃升圖判讀</span>：<br>
+          實際線在計畫線上方 → 進度超前<br>
+          實際線在計畫線下方 → 進度落後<br>
+          範疇線往上跳 → 範疇增加（Scope Creep 的視覺呈現）<br><br>
+          Sponsor 知道的情況代表：已通報，應提出應對方案。
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qe4')">
+        <div class="q-num">25</div>
+        <div class="q-text">發放資源，時程某表，自行應對……，PM 如何應對？</div>
+        <span class="q-tag tag-cost">成本</span>
+      </div>
+      <div class="q-body" id="qe4">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">資源優化</span>：<br>
+          資源不足時的選項：① 資源撫平（Resource Leveling）→ 可能延後完工日 ② 資源平滑（Resource Smoothing）→ 不改變完工日 ③ 趕工（Crashing）→ 增加資源，成本增加 ④ 快速跟進（Fast Tracking）→ 平行執行，有風險
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qe5')">
+        <div class="q-num">26</div>
+        <div class="q-text">發現資源不足，時程安排，自行應對，PM 如何應對？</div>
+        <span class="q-tag tag-cost">成本</span>
+      </div>
+      <div class="q-body" id="qe5">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">向 Sponsor 升報 + 提出方案</span><br><br>
+          PM 不應自行決定如何調配超出授權範圍的資源。應：<br>
+          ① 評估資源缺口的影響 ② 準備替代方案（趕工、快速跟進、縮減範疇）③ 向 Sponsor 報告並請求決策
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qe6')">
+        <div class="q-num">27</div>
+        <div class="q-text">圖：資源過剩，時程安排，PM 如何應對？</div>
+        <span class="q-tag tag-cost">成本</span>
+      </div>
+      <div class="q-body" id="qe6">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">資源平滑（Resource Smoothing）</span>：資源過剩時，調整活動到浮時範圍內，讓資源使用更平均，不影響完工日期。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 四、風險管理 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>風險管理</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qr1')">
+        <div class="q-num">1</div>
+        <div class="q-text">（L11）圖：一個EVM圖，顯示專案A成本和時程情況，某些不是 PO 接受的部份，PM 如何？</div>
+        <span class="q-tag tag-risk">風險</span>
+      </div>
+      <div class="q-body" id="qr1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          先看 EVM 圖的 SPI 和 CPI 狀況，再決定應對措施。<br>
+          若 CPI &lt; 1 且 SPI &lt; 1 → 最嚴重，需要向 Sponsor 報告並提出應對方案。
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qr2')">
+        <div class="q-num">2</div>
+        <div class="q-text">（L11）圖：兩個 Sprint，A 的 PO 接受、B 不接受，PM 如何應對？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="qr2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">放回 Backlog</span>，PO 重新排序。<br><br>
+          B 不被接受：① 了解 PO 不接受的原因 ② 將未被接受的故事放回 Product Backlog ③ PO 依照價值重新排序 ④ 在後續 Sprint 中重新開發和改善
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qr3')">
+        <div class="q-num">3</div>
+        <div class="q-text">（L11）CCB 批准了一個影響到工作的變更，PM 如何應對？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qr3">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">更新計畫 + 通知相關人員</span><br><br>
+          CCB 核准後，PM 應：① 更新專案管理計畫和相關基準 ② 通知受影響的團隊成員和利害關係人 ③ 確保變更被正確執行 ④ 記錄在變更日誌（Change Log）
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qr4')">
+        <div class="q-num">4</div>
+        <div class="q-text">（L11）高度告知（Highly Informed），Sponsor 要知道，PM 如何讓 Sponsor 高度了解？</div>
+        <span class="q-tag tag-comm">溝通</span>
+      </div>
+      <div class="q-body" id="qr4">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">定期報告 + 透明溝通</span><br><br>
+          PM 應：① 依溝通管理計畫定期向 Sponsor 發送狀態報告 ② 使用儀表板（Dashboard）讓 Sponsor 隨時查看 ③ 重大問題立即升報，不等定期報告 ④ 確保 Sponsor 了解風險和問題，不只是好消息
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qr5')">
+        <div class="q-num">5</div>
+        <div class="q-text">（L11）你負責的專案被關於其他地域 PM，PM 如何協助 Team 並保持 Sponsor 的高度滿意？</div>
+        <span class="q-tag tag-pm">整合</span>
+      </div>
+      <div class="q-body" id="qr5">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">建立跨地域溝通機制</span><br><br>
+          PM 應：① 建立清楚的溝通計畫（不同時區、語言的考量）② 使用協作工具確保資訊透明 ③ 定期同步會議 ④ 建立文化意識，尊重差異
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 五、溝通與利害關係人 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>溝通與利害關係人管理</span><span id="c5">▼</span></div>
+  <div class="section-body" id="b5">
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qc1')">
+        <div class="q-num">1</div>
+        <div class="q-text">（L10）執行多次 Iteration，某次 Iteration 不能達成原本設定的目標，PM 如何應對？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="qc1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">Retrospective + 調整計畫</span><br><br>
+          PM 應：① 在 Retrospective 中分析原因 ② 評估對後續 Iteration 的影響 ③ 調整 Backlog 優先順序 ④ 向 Sponsor 透明溝通進度
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qc2')">
+        <div class="q-num">7</div>
+        <div class="q-text">（L10）一個 PM 每次向 PMO 彙報同一個已解決的問題，但沒有解決 PMO 的疑問，PM 如何？</div>
+        <span class="q-tag tag-comm">溝通</span>
+      </div>
+      <div class="q-body" id="qc2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">改善溝通內容和方式</span><br><br>
+          PM 應：① 了解 PMO 真正需要知道的資訊是什麼 ② 改變報告格式，讓問題解決過程更清楚 ③ 確保下次報告包含根本原因、解決方案、預防措施
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qc3')">
+        <div class="q-num">8</div>
+        <div class="q-text">（L10）PM 在已收到每個人的意見，但目前每個人都堅持自己的立場，PM 如何應對？</div>
+        <span class="q-tag tag-comm">溝通</span>
+      </div>
+      <div class="q-body" id="qc3">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">協作（Collaborate）解決衝突</span><br><br>
+          衝突解決五種方式（優先順序）：<br>
+          ① 協作（Collaborate）= 最佳，雙贏<br>
+          ② 妥協（Compromise）= 各退一步<br>
+          ③ 和解（Smooth/Accommodate）= 暫時平息<br>
+          ④ 強迫（Force）= 一方獲勝<br>
+          ⑤ 撤退（Withdraw）= 最不建議<br><br>
+          PM 應促進<strong>協作</strong>，引導各方找到共同利益。
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qc4')">
+        <div class="q-num">11</div>
+        <div class="q-text">（L10）PM 已收到整個已解决了電郵（email），PM 已解決了嗎？PM 如何？</div>
+        <span class="q-tag tag-comm">溝通</span>
+      </div>
+      <div class="q-body" id="qc4">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">確認理解一致</span><br><br>
+          PM 不應只靠 Email 確認問題解決。應：① 確認對方真正理解並接受解決方案 ② 後續跟進確認問題沒有再出現 ③ 重要問題要面對面或視訊確認，不只是 Email
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 六、範疇與時程 -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('b6')"><span><span class="num">六</span>範疇與時程管理</span><span id="c6">▼</span></div>
+  <div class="section-body" id="b6">
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qs1')">
+        <div class="q-num">1</div>
+        <div class="q-text">（L9）一個已建立了，發現專案中每次發生了一個相同一類的問題，PM 如何重新複習？（量 5 重 2）</div>
+        <span class="q-tag tag-scope">範疇</span>
+      </div>
+      <div class="q-body" id="qs1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          重複發生同類問題 → <span class="key-word">根本原因分析</span><br><br>
+          PM 應：① 使用魚骨圖（Ishikawa）或 5 Why 分析根本原因 ② 建立預防措施，不只是解決每次的症狀 ③ 將解決方案更新到風險登錄表，防止再發生
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qs2')">
+        <div class="q-num">2</div>
+        <div class="q-text">（L9）圖：SPI(S) = 0.7，項目已確定達成目標的工期……，PM 如何應對？</div>
+        <span class="q-tag tag-cost">時程</span>
+      </div>
+      <div class="q-body" id="qs2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          SPI = 0.7 → 進度落後，只完成了計畫的 70%。<br><br>
+          PM 應：① 分析落後原因 ② 評估是否可以趕工或快速跟進 ③ 向 Sponsor 報告並討論可行方案 ④ 若需延期，走正式變更流程
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qs3')">
+        <div class="q-num">3</div>
+        <div class="q-text">（L9）一個已到了某階段，發現一個問題，這個問題和 PO 已確認的 3~9 人之間問題，PM 如何？</div>
+        <span class="q-tag tag-agile">敏捷</span>
+      </div>
+      <div class="q-body" id="qs3">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">透過 PO 處理</span><br><br>
+          敏捷團隊中發現問題：① 記錄到 Product Backlog 或議題紀錄 ② 由 PO 評估優先順序 ③ 在 Daily Scrum 中討論阻礙 ④ 若是阻礙，SM 負責排除
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 七、採購管理 -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggle('b7')"><span><span class="num">七</span>採購管理</span><span id="c7">▼</span></div>
+  <div class="section-body" id="b7">
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qa1')">
+        <div class="q-num">4</div>
+        <div class="q-text">（L9）A 已到達，B 已達成，一種合約（Agreement）正在進行，PM 如何？</div>
+        <span class="q-tag tag-pm">採購</span>
+      </div>
+      <div class="q-body" id="qa1">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">依合約執行監控</span><br><br>
+          PM 應：① 確保賣方依合約執行 ② 定期評估廠商績效 ③ 若有差異，依合約條款處理 ④ 所有變更通過正式變更流程
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggleQ('qa2')">
+        <div class="q-num">5</div>
+        <div class="q-text">（L9）已完成了，要求以很不合理的某方式重新完工，PM 如何？</div>
+        <span class="q-tag tag-pm">採購</span>
+      </div>
+      <div class="q-body" id="qa2">
+        <div class="ans-label">✅ 標準答案方向</div>
+        <div class="ans-body">
+          <span class="key-word">查閱合約 + 協商</span><br><br>
+          PM 應：① 查閱合約確認雙方的權利和義務 ② 確認要求是否超出合約範疇 ③ 若超出範疇，走變更流程 ④ 若有爭議，依合約的爭議解決條款處理
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
+
+<script>
+function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}
+function toggleQ(id){const b=document.getElementById(id);b.classList.toggle('open');}
+function toggleToc(){const b=document.getElementById('toc-body');const c=document.getElementById('toc-chevron');const h=b.style.display==='none';b.style.display=h?'block':'none';c.textContent=h?'▼':'▲';}
+document.querySelectorAll('.section-body').forEach((b,i)=>{if(i>0){b.classList.remove('open');const n=b.id.replace('b','');const c=document.getElementById('c'+n);if(c)c.textContent='▼';}});
+</script>
+</body>
+</html>

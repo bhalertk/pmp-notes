@@ -418,7 +418,7 @@
       <table>
         <tr><th>文件</th><th>用途 / 考試關鍵</th></tr>
         <tr><td>需求文件<br>Requirements Documentation</td><td>記錄所有蒐集到的需求內容，以及需求如何滿足專案目標<br>→ 查「哪些需求確定納入專案範疇」時用這份</td></tr>
-        <tr><td>需求追溯矩陣<br>Requirements Traceability Matrix</td><td>確認需求與專案目標的連結關係，追蹤每個需求的來源和狀態<br>→ 查「需求與目標的連結關係」時用這份<br>→ 定期確認需求仍與目標對齊時也用這份</td></tr>
+        <tr><td>需求追溯矩陣<br>Requirements Traceability Matrix</td><td>追蹤每個需求從來源到交付成果的<strong>實現狀態</strong>（有沒有被做到）<br>→ 確認範疇（Validate Scope）時用來逐一核對需求是否已實現</td></tr>
         <tr><td>需求管理計畫<br>Requirements Management Plan</td><td>說明如何蒐集、分析、記錄和管理需求的計畫<br>包含：需求的屬性、驗收標準、如何排序<br>⚠️ 不包含「如何蒐集利害關係人的期望」</td></tr>
         <tr><td>範疇聲明書<br>Project Scope Statement</td><td>明確定義專案要做什麼、不做什麼，是範疇的邊界定義<br>→ 在「定義範疇（Define Scope）」流程產出，屬於規劃階段</td></tr>
         <tr><td>WBS 說明書<br>WBS Dictionary</td><td>說明每個 Work Package 的詳細內容<br>→ 團隊成員不清楚自己負責的 Work Package 詳細內容時查這份</td></tr>
@@ -428,10 +428,11 @@
 
     <div class="box trap">
       <div class="box-title">⚠️ 最容易混淆：需求文件 vs 需求追溯矩陣</div>
-      <strong>需求文件</strong>：記錄需求「內容」，以及這些需求如何滿足目標<br>
-      <strong>需求追溯矩陣</strong>：追蹤需求與目標的「連結關係」，確保每個需求都和目標對應<br><br>
+      <strong>需求文件</strong>：記錄需求「內容」，以及這些需求如何滿足目標（連結關係）<br>
+      <strong>需求追溯矩陣</strong>：追蹤每個需求有沒有被「實現」，是狀態追蹤工具<br><br>
       考題：「應定期確認專案需求與專案目標的連結關係，請問可以參考哪一份文件？」<br>
-      → 答案：<strong>需求追溯矩陣（Requirements Traceability Matrix）</strong>
+      → 答案：<strong>需求文件（Requirements Documentation）</strong>，記錄需求內容並說明如何連結目標。<br>
+      需求追溯矩陣（RTM）是追蹤需求<strong>有沒有被實現</strong>，不是說明連結關係。
     </div>
   </div>
 </div>
@@ -507,7 +508,8 @@
       <div class="qt-title">📝 題型3：「應該查哪份文件？」</div>
       <ul>
         <li>「不確定負責的 Work Package 詳細內容」→ <strong>WBS 說明書（WBS Dictionary）</strong></li>
-        <li>「確認需求與目標的連結關係」→ <strong>需求追溯矩陣</strong></li>
+        <li>「確認需求內容、說明需求如何連結專案目標」→ <strong>需求文件（Requirements Documentation）</strong></li>
+        <li>「追蹤每個需求從來源到交付成果的實現狀態」→ <strong>需求追溯矩陣（RTM）</strong></li>
         <li>「確認哪些需求確定納入專案範疇」→ <strong>需求文件</strong></li>
         <li>「確認專案範疇基準的組成」→ 範疇聲明書 + WBS + WBS Dictionary（<strong>三份合稱範疇基準</strong>）</li>
       </ul>
@@ -517,7 +519,7 @@
       <div class="box-title">⚠️ 最常答錯的題目</div>
       <strong>Q：「專案結束蒐集需求流程後會得到哪一份文件，除了記錄所有需求的內容，也說明這些需求如何滿足專案目標？」</strong><br>
       → 答案：<strong>需求文件（Requirements Documentation）</strong>，不是需求追溯矩陣。<br>
-      需求文件記錄需求內容和如何滿足目標；追溯矩陣是追蹤「連結關係」的。<br><br>
+      需求文件 = 記錄需求內容 + 說明需求如何連結目標；需求追溯矩陣 = 追蹤需求從來源到交付成果的<strong>實現狀態</strong>（有沒有做到）。<br><br>
       <strong>Q：「完成定義範疇（Define Scope）後，必須將相關結果記錄在哪份文件？」</strong><br>
       → 答案：<strong>範疇聲明書（Scope Statement）</strong>，不是 WBS，也不是需求文件。
     </div>

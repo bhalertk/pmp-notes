@@ -71,6 +71,7 @@
   <a href="ch7.html">Ch7 成本</a><a href="ch8.html">Ch8 品質</a><a href="ch9.html">Ch9 資源</a>
   <a href="ch10.html">Ch10 溝通</a><a href="ch11.html">Ch11 風險</a><a href="ch12.html">Ch12 採購</a>
   <a href="ch13.html">Ch13 利害關係人</a><a href="ch14.html">Ch14 敏捷</a>
+  <a href="key-questions.html">🔥 重點題型</a>
 </div>
 <div class="toc">
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
@@ -430,13 +431,11 @@ function toggleToc() {
   body.style.display = isHidden ? 'block' : 'none';
   chevron.textContent = isHidden ? '▼' : '▲';
 }
-document.querySelectorAll('.section-body').forEach((b, i) => {
-  if (i > 0) {
-    b.classList.remove('open');
-    const num = b.id.replace('b','');
-    const chevron = document.getElementById('c' + num);
-    if (chevron) chevron.textContent = '▼';
-  }
+document.querySelectorAll('.section-body').forEach((b) => {
+  b.classList.add('open');
+  const n = b.id.replace('b','');
+  const c = document.getElementById('c' + n);
+  if (c) c.textContent = '▲';
 });
 </script>
 </body>

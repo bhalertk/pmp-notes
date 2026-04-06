@@ -801,7 +801,12 @@
 function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}
 function toggleQ(id){const b=document.getElementById(id);b.classList.toggle('open');}
 function toggleToc(){const b=document.getElementById('toc-body');const c=document.getElementById('toc-chevron');const h=b.style.display==='none';b.style.display=h?'block':'none';c.textContent=h?'▼':'▲';}
-document.querySelectorAll('.section-body').forEach((b,i)=>{if(i>0){b.classList.remove('open');const n=b.id.replace('b','');const c=document.getElementById('c'+n);if(c)c.textContent='▼';}});
+document.querySelectorAll('.section-body').forEach((b) => {
+  b.classList.add('open');
+  const n = b.id.replace('b','');
+  const c = document.getElementById('c' + n);
+  if (c) c.textContent = '▲';
+});
 </script>
 </body>
 </html>

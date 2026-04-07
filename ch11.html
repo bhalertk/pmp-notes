@@ -75,186 +75,215 @@
 <div class="toc">
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
   <div class="toc-body" id="toc-body">
-    <a href="#s1">一、風險管理流程時間軸</a>
+    <a href="#s1">一、七個流程時間軸 + 重要文件</a>
     <a href="#s2">二、風險應對策略（正負風險）</a>
     <a href="#s3">三、EMV 預期貨幣價值計算</a>
-    <a href="#s4">四、重要文件對照</a>
-    <a href="#s_adv">★ 進階風險觀念（歷屆考點）</a>
+    <a href="#s4">四、核心觀念：Workaround / 殘餘 / 次要風險</a>
     <a href="#s5">五、題目出題模式與陷阱彙整</a>
   </div>
 </div>
 
+<!-- 一、流程時間軸 + 重要文件 -->
 <div class="section" id="s1">
-  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>風險管理流程時間軸</span><span id="c1">▼</span></div>
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>七個流程時間軸 + 重要文件</span><span id="c1">▼</span></div>
   <div class="section-body open" id="b1">
-    <div class="tl-item"><div class="tl-dot">①</div><div class="tl-content"><div class="tl-title">規劃風險管理 Plan Risk Management <span class="tag tag-green">規劃</span></div><p>決定如何進行風險管理活動，定義風險機率和衝擊的層級</p><div class="tl-doc">📄 風險管理計畫（定義風險機率與衝擊的層級定義）</div></div></div>
-    <div class="tl-item"><div class="tl-dot">②</div><div class="tl-content"><div class="tl-title">辨識風險 Identify Risk <span class="tag tag-green">規劃</span></div><p>找出可能影響專案的所有風險，記錄在風險登錄表中。工具：SWOT分析、腦力激盪、檢核表</p><div class="tl-doc">📄 風險登錄表 Risk Register（記錄辨識出的風險）<br>⚠️ 辨識風險和監控風險這兩個流程都會進行風險識別</div></div></div>
-    <div class="tl-item"><div class="tl-dot">③</div><div class="tl-content"><div class="tl-title">定性風險分析 Qualitative Risk Analysis <span class="tag tag-green">規劃</span></div><p>依據對專案目標的影響進行排序，評估輕重緩急，決定哪些風險要進一步分析</p><div class="tl-doc">用「機率與衝擊矩陣」評估排序；低風險→紀錄在觀察清單（Watch List）持續追蹤</div></div></div>
-    <div class="tl-item"><div class="tl-dot">④</div><div class="tl-content"><div class="tl-title">定量風險分析 Quantitative Risk Analysis <span class="tag tag-green">規劃</span></div><p>對高影響風險進行數值化分析，估算詳細的機率與風險數值，提供風險應對的好參考</p><div class="tl-doc">工具：蒙地卡羅（Monte Carlo）模擬、敏感性分析、決策樹分析<br>→「進一步估算詳細機率與風險數值，為風險應對提供良好參考資訊」→ 定量分析</div></div></div>
-    <div class="tl-item"><div class="tl-dot">⑤</div><div class="tl-content"><div class="tl-title">規劃風險應對 Plan Risk Response <span class="tag tag-green">規劃</span></div><p>決定每個風險的應對策略，決定進行風險轉移（Transfer）等應對方式</p><div class="tl-doc">✅ 已識別風險的應對策略在此決定</div></div></div>
-    <div class="tl-item"><div class="tl-dot">⑥</div><div class="tl-content"><div class="tl-title">實施風險應對 Implement Risk Response <span class="tag tag-orange">執行</span></div><p>執行已規劃的風險應對措施</p></div></div>
-    <div class="tl-item"><div class="tl-dot">⑦</div><div class="tl-content"><div class="tl-title">監控風險 Monitor Risk <span class="tag tag-orange">監控</span></div><p>追蹤已識別風險、識別新風險、評估應對有效性。颱風來了執行應對計畫→實施風險應對</p><div class="tl-doc">確保風險應對措施有正常實施 → 使用「風險稽核（Risk Audit）」</div></div></div>
+
+    <div class="tl-item"><div class="tl-dot">①</div><div class="tl-content">
+      <div class="tl-title">規劃風險管理 Plan Risk Management <span class="tag tag-green">規劃</span></div>
+      <p>決定如何進行風險管理活動，定義風險機率和衝擊的層級</p>
+      <div class="tl-doc">📄 風險管理計畫（Risk Management Plan）：定義機率與衝擊的層級，為後續排序提供依據<br>
+      關鍵字：「說明如何規劃、執行及管控風險活動的流程」→ 規劃風險管理</div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-dot">②</div><div class="tl-content">
+      <div class="tl-title">辨識風險 Identify Risk <span class="tag tag-green">規劃</span></div>
+      <p>找出可能影響專案的所有風險，記錄在風險登錄表中</p>
+      <div class="tl-doc">📄 風險登錄表（Risk Register）：記錄所有識別出的風險、機率、影響、應對策略、殘餘風險、次要風險<br>
+      工具：SWOT分析、腦力激盪、檢核表<br>
+      ⚠️ 辨識風險和監控風險這兩個流程都會進行風險識別</div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-dot">③</div><div class="tl-content">
+      <div class="tl-title">定性風險分析 Qualitative Risk Analysis <span class="tag tag-green">規劃</span></div>
+      <p>依據對專案目標的影響進行排序，評估輕重緩急，決定哪些風險要進一步分析</p>
+      <div class="tl-doc">工具：機率與衝擊矩陣<br>
+      低風險 → 紀錄在<strong>觀察清單（Watch List）</strong>持續追蹤（被動接受）<br>
+      關鍵字：「依據對專案目標的影響進行排序，決定緊急應對順序」→ 定性風險分析</div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-dot">④</div><div class="tl-content">
+      <div class="tl-title">定量風險分析 Quantitative Risk Analysis <span class="tag tag-green">規劃</span></div>
+      <p>對高影響風險進行數值化分析，估算詳細的機率與風險數值</p>
+      <div class="tl-doc">工具：蒙地卡羅（Monte Carlo）模擬、敏感性分析、決策樹分析（EMV）<br>
+      關鍵字：「進一步估算詳細機率數值，為風險應對提供良好資訊」→ 定量風險分析</div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-dot">⑤</div><div class="tl-content">
+      <div class="tl-title">規劃風險應對 Plan Risk Response <span class="tag tag-green">規劃</span></div>
+      <p>決定每個風險的應對策略（規避、轉移、減輕、接受、開拓、分享、加強）</p>
+      <div class="tl-doc">關鍵字：「已識別並評估等級，下一步」→ 規劃風險應對</div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-dot">⑥</div><div class="tl-content">
+      <div class="tl-title">實施風險應對 Implement Risk Response <span class="tag tag-orange">執行</span></div>
+      <p>執行已規劃的風險應對措施</p>
+      <div class="tl-doc">關鍵字：「颱風警報發布，PM 執行預先規劃的沙包加固措施」→ 實施風險應對</div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-dot">⑦</div><div class="tl-content">
+      <div class="tl-title">監控風險 Monitor Risk <span class="tag tag-orange">監控</span></div>
+      <p>追蹤已識別風險、識別新風險、評估應對有效性</p>
+      <div class="tl-doc">工具：風險稽核（Risk Audit）→ 確認風險應對措施是否有正常實施<br>
+      關鍵字：「定期辨識及評估新風險」「有風險在登錄表外發生，要避免」→ 監控風險<br>
+      ⚠️ 執行應對≠有效，需要驗證應對方案的效果，這是監控風險的職責</div>
+    </div></div>
+
     <div class="box trap">
-      <div class="box-title">⚠️ 流程判斷常見陷阱</div>
-      「說明如何規劃、執行及管控風險活動的流程」→ <strong>規劃風險管理</strong>（不是辨識風險）<br>
-      「辨識風險來源，記錄在風險登錄表，定義方法」→ <strong>辨識風險</strong><br>
-      「依據對專案目標的影響進行排序，決定緊急應對順序」→ <strong>定性風險分析</strong><br>
-      「進一步估算詳細機率數值，為應對提供良好資訊」→ <strong>定量風險分析</strong><br>
-      「颱風警報發布，PM 執行預先規劃的沙包加固措施」→ <strong>實施風險應對</strong>
+      <div class="box-title">⚠️ 流程判斷最常錯的陷阱</div>
+      「說明如何規劃、執行及管控風險活動」→ <strong>規劃風險管理</strong>（不是辨識風險）<br>
+      「依據對目標的影響進行排序，決定緊急順序」→ <strong>定性分析</strong>（不是定量）<br>
+      「進一步估算詳細機率數值」→ <strong>定量分析</strong><br>
+      「颱風執行沙包加固（事先規劃）」→ <strong>實施風險應對</strong>（不是減輕，減輕是策略不是流程）<br>
+      「定期辨識及評估新風險」→ <strong>監控風險</strong>（風險辨識貫穿整個生命週期）
     </div>
   </div>
 </div>
 
+<!-- 二、風險應對策略 -->
 <div class="section" id="s2">
   <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>風險應對策略（正負風險）</span><span id="c2">▼</span></div>
   <div class="section-body" id="b2">
     <div class="table-wrap"><table>
       <tr><th>類型</th><th>策略</th><th>說明 / 考試關鍵字</th></tr>
-      <tr><td rowspan="4">負面風險<br>（威脅）</td><td>規避 Avoidance</td><td>改變計畫以消除風險。把董事長和總經理分開搭飛機→規避</td></tr>
-      <tr><td>轉移 Transfer</td><td>把風險轉給第三方。購買保險→轉移；將部份工作外包給合作夥伴並簽訂合約→轉移</td></tr>
-      <tr><td>減輕 Mitigation</td><td>降低風險發生機率或影響。颱風來了用沙包加固→減輕（事先有規劃的）</td></tr>
-      <tr><td>接受 Acceptance</td><td>承認風險存在但不採取行動。低風險紀錄在觀察清單持續追蹤→被動接受</td></tr>
-      <tr><td rowspan="4">正面風險<br>（機會）</td><td>開拓 Exploit</td><td>確保機會一定發生</td></tr>
-      <tr><td>分享 Share</td><td>與他人共享機會，如合資。景氣不好接單過剩，PM將部份工作請合作夥伴製造→分享</td></tr>
+      <tr><td rowspan="4">負面風險（威脅）<br>Threats</td><td>規避 Avoidance</td><td>改變計畫以消除風險<br>→ 「把董事長和總經理分開搭飛機」</td></tr>
+      <tr><td>轉移 Transfer</td><td>把風險轉給第三方<br>→ 「購買保險」「將工作外包並簽訂合約」</td></tr>
+      <tr><td>減輕 Mitigation</td><td>降低風險發生機率或影響<br>→ 「颱風來前事先規劃用沙包加固」</td></tr>
+      <tr><td>接受 Acceptance</td><td>承認風險存在但不主動應對<br>→ 低風險紀錄在<strong>觀察清單</strong>持續追蹤（被動接受）</td></tr>
+      <tr><td rowspan="4">正面風險（機會）<br>Opportunities</td><td>開拓 Exploit</td><td>確保機會一定發生</td></tr>
+      <tr><td>分享 Share</td><td>與他人共享機會<br>→ 「景氣不好接單過剩，將部份工作請合作夥伴製造」</td></tr>
       <tr><td>加強 Enhance</td><td>增加機會發生的機率或影響</td></tr>
       <tr><td>接受 Acceptance</td><td>機會出現就接受，但不主動爭取</td></tr>
     </table></div>
+
     <div class="box trap">
       <div class="box-title">⚠️ 最常混淆的風險應對</div>
       <strong>「購買保險」→ 轉移（Transfer）</strong>，把財務風險轉給保險公司<br>
-      <strong>「公司秘書將董事長及總經理分開搭台飛機」→ 規避（Avoidance）</strong>，消除兩人同時出意外的風險<br>
-      <strong>「景氣不好，PM 將部份工作請合作夥伴製造並簽訂合約」→ 轉移（負面風險）或分享（正面機會）</strong><br>
-      考題（Q8）：「以下何者為負面的風險應對措施？」→ <strong>接受（Acceptance）</strong>，因為沒有採取任何行動<br>
-      「低風險如何應對」→ <strong>紀錄於觀察清單（Watch List），持續追蹤</strong>（被動接受）
+      <strong>「董事長和總經理分開搭飛機」→ 規避（Avoidance）</strong>，消除兩人同時出意外的風險<br>
+      <strong>「景氣不好接單過剩，將部份工作外包」→ 分享（Share，正面機會）</strong><br>
+      <strong>「以下何者為負面的風險應對措施？」→ 接受（Acceptance）</strong>，因為沒有採取任何行動<br>
+      <strong>風險容忍度 vs 風險偏好：</strong><br>
+      風險偏好（Risk Appetite）= 組織願意承擔多大風險換取回報<br>
+      風險容忍度（Risk Tolerance）= 組織可以接受的最大風險量，超過就必須行動<br>
+      風險臨界值（Risk Threshold）= 觸發應對的具體數值（如延遲超過2週就必須趕工）
     </div>
   </div>
 </div>
 
+<!-- 三、EMV -->
 <div class="section" id="s3">
   <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>EMV 預期貨幣價值計算</span><span id="c3">▼</span></div>
   <div class="section-body" id="b3">
-    <div class="formula-box">EMV = 機率（P）× 影響金額（I）</div>
-    <h3>實際計算（Q21）</h3>
+    <div class="formula-box">EMV（Expected Monetary Value）= 機率（P）× 影響金額（I）</div>
+
     <div class="box tip">
-      <div class="box-title">💡 解題步驟</div>
+      <div class="box-title">💡 解題步驟：正負分開算再相加</div>
       「70% 機率獲利 90 萬，30% 機率損失 110 萬」<br><br>
-      EMV = (0.7 × +90萬) + (0.3 × -110萬)<br>
-      = 63萬 + (-33萬) = <strong>獲利 30 萬（Profit）</strong><br><br>
+      EMV = (0.7 × +90萬) + (0.3 × −110萬) = 63萬 − 33萬 = <strong>獲利 30 萬</strong><br><br>
       正數 = 獲利；負數 = 損失。有正有負時要分別計算再相加。
     </div>
+
     <div class="box tip">
-      <div class="box-title">💡 Q17：80% 機率發生，影響 15,000，則 12,000 代表什麼？</div>
-      EMV = 0.8 × 15,000 = 12,000<br>
-      → 12,000 就是<strong>預期風險貨幣值（EMV）</strong>
+      <div class="box-title">💡 反推 EMV：80% 機率發生，影響 15,000，則 12,000 代表什麼？</div>
+      EMV = 0.8 × 15,000 = 12,000 → 12,000 就是<strong>預期風險貨幣值（EMV）</strong>
     </div>
-    <h3>找出額外風險的處理</h3>
+
     <div class="box warn">
-      <div class="box-title">💡 找出額外風險時怎麼做？（Q12）</div>
+      <div class="box-title">💡 找出額外風險時怎麼做？</div>
       「進行風險管理時，找出了額外的風險」<br>
-      → 正確做法：<strong>記錄風險，依據風險的機率和影響，估算預期貨幣值（EMV），並將此成本加到預算上作為儲備金</strong><br>
-      → 不是直接增加管理儲備，不是通知管理階層，不是增加應變儲備15%
+      → <strong>記錄風險，依據機率和影響估算 EMV，將此成本加到預算上作為儲備金</strong><br>
+      → 不是直接增加管理儲備，不是通知管理階層，不是增加應變儲備 15%
     </div>
   </div>
 </div>
 
+<!-- 四、核心觀念 -->
 <div class="section" id="s4">
-  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>重要文件對照</span><span id="c4">▼</span></div>
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>核心觀念：Workaround / 殘餘 / 次要風險</span><span id="c4">▼</span></div>
   <div class="section-body" id="b4">
-    <div class="table-wrap"><table>
-      <tr><th>文件</th><th>用途</th></tr>
-      <tr><td>風險管理計畫<br>Risk Management Plan</td><td>定義風險機率與衝擊的層級資訊（為有效排序辨識出的風險輕重緩急，需先制定此文件）</td></tr>
-      <tr><td>風險登錄表<br>Risk Register</td><td>記錄所有識別出的風險、機率、影響、應對策略</td></tr>
-      <tr><td>觀察清單<br>Watch List</td><td>記錄低風險，定期持續追蹤但暫時不主動應對</td></tr>
-    </table></div>
-  </div>
-</div>
 
-<!-- 進階風險觀念 -->
-<div class="section" id="s_adv">
-  <div class="section-header" onclick="toggle('b_adv')"><span><span class="num">★</span>進階風險觀念（歷屆考點）</span><span id="c_adv">▼</span></div>
-  <div class="section-body" id="b_adv">
-
-    <h3>Workaround（緊急應變）</h3>
-    <p>當一個<strong>未預期的風險（Unknown Unknown）突然發生</strong>，沒有事先規劃應對方案，PM 當下立即採取的臨時解決措施。</p>
+    <h3>Workaround（緊急應變）vs Contingency Plan（應變計畫）</h3>
     <div class="table-wrap"><table>
-      <tr><th>對比項目</th><th>Contingency Plan（應變計畫）</th><th>Workaround（緊急應變）</th></tr>
+      <tr><th>對比</th><th>應變計畫 Contingency Plan</th><th>緊急應變 Workaround</th></tr>
       <tr><td>時機</td><td>風險發生前事先規劃</td><td>風險發生當下才決定</td></tr>
       <tr><td>適用風險</td><td>已知風險（Known Unknown）</td><td>未預期風險（Unknown Unknown）</td></tr>
       <tr><td>資金來源</td><td>應變儲備（Contingency Reserve）</td><td>管理儲備（Management Reserve）</td></tr>
     </table></div>
     <div class="box tip">
-      <div class="box-title">💡 考試情境判斷</div>
+      <div class="box-title">💡 考試情境</div>
       「專案執行中發生了一個不在風險登錄表中的大問題」<br>
-      → 這是未預期風險 → PM 採取的臨時措施叫 <strong>Workaround</strong><br>
-      → 資金來自 <strong>Management Reserve</strong>，需 Sponsor 核准
+      → 未預期風險 → PM 採取的臨時措施叫 <strong>Workaround</strong><br>
+      → 資金來自 <strong>Management Reserve</strong>，需提變更請求送 CCB 核准
     </div>
 
     <h3>殘餘風險 vs 次要風險</h3>
     <div class="table-wrap"><table>
       <tr><th>類型</th><th>定義</th><th>考試關鍵字</th></tr>
-      <tr><td>殘餘風險<br>Residual Risk</td><td>實施風險應對之後，<strong>仍然存在</strong>的剩餘風險</td><td>「做了應對之後還剩下的風險」</td></tr>
+      <tr><td>殘餘風險<br>Residual Risk</td><td>實施風險應對後，<strong>仍然存在</strong>的剩餘風險</td><td>「做了應對之後還剩下的風險」</td></tr>
       <tr><td>次要風險<br>Secondary Risk</td><td>因為實施風險應對而<strong>產生的新風險</strong></td><td>「因為採取了A措施，反而引發了B問題」</td></tr>
     </table></div>
     <div class="box trap">
-      <div class="box-title">⚠️ 容易混淆</div>
-      例子：工地有崩塌風險（主要風險），PM 決定加裝支撐架（應對措施）。<br>
-      → 加完之後崩塌風險降低但還有一點 → <strong>殘餘風險</strong><br>
-      → 加裝支撐架需要施工，施工過程本身產生了工人受傷的新風險 → <strong>次要風險</strong>
-    </div>
-
-    <h3>風險容忍度 vs 風險偏好</h3>
-    <div class="table-wrap"><table>
-      <tr><th>概念</th><th>說明</th></tr>
-      <tr><td>風險偏好<br>Risk Appetite</td><td>組織願意承擔多大的風險來換取回報。保守的組織風險偏好低；積極的組織風險偏好高。</td></tr>
-      <tr><td>風險容忍度<br>Risk Tolerance</td><td>組織可以接受的最大風險量。超過這個界線就必須採取行動。</td></tr>
-      <tr><td>風險臨界值<br>Risk Threshold</td><td>觸發風險應對的具體數值。例如：延遲超過2週就必須趕工。</td></tr>
-    </table></div>
-
-    <h3>風險登錄表（Risk Register）的內容</h3>
-    <ul>
-      <li>風險描述、類別</li>
-      <li>發生機率（Probability）</li>
-      <li>影響程度（Impact）</li>
-      <li>風險評分（機率 × 影響）</li>
-      <li>應對策略與負責人</li>
-      <li>殘餘風險與次要風險</li>
-    </ul>
-    <div class="box tip">
-      <div class="box-title">💡 考試常問「定期辨識及評估新風險」在哪個流程</div>
-      → <strong>監控風險（Monitor Risk）</strong><br>
-      風險辨識不只在起始/規劃階段做，整個專案生命週期都要持續辨識新風險。
+      <div class="box-title">⚠️ 用例子記憶</div>
+      工地有崩塌風險，PM 決定加裝支撐架：<br>
+      → 加完後崩塌風險降低但還有一點 → <strong>殘餘風險</strong><br>
+      → 施工過程本身產生了工人受傷的新風險 → <strong>次要風險</strong>
     </div>
   </div>
 </div>
 
+<!-- 五、題目出題模式 -->
 <div class="section" id="s5">
   <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>題目出題模式與陷阱彙整</span><span id="c5">▼</span></div>
   <div class="section-body" id="b5">
+
     <div class="qtype"><div class="qt-title">📝 題型1：「這個應對方式是哪種策略？」</div>
       <ul>
-        <li>買保險 → <strong>轉移</strong></li>
-        <li>董事長和總經理搭不同飛機 → <strong>規避</strong></li>
-        <li>外包給合作夥伴製造（景氣不好接單過剩）→ <strong>分享（正面）</strong></li>
-        <li>低風險記錄在觀察清單 → <strong>被動接受</strong></li>
-        <li>颱風用沙包加固（事先規劃）→ <strong>減輕</strong></li>
+        <li>買保險 → <strong>轉移（Transfer）</strong></li>
+        <li>董事長和總經理搭不同飛機 → <strong>規避（Avoidance）</strong></li>
+        <li>景氣不好接單過剩，外包給合作夥伴 → <strong>分享（Share，正面機會）</strong></li>
+        <li>低風險記錄在觀察清單 → <strong>被動接受（Passive Acceptance）</strong></li>
+        <li>颱風用沙包加固（事先規劃）→ <strong>減輕（Mitigation）</strong></li>
       </ul>
     </div>
+
     <div class="qtype"><div class="qt-title">📝 題型2：「目前在哪個流程？」</div>
       <ul>
-        <li>有風險在登錄表外發生，要避免 → 應<strong>定期辨識及評估新風險</strong>（監控風險）</li>
-        <li>原先未辨識出的風險出現，接近結案 → 先<strong>評估風險的影響</strong></li>
+        <li>有風險在登錄表外發生，要避免 → <strong>監控風險（定期辨識新風險）</strong></li>
+        <li>原先未辨識出的風險出現 → 先<strong>評估風險的影響</strong></li>
         <li>被指派為新 PM，存在許多風險但無人評估 → 先做<strong>規劃風險管理</strong></li>
         <li>已識別並評估等級，下一步 → <strong>規劃風險應對</strong></li>
       </ul>
     </div>
+
     <div class="box trap">
-      <div class="box-title">⚠️ 「解決方案有效但問題還是出現」</div>
-      考題（Q30）：PM 分析出原因，執行解決方案幾個月後，問題仍然出現。最可能沒做什麼？<br>
-      → 答案：<strong>未確認方案是否有效，僅確認方案有執行</strong><br>
-      → 執行≠有效，需要驗證應對方案的效果，這是「監控風險」的職責。
+      <div class="box-title">⚠️ 「解決方案有執行但問題仍然出現」</div>
+      PM 分析出原因並執行解決方案幾個月後，問題仍然出現。最可能沒做什麼？<br>
+      → <strong>未確認方案是否有效，僅確認方案有執行</strong><br>
+      執行 ≠ 有效，需要驗證應對方案的效果，這是「監控風險」的職責。
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 Ch11 核心思維</div>
+      <ul>
+        <li>風險辨識貫穿整個生命週期，不只在規劃階段</li>
+        <li>未預期風險發生 → Workaround → 管理儲備 → CCB 核准</li>
+        <li>已知風險發生 → Contingency Plan → 應變儲備 → PM 直接用</li>
+        <li>執行應對不等於有效，要持續監控驗證</li>
+        <li>低風險 → 觀察清單（Watch List），不是直接忽略</li>
+      </ul>
     </div>
   </div>
 </div>
+
 <div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
 <script>
 function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}

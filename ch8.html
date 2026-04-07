@@ -58,33 +58,27 @@
   .tl-content .tl-doc { font-size: 12px; color: var(--accent); margin-top: 6px; }
   .tl-content p { font-size: 13px; margin: 0; color: #444; }
   .tag { display: inline-block; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 4px; }
-  .tag-blue { background: #D6E8FF; color: #1a3a6e; }
   .tag-green { background: #D6F0D6; color: #1a4a1a; }
   .tag-orange { background: #FFE8CC; color: #6e3a00; }
   .tag-red { background: #FFD6D6; color: #6e0000; }
-
-  /* 品質成本格子 */
   .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
   .cost-card { border-radius: 10px; padding: 12px; border: 1px solid var(--border); }
   .cost-card .cc-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
   .cost-card ul { margin: 0; padding-left: 16px; }
   .cost-card ul li { font-size: 12px; margin-bottom: 3px; }
-  .cc-conform { background: #EAF5EA; border-color: #5CAF5C; }
-  .cc-conform .cc-title { color: #2E5E2E; }
-  .cc-nonconform { background: #FFF0F0; border-color: #E05050; }
-  .cc-nonconform .cc-title { color: #6E1010; }
   .cc-prevent { background: #E8F4FF; border-color: #5090CC; }
   .cc-prevent .cc-title { color: #1a3a6e; }
   .cc-appraise { background: #F5F0FF; border-color: #9060CC; }
   .cc-appraise .cc-title { color: #3a1a6e; }
-
-  /* 工具卡片 */
+  .cc-internal { background: #FFF8E6; border-color: #E0A030; }
+  .cc-internal .cc-title { color: #6e4000; }
+  .cc-external { background: #FFF0F0; border-color: #E05050; }
+  .cc-external .cc-title { color: #6E1010; }
   .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
   .tool-card { background: #F8FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
   .tool-card .tc-name { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 4px; }
   .tool-card .tc-use { font-size: 12px; color: #555; }
   .tool-card .tc-key { font-size: 11px; background: #D6E8FF; color: #1a3a6e; border-radius: 4px; padding: 2px 6px; display: inline-block; margin-top: 4px; }
-
   .back-top { text-align: center; padding: 20px 0 10px; font-size: 13px; color: var(--secondary); cursor: pointer; text-decoration: underline; }
 </style>
 </head>
@@ -106,341 +100,248 @@
   <a href="key-questions.html">🔥 重點題型</a>
 </div>
 
-<!-- 目錄 -->
 <div class="toc">
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
   <div class="toc-body" id="toc-body">
-    <a href="#s1">一、品質管理是什麼？</a>
-    <a href="#s2">二、三個流程的分工（最重要考點）</a>
-    <a href="#s3">三、品質成本 Cost of Quality</a>
-    <a href="#s4">四、品質工具大全</a>
-    <a href="#s5">五、改善品質的效益</a>
-    <a href="#s6">六、題目出題模式與陷阱彙整</a>
-    <a href="#s_aexam8">★ A卷補強：品質流程情境判斷</a>
-    <a href="#s7">七、核心思維總結</a>
+    <a href="#s1">一、三個流程的分工（最重要考點）</a>
+    <a href="#s2">二、品質成本 Cost of Quality</a>
+    <a href="#s3">三、品質工具</a>
+    <a href="#s4">四、題目出題模式與陷阱彙整</a>
   </div>
 </div>
 
-<!-- 一、品質管理是什麼 -->
+<!-- 一、三個流程 -->
 <div class="section" id="s1">
-  <div class="section-header" onclick="toggle('b1')">
-    <span><span class="num">一</span>品質管理是什麼？</span>
-    <span id="c1">▼</span>
-  </div>
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>三個流程的分工（最重要考點）</span><span id="c1">▼</span></div>
   <div class="section-body open" id="b1">
-    <p>品質管理（Quality Management）就是確保：<strong>「做出來的東西符合需求，而且做的方式是對的」</strong></p>
-    <div class="box tip">
-      <div class="box-title">💡 品質的兩個層面</div>
-      <strong>符合需求（Fitness for purpose）</strong>：交付的產品/服務確實滿足客戶的需求<br>
-      <strong>符合使用（Fitness for use）</strong>：產品在實際使用情境下是可靠、有效的<br><br>
-      對應您的 AP 開發：系統功能符合需求規格書（符合需求）+ 實際上線後使用者用起來順暢不當機（符合使用）。
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 改善品質的效益</div>
-      考題（Q6）問「改善品質引領的結果是什麼？」<br>
-      → 答案：<strong>改善品質引領增強生產力、降低成本風險和降低成本效益</strong><br>
-      → 白話說：做好品質 = 減少返工 = 省時省錢 = 降低成本、提升效率。
-    </div>
-  </div>
-</div>
-
-<!-- 二、三個流程 -->
-<div class="section" id="s2">
-  <div class="section-header" onclick="toggle('b2')">
-    <span><span class="num">二</span>三個流程的分工（最重要考點）</span>
-    <span id="c2">▼</span>
-  </div>
-  <div class="section-body" id="b2">
-    <p>Ch8 最高頻的考點就是這三個流程的區別，要能根據情境判斷目前在哪個流程：</p>
+    <p>Ch8 最高頻的考點就是這三個流程的區別，根本原則只有一個：<strong>管理品質看流程，控制品質看產品。</strong></p>
 
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot">①</div>
         <div class="tl-content">
           <div class="tl-title">規劃品質管理 Plan Quality Management <span class="tag tag-green">規劃</span></div>
-          <p>決定「這個專案的品質標準是什麼、如何達成」，產出品質管理計畫</p>
-          <div class="tl-doc">📄 品質管理計畫（Quality Management Plan）<br>→ 描述品質需求與標準、說明如何檢驗是否符合品質要求<br>→ 「團隊討論並決定品質標準」→ 在這個流程<br>→ 「品質主管積極尋找生產流程上可能影響品質不良的原因」→ 這不是規劃，是<strong>管理品質</strong></div>
+          <p>決定「品質標準是什麼、如何達成」</p>
+          <div class="tl-doc">
+            📄 品質管理計畫：描述品質需求與標準，說明如何達成客戶的允收標準<br>
+            關鍵字：「團隊討論並決定品質標準」「建立品質政策與程序」<br>
+            工具：標竿法、成本效益分析
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">②</div>
         <div class="tl-content">
           <div class="tl-title">管理品質 Manage Quality <span class="tag tag-orange">執行</span></div>
-          <p>把品質管理計畫付諸實行，執行品質改善活動，針對「流程」進行稽核和改善</p>
-          <div class="tl-doc">主要工具：<strong>流程分析（Process Analysis）</strong>、品質稽核（Quality Audits）<br>→ 「某建築工程發現施工結果常不符品質標準，針對整個施工流程分析可能原因」→ <strong>管理品質</strong><br>→ 「PM 與品質部門一起工作，確保產品符合品質標準」→ <strong>管理品質</strong><br>→ 「品質部門派人進行品質稽核（audit）」→ <strong>管理品質</strong>（稽核屬於管理品質的工具）</div>
+          <p>把品質計畫付諸實行，針對「<strong>流程 Process</strong>」進行稽核和改善</p>
+          <div class="tl-doc">
+            工具：流程分析（Process Analysis）、品質稽核（Quality Audit）<br>
+            關鍵字：「改善流程」「積極尋找生產流程上可能影響品質不良的原因」「品質稽核」「PM 與品質部門一起確保符合標準」<br>
+            ⚠️ 品質稽核的目的：評估是否遵從品質政策、改善效益差的流程、分享經驗<br>
+            ⚠️ 品質稽核「不」做的事：直接檢驗產品是否符合標準（那是控制品質）
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">③</div>
         <div class="tl-content">
-          <div class="tl-title">控制品質 Control Quality <span class="tag tag-orange">監控</span></div>
-          <p>監控「具體交付成果」是否符合品質標準，重點在「產品」而非「流程」</p>
-          <div class="tl-doc">主要工具：<strong>檢驗（Inspection）</strong>、統計抽樣、管制圖<br>→ 「團隊驗證可交付成果是否符合客戶的允收標準」→ <strong>控制品質</strong><br>→ 「客戶確認可交付成果是否符合需求」→ 這是<strong>確認範疇（Validate Scope）</strong>，不是控制品質！</div>
+          <div class="tl-title">控制品質 Control Quality <span class="tag tag-red">監控</span></div>
+          <p>監控「具體交付成果」是否符合品質標準，重點在「<strong>產品 Product</strong>」</p>
+          <div class="tl-doc">
+            工具：檢驗（Inspection）、統計抽樣、管制圖<br>
+            關鍵字：「團隊驗證可交付成果是否符合允收標準」「評估可交付成果是否符合品質標準」<br>
+            ⚠️ 「客戶確認可交付成果是否符合需求」→ 這是<strong>確認範疇（Validate Scope）</strong>，不是控制品質！
+          </div>
         </div>
       </div>
     </div>
 
     <div class="box trap">
-      <div class="box-title">⚠️ 三個流程最容易混淆的判斷</div>
-      <strong>「管理品質」vs「控制品質」的關鍵差異：</strong><br>
-      管理品質 → 針對<strong>流程</strong>（Process）進行改善和稽核<br>
-      控制品質 → 針對<strong>產品/交付成果</strong>（Deliverable）進行檢驗<br><br>
-      <strong>「控制品質」vs「確認範疇」的關鍵差異：</strong><br>
-      控制品質（Control Quality）→ 團隊內部確認交付成果符合品質標準<br>
-      確認範疇（Validate Scope）→ 客戶正式驗收交付成果<br>
-      先有控制品質，再有確認範疇（先自己確認品質，再讓客戶驗收）
+      <div class="box-title">⚠️ 三個流程一次搞清楚</div>
+      <strong>管理品質 vs 控制品質：</strong><br>
+      管理品質 → 針對<strong>流程</strong>改善和稽核（看怎麼做）<br>
+      控制品質 → 針對<strong>產品/交付成果</strong>檢驗（看做出來的東西）<br><br>
+      <strong>控制品質 vs 確認範疇：</strong><br>
+      控制品質 → <strong>團隊內部</strong>確認交付成果符合品質標準<br>
+      確認範疇 → <strong>客戶</strong>正式驗收交付成果<br>
+      順序：控制品質（內部）→ 確認範疇（客戶驗收）<br><br>
+      <strong>品質管理包含三個流程，但不包含：</strong>「客戶確認可交付成果是否符合需求」→ 那是確認範疇的工作
     </div>
 
-    <h3>品質稽核（Quality Audit）的目的</h3>
-    <p>品質稽核是「管理品質」流程的重要工具，目的是：</p>
-    <ul>
-      <li>評估工作是否遵從組織品質政策</li>
-      <li>改善效益差的品質政策或流程</li>
-      <li>分享成功及失敗的經驗</li>
-    </ul>
-    <div class="box trap">
-      <div class="box-title">⚠️ 品質稽核的目的「例外」題</div>
-      「以下何者為品質稽核的例外？」<br>
-      → 例外（不屬於）：<strong>「檢驗品質是否符合標準」</strong><br>
-      → 檢驗產品符不符合標準是「控制品質」的工作，不是品質稽核的目的。<br>
-      稽核看的是「流程和政策」，不是直接檢驗產品。
-    </div>
-
-    <h3>接手進行中專案，WBS/時程/預算都已完成，下一步是什麼？</h3>
     <div class="box tip">
-      <div class="box-title">💡 考題（Q10）</div>
-      「一位新 PM 從原來 PM 手中接管一個專案，WBS、時程與預算已經規劃完成，依照專案管理的架構，接下來要進行？」<br>
-      → 答案：<strong>執行專案管理計畫（Execute the Project Management Plan）</strong><br>
-      → 規劃都做完了，下一步就是進入執行階段，不是重新制定品質標準，不是進行風險辨識。
+      <div class="box-title">💡 改善品質引領的結果</div>
+      品質好 → 減少返工 → 省時省錢 →<strong>增強生產力 + 降低成本風險 + 降低成本</strong><br>
+      ⚠️ 考題陷阱：錯誤選項通常是「增加成本效益和增加成本風險」——品質改善是<strong>降低</strong>成本，不是增加！
+    </div>
+
+    <div class="box warn">
+      <div class="box-title">💡 接手進行中專案，WBS/時程/預算都已完成，下一步？</div>
+      → <strong>執行專案管理計畫（Execute the Project Management Plan）</strong><br>
+      規劃都做完了，下一步就是進入執行階段，不是重新制定品質標準，不是進行風險辨識。
+    </div>
+
+    <div class="box warn">
+      <div class="box-title">💡 高層擔心工程不符合品質標準，PM 應如何預防？</div>
+      → <strong>組成品質保證（QA）團隊，進行品質稽核（Audit）</strong><br>
+      稽核是主動預防品質問題的正式機制，不是向高層保證、不是從上次計畫找錯誤。
     </div>
   </div>
 </div>
 
-<!-- 三、品質成本 -->
-<div class="section" id="s3">
-  <div class="section-header" onclick="toggle('b3')">
-    <span><span class="num">三</span>品質成本 Cost of Quality（高頻考點）</span>
-    <span id="c3">▼</span>
-  </div>
-  <div class="section-body" id="b3">
-    <p>品質成本分為兩大類、四個子類，考試很愛考「這個屬於哪種品質成本？」：</p>
+<!-- 二、品質成本 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>品質成本 Cost of Quality（高頻考點）</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
+    <p>兩大類、四個子類。記憶口訣：<strong>做對了才花的錢 = 合規成本；做錯了才花的錢 = 不合規成本。</strong></p>
 
-    <div class="cost-grid">
-      <div class="cost-card cc-conform">
-        <div class="cc-title">✅ 合規成本（符合成本）<br>Cost of Conformance</div>
-        <ul>
-          <li><strong>預防成本</strong>（Prevention）</li>
-          <li><strong>鑑定成本</strong>（Appraisal）</li>
-        </ul>
-        <p style="font-size:12px; margin-top:6px; color:#2E5E2E;">「為了做對而花的錢」</p>
-      </div>
-      <div class="cost-card cc-nonconform">
-        <div class="cc-title">❌ 不合規成本（不符合成本）<br>Cost of Nonconformance</div>
-        <ul>
-          <li><strong>內部失效成本</strong>（Internal Failure）</li>
-          <li><strong>外部失效成本</strong>（External Failure）</li>
-        </ul>
-        <p style="font-size:12px; margin-top:6px; color:#6E1010;">「因為做錯而花的錢」</p>
-      </div>
-    </div>
-
-    <h3>四個子類的詳細內容</h3>
     <div class="cost-grid">
       <div class="cost-card cc-prevent">
-        <div class="cc-title">🛡️ 預防成本<br>Prevention Costs</div>
+        <div class="cc-title">🛡️ 預防成本 Prevention<br><small>合規成本</small></div>
         <ul>
-          <li>培訓（Training）</li>
-          <li>設備（Equipment）</li>
-          <li>流程文件化（Document Processes）</li>
-          <li>按時執行（Time to do it right）</li>
+          <li>培訓 Training</li>
+          <li>設備 Equipment</li>
+          <li>流程文件化</li>
+          <li>按時執行</li>
         </ul>
-        <p style="font-size:11px; margin-top:6px; color:#1a3a6e;">不包含：重工（Rework）</p>
+        <p style="font-size:11px;margin-top:6px;color:#1a3a6e;">不包含：重工（Rework）</p>
       </div>
       <div class="cost-card cc-appraise">
-        <div class="cc-title">🔍 鑑定成本<br>Appraisal Costs</div>
+        <div class="cc-title">🔍 鑑定成本 Appraisal<br><small>合規成本</small></div>
         <ul>
-          <li>測試（Testing）</li>
-          <li>破壞性測試導致的損失</li>
-          <li>檢驗（Inspection）</li>
+          <li>測試 Testing</li>
+          <li>檢驗 Inspection</li>
+          <li>破壞性測試損失</li>
         </ul>
-        <p style="font-size:11px; margin-top:6px; color:#3a1a6e;">不包含：報廢（Scrap）</p>
+        <p style="font-size:11px;margin-top:6px;color:#3a1a6e;">不包含：報廢（Scrap）</p>
       </div>
-      <div class="cost-card cc-nonconform">
-        <div class="cc-title">⚠️ 內部失效成本<br>Internal Failure</div>
+      <div class="cost-card cc-internal">
+        <div class="cc-title">⚠️ 內部失效 Internal Failure<br><small>不合規成本</small></div>
         <ul>
-          <li>重工（Rework）</li>
-          <li>報廢（Scrap）</li>
+          <li>重工 Rework</li>
+          <li>報廢 Scrap</li>
         </ul>
-        <p style="font-size:11px; margin-top:6px; color:#6E1010;">出貨前發現的品質問題</p>
+        <p style="font-size:11px;margin-top:6px;color:#6e4000;">出貨前發現的品質問題</p>
       </div>
-      <div class="cost-card cc-nonconform">
-        <div class="cc-title">🚨 外部失效成本<br>External Failure</div>
+      <div class="cost-card cc-external">
+        <div class="cc-title">🚨 外部失效 External Failure<br><small>不合規成本</small></div>
         <ul>
-          <li>責任負擔（Liabilities）</li>
-          <li>保固（Warranty Work）</li>
-          <li>業務流失（Lost Business）</li>
+          <li>責任負擔 Liabilities</li>
+          <li>保固 Warranty</li>
+          <li>業務流失 Lost Business</li>
         </ul>
-        <p style="font-size:11px; margin-top:6px; color:#6E1010;">出貨後客戶端發現的問題</p>
+        <p style="font-size:11px;margin-top:6px;color:#6E1010;">出貨後客戶端發現的問題</p>
       </div>
     </div>
 
     <div class="box trap">
       <div class="box-title">⚠️ 品質成本分類的常見陷阱</div>
-      <strong>「以下何者為預防成本的例外？」→ 重工（Rework）</strong><br>
-      重工是內部失效成本，不是預防成本。<br><br>
-      <strong>「以下何者為鑑定成本的例外？」→ 報廢（Scrap）</strong><br>
-      報廢是內部失效成本，不是鑑定成本。<br><br>
-      <strong>「以下何者為外部失效成本的例外？」→ 測試（Testing）</strong><br>
-      測試是鑑定成本，不是外部失效成本。<br><br>
-      <strong>「以下何者不屬於不合規成本（Cost of Nonconformance）？」→ 品質訓練（Quality Training）</strong><br>
-      品質訓練是預防成本（合規成本），不是不合規成本。
+      <strong>「預防成本的例外是？」→ 重工（Rework）</strong>——重工是內部失效成本<br>
+      <strong>「鑑定成本的例外是？」→ 報廢（Scrap）</strong>——報廢是內部失效成本<br>
+      <strong>「外部失效成本的例外是？」→ 測試（Testing）</strong>——測試是鑑定成本<br>
+      <strong>「不屬於不合規成本的是？」→ 品質訓練（Quality Training）</strong>——培訓是預防成本（合規成本）
     </div>
   </div>
 </div>
 
-<!-- 四、品質工具 -->
-<div class="section" id="s4">
-  <div class="section-header" onclick="toggle('b4')">
-    <span><span class="num">四</span>品質工具大全（高頻考點）</span>
-    <span id="c4">▼</span>
-  </div>
-  <div class="section-body" id="b4">
-    <p>Ch8 考題最多的是「這個情境用哪種品質工具？」，記住每種工具的用途和關鍵字：</p>
+<!-- 三、品質工具 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>品質工具（高頻考點）</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
 
     <div class="tool-grid">
       <div class="tool-card">
-        <div class="tc-name">🐟 魚骨圖 / 石川圖<br>Fishbone / Ishikawa</div>
-        <div class="tc-use">找出問題的「根本原因」，把可能原因分類整理成魚骨狀</div>
+        <div class="tc-name">魚骨圖 / 石川圖<br>Fishbone / Ishikawa</div>
+        <div class="tc-use">找出問題的「根本原因」，把可能原因分類整理</div>
         <span class="tc-key">根本原因 / 關鍵原因</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">📊 柏拉圖<br>Pareto Chart</div>
-        <div class="tc-use">找出造成最多問題的「少數關鍵因素」（80/20法則），排列問題的優先順序</div>
+        <div class="tc-name">柏拉圖 Pareto Chart</div>
+        <div class="tc-use">找出造成最多問題的「少數關鍵因素」（80/20法則），排列優先順序</div>
         <span class="tc-key">關鍵少數 / 優先順序</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">📈 管制圖<br>Control Chart</div>
-        <div class="tc-use">監控流程是否在控制範圍內，判斷是否出現異常。七點法則：連續7點在同一側 = 需要調查</div>
+        <div class="tc-name">管制圖 Control Chart</div>
+        <div class="tc-use">監控流程是否在控制範圍內。七點法則：連續7點在同一側 = 需要調查根本原因</div>
         <span class="tc-key">流程穩定 / 七點法則</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">📉 散佈圖<br>Scatter Diagram</div>
-        <div class="tc-use">分析兩個變數之間是否有相關性（員工績效持續低落的原因）</div>
+        <div class="tc-name">散佈圖 Scatter Diagram</div>
+        <div class="tc-use">分析兩個變數之間是否有相關性</div>
         <span class="tc-key">相關性分析</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">📋 直方圖<br>Histogram</div>
+        <div class="tc-name">直方圖 Histogram</div>
         <div class="tc-use">以長條圖呈現資料分佈，了解問題頻率的分布情況</div>
         <span class="tc-key">頻率分布</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">🔄 流程圖<br>Flowchart</div>
-        <div class="tc-use">呈現流程的步驟順序，辨識是否需要將活動列入品質檢查</div>
-        <span class="tc-key">步驟順序 / 流程改善</span>
+        <div class="tc-name">流程圖 Flowchart</div>
+        <div class="tc-use">呈現流程步驟順序，辨識是否需要將活動列入品質檢查</div>
+        <span class="tc-key">步驟順序</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">🔬 流程分析<br>Process Analysis</div>
+        <div class="tc-name">流程分析 Process Analysis</div>
         <div class="tc-use">分析整個流程，找出改善機會，檢查流程遇到的問題與限制</div>
-        <span class="tc-key">流程改善機會 / 問題與限制</span>
+        <span class="tc-key">流程改善機會</span>
       </div>
       <div class="tool-card">
-        <div class="tc-name">🔍 檢驗<br>Inspection</div>
-        <div class="tc-use">直接檢查產品或工作成果，確認是否符合標準</div>
-        <span class="tc-key">控制品質的主要工具</span>
+        <div class="tc-name">品質稽核 Quality Audit</div>
+        <div class="tc-use">評估是否遵從品質政策，改善效益差的流程（管理品質的核心工具）</div>
+        <span class="tc-key">管理品質 / 補充控制品質</span>
       </div>
     </div>
 
     <div class="box trap">
       <div class="box-title">⚠️ 最常混淆的工具判斷</div>
-      <strong>「找問題的根本原因」</strong> → 魚骨圖（Fishbone / Ishikawa / Cause and Effect）<br>
-      → 注意：石川圖 = 魚骨圖 = 因果圖 = Cause and Effect Diagram，都是同一個！<br><br>
-      <strong>「員工連續六個月績效均不如另一位，找根本原因」</strong> → 散佈圖（分析兩個變數的相關性）<br>
-      → 不是魚骨圖！因為題目是在分析「兩個員工的績效比較」，是相關性問題。<br><br>
-      <strong>「管制圖上連續七個點在同一側，該如何？」</strong><br>
-      → 答案：<strong>找出特定的原因（七點法則觸發，表示流程可能有系統性問題）</strong><br>
-      → 不是忽略，不是調整平均值，要去找原因。<br><br>
-      <strong>「辨識流程改善機會，檢查流程遇到的問題與限制」</strong> → 流程分析及流程圖<br>
-      → 不是因果圖（因果圖是找原因，不是改善流程）
+      <strong>石川圖 = 魚骨圖 = 因果圖 = Cause and Effect Diagram</strong>，都是同一個工具<br><br>
+      <strong>「員工連續六個月績效均不如另一位，找根本原因」→ 散佈圖</strong><br>
+      不是魚骨圖！題目在分析「兩個變數（兩位員工績效）的相關性」，要用散佈圖。<br><br>
+      <strong>「管制圖連續七點在同一側，該如何？」→ 找出特定的原因</strong><br>
+      七點法則觸發 = 流程可能有系統性問題，要去找原因，不是調整平均值。<br><br>
+      <strong>「辨識流程改善機會，檢查流程問題與限制」→ 流程分析及流程圖</strong><br>
+      不是因果圖（因果圖是找原因，不是改善流程）<br><br>
+      <strong>「用管理品質程序補充控制品質之不足」→ 品質稽核（Quality Audit）</strong><br>
+      管理品質的核心工具是品質稽核，不是統計抽樣（那是控制品質的工具）
     </div>
 
-    <h3>管理品質 vs 控制品質的主要工具</h3>
-    <div class="table-wrap">
-      <table>
-        <tr><th>流程</th><th>主要工具</th><th>關鍵字</th></tr>
-        <tr><td>管理品質<br>Manage Quality</td><td>流程分析、品質稽核、流程改善計畫</td><td>流程、改善、稽核</td></tr>
-        <tr><td>控制品質<br>Control Quality</td><td>檢驗（Inspection）、統計抽樣、管制圖、趨勢分析</td><td>產品、檢驗、抽樣</td></tr>
-      </table>
-    </div>
-
-    <div class="box tip">
-      <div class="box-title">💡 「管理品質」用來補充「控制品質」不足</div>
-      考題（Q11）：「你被要求選擇工具，透過實施管理品質程序，來補充目前控制品質之不足，你應選擇哪種？」<br>
-      → 答案：<strong>品質稽核（Quality Audits）</strong><br>
-      → 管理品質的核心工具是品質稽核和流程分析，而不是統計抽樣（那是控制品質的工具）。
-    </div>
+    <h3>工具對應流程</h3>
+    <div class="table-wrap"><table>
+      <tr><th>流程</th><th>主要工具</th><th>看的對象</th></tr>
+      <tr><td>管理品質</td><td>流程分析、品質稽核</td><td>流程 Process</td></tr>
+      <tr><td>控制品質</td><td>檢驗、統計抽樣、管制圖</td><td>產品 Product</td></tr>
+    </table></div>
   </div>
 </div>
 
-<!-- 五、改善品質的效益 -->
-<div class="section" id="s5">
-  <div class="section-header" onclick="toggle('b5')">
-    <span><span class="num">五</span>改善品質的效益</span>
-    <span id="c5">▼</span>
-  </div>
-  <div class="section-body" id="b5">
-    <div class="box tip">
-      <div class="box-title">💡 改善品質引領的結果</div>
-      <strong>改善品質 → 增強生產力 + 降低成本風險 + 降低成本</strong><br><br>
-      邏輯是：品質好 → 減少返工（重工）→ 節省時間和材料 → 降低成本 → 提升生產力<br><br>
-      ⚠️ 注意：考題中錯誤選項通常是「增加成本效益和增加成本風險」——品質改善是降低成本和風險，不是增加。
-    </div>
-
-    <h3>品質管理計畫（Quality Management Plan）的內容</h3>
-    <p>「主要描述專案或產品的品質需求與標準，並說明如何檢驗是否符合品質要求或標準的書面文件」</p>
-    <ul>
-      <li>建立品質管理計畫、品質政策、程序及標準</li>
-      <li>說明如何管理品質及管制品質，以期能達成客戶的允收標準</li>
-      <li>確保專案有遵循品質政策及程序</li>
-    </ul>
-    <div class="box trap">
-      <div class="box-title">⚠️ 品質管理包含哪三個重點？</div>
-      考題（Q3）：「專案品質管理包含規劃品質管理、管理品質、控制品質，哪一項較不屬於品質管理的重點？」<br>
-      → 不屬於的是：<strong>「客戶確認可交付成果是否符合需求」</strong><br>
-      → 那是「確認範疇（Validate Scope）」的工作，不是品質管理的範疇。
-    </div>
-  </div>
-</div>
-
-<!-- 六、題目出題模式 -->
-<div class="section" id="s6">
-  <div class="section-header" onclick="toggle('b6')">
-    <span><span class="num">六</span>題目出題模式與陷阱彙整</span>
-    <span id="c6">▼</span>
-  </div>
-  <div class="section-body" id="b6">
+<!-- 四、題目出題模式 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>題目出題模式與陷阱彙整</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
 
     <div class="qtype">
       <div class="qt-title">📝 題型1：「目前在哪個流程？」</div>
       <ul>
         <li>「團隊討論並決定品質標準」→ <strong>規劃品質管理</strong></li>
-        <li>「正在進行品質改善活動」→ <strong>管理品質</strong></li>
-        <li>「PM 與品質部門確保產品符合品質標準」→ <strong>管理品質</strong></li>
         <li>「品質主管積極尋找生產流程上可能影響品質不良的原因」→ <strong>管理品質</strong></li>
-        <li>「正在進行品質稽核（Audit）」→ <strong>管理品質</strong></li>
-        <li>「團隊驗證可交付成果是否符合客戶的允收標準」→ <strong>控制品質</strong></li>
+        <li>「PM 與品質部門一起工作，確保產品符合品質標準」→ <strong>管理品質</strong></li>
+        <li>「進行品質稽核（Audit）」→ <strong>管理品質</strong></li>
+        <li>「某建築工程施工結果常不符品質標準，針對施工流程分析可能原因」→ <strong>管理品質</strong></li>
+        <li>「團隊驗證可交付成果是否符合允收標準」→ <strong>控制品質</strong></li>
+        <li>「評估可交付成果是否符合品質標準」→ <strong>控制品質</strong></li>
+        <li>「客戶確認可交付成果是否符合需求」→ <strong>確認範疇（不是品質管理！）</strong></li>
       </ul>
     </div>
 
     <div class="qtype">
       <div class="qt-title">📝 題型2：「這個情境用哪種品質工具？」</div>
       <ul>
-        <li>「找出問題的根本原因（Root Cause）」→ <strong>魚骨圖（石川圖）</strong></li>
-        <li>「引起品質負面影響的根本原因」→ <strong>石川圖（Ishikawa）</strong></li>
+        <li>「找出問題的根本原因」→ <strong>魚骨圖（石川圖）</strong></li>
         <li>「找出造成最多問題的關鍵少數因素」→ <strong>柏拉圖</strong></li>
         <li>「監控流程是否穩定，連續7點在同一側」→ <strong>管制圖</strong></li>
         <li>「員工績效持續低落，找相關性原因」→ <strong>散佈圖</strong></li>
         <li>「了解品質工作步驟順序，辨識是否需要品質檢查」→ <strong>流程圖</strong></li>
         <li>「辨識流程改善機會、檢查流程問題與限制」→ <strong>流程分析及流程圖</strong></li>
+        <li>「補充控制品質之不足，選管理品質的工具」→ <strong>品質稽核</strong></li>
       </ul>
     </div>
 
@@ -454,91 +355,15 @@
       </ul>
     </div>
 
-    <div class="box trap">
-      <div class="box-title">⚠️ 「預防工程可能遭遇的品質問題」要怎麼做？</div>
-      考題（Q1）：「高層管理者說他擔心工程可能不符合品質標準，你該怎麼預防？」<br>
-      → 答案：<strong>組成一個品質保證（QA）團隊，進行品質稽核（Audit）</strong><br>
-      → 不是向高層保證、不是從上次計畫找錯誤、不是用類比估計判斷結果。<br>
-      稽核是主動預防品質問題的正式機制。
-    </div>
-  </div>
-</div>
-
-<!-- A卷補強 -->
-<div class="section" id="s_aexam8">
-  <div class="section-header" onclick="toggle('b_aexam8')"><span><span class="num">★</span>A卷補強：品質流程情境判斷</span><span id="c_aexam8">▼</span></div>
-  <div class="section-body" id="b_aexam8">
-
-    <h3>三個流程的判斷關鍵字再整理（A卷最多錯的地方）</h3>
-    <div class="table-wrap"><table>
-      <tr><th>流程</th><th>關鍵字</th><th>工具</th><th>看的對象</th></tr>
-      <tr><td>規劃品質管理<br>Plan Quality</td><td>決定標準、建立計畫、如何達成</td><td>標竿法、成本效益分析</td><td>標準是什麼</td></tr>
-      <tr><td>管理品質<br>Manage Quality</td><td>改善流程、稽核、分析可能原因、積極尋找問題</td><td>流程分析、品質稽核</td><td>流程 Process</td></tr>
-      <tr><td>控制品質<br>Control Quality</td><td>檢驗、驗證、符不符合標準</td><td>檢驗、統計抽樣、管制圖</td><td>產品 Product</td></tr>
-    </table></div>
-
-    <div class="qtype">
-      <div class="qt-title">📝 Q121：「品質主管在產品生產過程中，積極尋找可能影響品質不良的原因」→ 哪個流程？</div>
-      <p>關鍵字：「積極尋找可能影響品質不良的原因」= 在分析流程問題<br>
-      → 答案：<strong>管理品質（Manage Quality）</strong><br>
-      ⚠️ 不是控制品質，控制品質是「檢驗產品是否符合標準」，不是主動去找流程問題。</p>
-    </div>
-
-    <div class="qtype">
-      <div class="qt-title">📝 Q124：「PM 與品質部門一起工作，為了確保產品符合品質標準」→ 哪個流程？</div>
-      <p>關鍵字：「確保產品符合品質標準」+ 「與品質部門一起工作」<br>
-      → 答案：<strong>管理品質（Manage Quality）</strong><br>
-      這題容易選「控制品質」，但「與品質部門合作確保符合標準」的動作是在執行品質保證流程，屬於管理品質。</p>
-    </div>
-
-    <div class="qtype">
-      <div class="qt-title">📝 Q132：「評估可交付成果是否符合品質標準」→ 哪個流程？</div>
-      <p>關鍵字：「可交付成果（Deliverable）」+ 「是否符合標準」<br>
-      → 答案：<strong>控制品質（Control Quality）</strong><br>
-      這題才是控制品質，因為是在檢驗「產品/交付成果」本身。</p>
-    </div>
-
-    <h3>品質成本 A卷補充</h3>
-    <div class="box trap">
-      <div class="box-title">⚠️ 合規成本 vs 不合規成本的判斷</div>
-      題目問「以下哪個不屬於不合規成本（Cost of Nonconformance）？」<br>
-      → 不合規成本 = 內部失效（重工、報廢）+ 外部失效（保固、業務損失）<br>
-      → <strong>不屬於不合規成本的是：培訓（Training）= 預防成本 = 合規成本</strong><br><br>
-      記憶：做對了才花的錢（培訓、設備、測試）= 合規成本<br>
-      做錯了才花的錢（返工、保固、賠償）= 不合規成本
-    </div>
-
-    <h3>「改善品質引領的結果」（A卷Q129）</h3>
     <div class="box tip">
-      <div class="box-title">💡 改善品質的效益</div>
-      正確答案：<strong>改善品質引領增強生產力、降低成本風險和降低成本</strong><br><br>
-      邏輯：品質好 → 減少返工 → 省時省錢 → 降低成本、提升生產力<br>
-      ⚠️ 錯誤選項通常是「增加成本效益和增加成本風險」——品質改善是降低成本，不是增加！
-    </div>
-  </div>
-</div>
-
-<!-- 七、核心思維 -->
-<div class="section" id="s7">
-  <div class="section-header" onclick="toggle('b7')">
-    <span><span class="num">七</span>核心思維總結</span>
-    <span id="c7">▼</span>
-  </div>
-  <div class="section-body" id="b7">
-    <div class="box tip">
-      <div class="box-title">💡 Ch8 品質管理的核心思維</div>
+      <div class="box-title">💡 Ch8 核心思維</div>
       <ul>
-        <li><strong>三個流程各有對象</strong>：規劃（制定標準）→ 管理品質（改善流程）→ 控制品質（檢驗產品）</li>
-        <li><strong>管理品質看流程，控制品質看產品</strong>，客戶驗收是「確認範疇」不是品質管理</li>
-        <li><strong>品質成本四分類</strong>：預防＋鑑定（合規）；內部失效＋外部失效（不合規）</li>
-        <li><strong>工具要對應情境</strong>：找根本原因→魚骨圖；找關鍵少數→柏拉圖；監控流程→管制圖</li>
-        <li><strong>改善品質的效益</strong>是降低成本、降低風險、提升生產力，不是增加成本</li>
+        <li><strong>管理品質看流程，控制品質看產品</strong>——這句話能判斷90%的Ch8流程題</li>
+        <li>客戶驗收是「確認範疇」，不是品質管理</li>
+        <li>品質成本：做對了花的錢（合規）；做錯了花的錢（不合規）</li>
+        <li>改善品質的效益是降低成本、降低風險、提升生產力——不是增加成本</li>
+        <li>PMP 邏輯：把錢花在預防和鑑定（合規成本），比事後補救（失效成本）便宜得多</li>
       </ul>
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 對應您的實戰經驗</div>
-      您做 AP 開發，一定遇過「系統上線後才發現 bug，客戶抱怨」的情況——這就是外部失效成本，是最貴的品質問題。<br><br>
-      PMP 的邏輯是：<strong>把錢花在預防和鑑定（合規成本），比事後花在修補（失效成本）便宜得多</strong>。這也是為什麼 PM 要認真執行品質管理，而不是等問題發生才處理。
     </div>
   </div>
 </div>

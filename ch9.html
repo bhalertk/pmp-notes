@@ -50,13 +50,6 @@
   ul li { font-size: 14px; margin-bottom: 5px; }
   .qtype { background: #F0F6FF; border: 1px solid #C0D8F0; border-radius: 10px; padding: 12px 14px; margin: 10px 0; }
   .qtype .qt-title { font-weight: 700; color: var(--primary); font-size: 13px; margin-bottom: 6px; }
-  .tag { display: inline-block; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 4px; }
-  .tag-blue { background: #D6E8FF; color: #1a3a6e; }
-  .tag-green { background: #D6F0D6; color: #1a4a1a; }
-  .tag-orange { background: #FFE8CC; color: #6e3a00; }
-  .tag-red { background: #FFD6D6; color: #6e0000; }
-
-  /* 衝突解決卡片 */
   .conflict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
   .conflict-card { border-radius: 10px; padding: 10px 12px; border: 1px solid var(--border); }
   .conflict-card .cf-name { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
@@ -74,8 +67,6 @@
   .cf-worst { background: #FFF0F0; border-color: #E05050; }
   .cf-worst .cf-name { color: #6E1010; }
   .cf-worst .cf-tag { background: #FFD6D6; color: #6e0000; }
-
-  /* 馬斯洛金字塔 */
   .maslow { margin: 12px 0; }
   .maslow-row { border-radius: 8px; padding: 10px 14px; margin-bottom: 4px; font-size: 13px; font-weight: 600; text-align: center; }
   .m5 { background: #7B3FA0; color: white; }
@@ -84,8 +75,6 @@
   .m2 { background: #E07B20; color: white; margin: 0 60px; }
   .m1 { background: #C03030; color: white; margin: 0 80px; }
   .maslow-note { font-size: 11px; font-weight: 400; opacity: 0.85; }
-
-  /* 團隊發展 */
   .team-stages { margin: 12px 0; }
   .ts-item { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
   .ts-dot { min-width: 32px; height: 32px; border-radius: 50%; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -93,14 +82,11 @@
   .ts-content .ts-name { font-weight: 700; font-size: 13px; color: var(--primary); }
   .ts-content .ts-desc { font-size: 12px; color: #555; margin-top: 3px; }
   .ts-content .ts-key { font-size: 11px; background: #D6E8FF; color: #1a3a6e; border-radius: 4px; padding: 2px 6px; display: inline-block; margin-top: 4px; font-weight: 600; }
-
-  /* RACI */
   .raci-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
   .raci-card { background: #F8FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
   .raci-card .rc-letter { font-size: 22px; font-weight: 900; color: var(--primary); }
   .raci-card .rc-word { font-size: 12px; font-weight: 600; color: var(--accent); }
   .raci-card .rc-desc { font-size: 12px; color: #555; margin-top: 4px; }
-
   .back-top { text-align: center; padding: 20px 0 10px; font-size: 13px; color: var(--secondary); cursor: pointer; text-decoration: underline; }
 </style>
 </head>
@@ -122,77 +108,40 @@
   <a href="key-questions.html">🔥 重點題型</a>
 </div>
 
-<!-- 目錄 -->
 <div class="toc">
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
   <div class="toc-body" id="toc-body">
-    <a href="#s1">一、資源管理是什麼？</a>
-    <a href="#s2">二、資源文件全覽：查哪份看什麼？</a>
-    <a href="#s3">三、RACI 責任分派矩陣</a>
-    <a href="#s4">四、衝突管理：五種解決技巧</a>
-    <a href="#s5">五、團隊發展五個階段</a>
-    <a href="#s6">六、馬斯洛需求理論</a>
-    <a href="#s7">七、矩陣組織中的資源爭奪</a>
-    <a href="#s8">八、題目出題模式與陷阱彙整</a>
-    <a href="#s9">九、核心思維總結</a>
+    <a href="#s1">一、資源文件全覽 + RACI</a>
+    <a href="#s2">二、衝突管理：五種解決技巧</a>
+    <a href="#s3">三、團隊發展五個階段</a>
+    <a href="#s4">四、馬斯洛需求理論</a>
+    <a href="#s5">五、矩陣組織的資源問題</a>
+    <a href="#s6">六、題目出題模式與陷阱彙整</a>
   </div>
 </div>
 
-<!-- 一、資源管理是什麼 -->
+<!-- 一、資源文件 + RACI -->
 <div class="section" id="s1">
-  <div class="section-header" onclick="toggle('b1')">
-    <span><span class="num">一</span>資源管理是什麼？</span>
-    <span id="c1">▼</span>
-  </div>
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>資源文件全覽 + RACI（高頻考點）</span><span id="c1">▼</span></div>
   <div class="section-body open" id="b1">
-    <p>資源管理（Resource Management）負責回答：<strong>「誰來做這件事？需要什麼資源？怎麼讓團隊有效運作？」</strong></p>
-    <div class="box tip">
-      <div class="box-title">💡 資源管理的兩大主軸</div>
-      <strong>實體資源</strong>：設備、材料、設施等<br>
-      <strong>人力資源（Team Resources）</strong>：團隊成員的招募、培育、管理、激勵<br><br>
-      Ch9 考題大部分集中在「人」的管理：衝突怎麼解決、團隊處於哪個發展階段、成員動機怎麼激發。對您這種帶過專案的人來說，這章相對直觀。
-    </div>
-  </div>
-</div>
+    <div class="table-wrap"><table>
+      <tr><th>文件</th><th>用途 / 考試關鍵字</th></tr>
+      <tr><td>資源管理計畫<br>Resource Management Plan</td><td>說明如何估算、獲得、管理及運用資源的計畫，包含會議紀律、報告規則等<br>→ 財務長參與太多專案無時間提供文件，要協調資源排程 → 查資源管理計畫</td></tr>
+      <tr><td>責任分派矩陣<br>RAM / RACI</td><td>顯示每個工作包由誰負責執行、誰需要被通知<br>→ 「有效分配專案成員工作」「兩位成員對某活動由誰執行有不同意見」→ 查 RACI<br>→ 「向新成員說明角色之間的報告關係」→ 查 RAM</td></tr>
+      <tr><td>專案組織圖<br>Project Organization Chart</td><td>呈現各部門成員的報告關係，一覽所需人數<br>→ 「了解各部門成員的報告關係及所需人數」→ 查專案組織圖</td></tr>
+      <tr><td>資源分解結構<br>RBS</td><td>以階層方式列出所有資源類別，了解資源種類、數量、等級與技術水準<br>→ 「了解活動所需的資源種類、數量、等級與技術水準」→ 查 RBS</td></tr>
+      <tr><td>資源行事曆<br>Resource Calendar</td><td>記錄每個資源的可用時間<br>→ 「考量資源可用時間估算工期」→ 參考資源行事曆</td></tr>
+      <tr><td>團隊章程<br>Team Charter</td><td>記錄團隊的工作守則、會議規範、溝通規則<br>→ 「成員常無法準時出席、會議被打斷無法準時結束，避免再發生」→ 查團隊章程</td></tr>
+    </table></div>
 
-<!-- 二、資源文件 -->
-<div class="section" id="s2">
-  <div class="section-header" onclick="toggle('b2')">
-    <span><span class="num">二</span>資源文件全覽：查哪份看什麼？（高頻考點）</span>
-    <span id="c2">▼</span>
-  </div>
-  <div class="section-body" id="b2">
-    <p>Ch9 很多題目考「這個情境應該查哪份文件？」，記住每份文件的用途：</p>
-    <div class="table-wrap">
-      <table>
-        <tr><th>文件</th><th>用途 / 考試關鍵字</th></tr>
-        <tr><td>資源管理計畫<br>Resource Management Plan</td><td>說明如何估算、獲得、管理及運用資源的計畫。包含：會議紀律、報告規則等團隊規範。<br>→ 財務長參與太多專案無時間提供文件，要與其他 PM 協調，應先確認「資源管理計畫」</td></tr>
-        <tr><td>責任分派矩陣<br>RAM / RACI</td><td>顯示每個工作包由誰負責執行、誰需要被通知的矩陣。<br>→ 「有效分配專案成員工作」→ 查 RACI<br>→ 「兩位成員對某活動由誰執行及需通知誰有不同意見」→ 查 RAM<br>→ 「向新成員說明角色之間的報告關係」→ 查 RAM（責任分派矩陣）</td></tr>
-        <tr><td>專案組織圖<br>Project Organization Chart</td><td>呈現各部門成員在專案中的報告關係，以及一覽所需人數。<br>→ 「了解各部門成員的報告關係，及一覽所需人數」→ 查專案組織圖</td></tr>
-        <tr><td>資源分解結構<br>RBS</td><td>以階層方式列出所有資源類別，了解活動所需的資源種類、數量、等級與技術水準。<br>→ 「了解活動所需的資源種類、數量、等級與技術水準」→ 查 RBS</td></tr>
-        <tr><td>資源行事曆<br>Resource Calendar</td><td>記錄每個資源的可用時間（何時可用、何時不可用）。<br>→ 「考量資源可用時間估算工期」→ 參考資源行事曆</td></tr>
-        <tr><td>團隊章程<br>Team Charter</td><td>記錄團隊的工作守則、會議規範、溝通規則等，避免因不了解彼此導致糾紛。<br>→ 「成員常無法準時出席、會議被打斷無法在時間內結束」→ 查團隊章程內容來避免再發生</td></tr>
-      </table>
-    </div>
     <div class="box trap">
       <div class="box-title">⚠️ 最容易混淆：組織圖 vs RAM vs RBS</div>
       <strong>組織圖</strong>：看「誰向誰報告」、總共需要幾個人<br>
       <strong>RAM / RACI</strong>：看「每個工作包由誰負責、誰執行、誰需被告知」<br>
-      <strong>RBS</strong>：看「需要哪些種類的資源、什麼技術水準」<br><br>
-      考題關鍵：有「工作分配、角色職責」→ RAM；有「資源種類技術」→ RBS；有「報告關係人數」→ 組織圖
+      <strong>RBS</strong>：看「需要哪些種類的資源、什麼技術水準」
     </div>
-  </div>
-</div>
 
-<!-- 三、RACI -->
-<div class="section" id="s3">
-  <div class="section-header" onclick="toggle('b3')">
-    <span><span class="num">三</span>RACI 責任分派矩陣</span>
-    <span id="c3">▼</span>
-  </div>
-  <div class="section-body" id="b3">
-    <p>RACI 是責任分派矩陣（Responsibility Assignment Matrix）最常見的格式，每個字母代表一種角色：</p>
-
+    <h3>RACI 責任分派矩陣</h3>
     <div class="raci-grid">
       <div class="raci-card">
         <div class="rc-letter">R</div>
@@ -202,7 +151,7 @@
       <div class="raci-card">
         <div class="rc-letter">A</div>
         <div class="rc-word">Accountable（當責）</div>
-        <div class="rc-desc">對這項工作的最終結果負責任的人。<strong>每個任務只能有一個 A</strong></div>
+        <div class="rc-desc">對這項工作最終結果負責的人。<strong>每個任務只能有一個 A</strong></div>
       </div>
       <div class="raci-card">
         <div class="rc-letter">C</div>
@@ -215,90 +164,69 @@
         <div class="rc-desc">需要被通知結果的人（單向溝通）</div>
       </div>
     </div>
-
     <div class="box trap">
       <div class="box-title">⚠️ RACI 最重要的考點</div>
-      <strong>「RACI 矩陣中，僅能有一個人的角色是哪個？」</strong><br>
-      → 答案：<strong>Accountable（A）</strong><br>
-      每個任務只能有一個當責者，避免責任不清。R 可以多人，C 和 I 也可以多人，但 A 只能一個。
+      <strong>「RACI 矩陣中，僅能有一個人的角色是？」→ Accountable（A）</strong><br>
+      每個任務只能有一個當責者，R/C/I 都可以多人，只有 A 是唯一的。
     </div>
   </div>
 </div>
 
-<!-- 四、衝突管理 -->
-<div class="section" id="s4">
-  <div class="section-header" onclick="toggle('b4')">
-    <span><span class="num">四</span>衝突管理：五種解決技巧（超高頻考點）</span>
-    <span id="c4">▼</span>
-  </div>
-  <div class="section-body" id="b4">
-    <p>Ch9 最常考的就是衝突管理，考題會描述情境讓你選正確的解決技巧：</p>
+<!-- 二、衝突管理 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>衝突管理：五種解決技巧（超高頻考點）</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
 
     <div class="conflict-grid">
       <div class="conflict-card cf-best">
-        <div class="cf-name">🏆 解決問題<br>Problem Solving / Confronting</div>
-        <div class="cf-desc">直接面對問題，雙方坐下來分析原因，找出讓雙方都滿意的解決方案</div>
-        <span class="cf-tag">最持久、最有效</span>
+        <div class="cf-name">解決問題 Problem Solving</div>
+        <div class="cf-desc">直接面對問題，雙方坐下來找出讓雙方都滿意的解決方案</div>
+        <span class="cf-tag">最持久、最有效 → 首選</span>
       </div>
       <div class="conflict-card cf-mid">
-        <div class="cf-name">🤝 妥協<br>Compromising</div>
-        <div class="cf-desc">雙方各退一步，找到都能接受的中間方案。沒有完全的贏家或輸家</div>
+        <div class="cf-name">妥協 Compromising</div>
+        <div class="cf-desc">雙方各退一步，找到都能接受的中間方案，沒有完全的贏家或輸家</div>
         <span class="cf-tag">雙方部分滿足</span>
       </div>
       <div class="conflict-card cf-mid">
-        <div class="cf-name">🕊️ 緩和<br>Smoothing</div>
+        <div class="cf-name">緩和 Smoothing</div>
         <div class="cf-desc">強調雙方共同點，淡化差異，暫時緩解緊張關係，但問題還在</div>
         <span class="cf-tag">治標不治本</span>
       </div>
       <div class="conflict-card cf-bad">
-        <div class="cf-name">⚡ 強迫<br>Forcing</div>
-        <div class="cf-desc">用權力強制要求一方接受，贏者全拿。效果快但傷關係</div>
-        <span class="cf-tag">短期有效、影響持久</span>
+        <div class="cf-name">強迫 Forcing</div>
+        <div class="cf-desc">用權力強制要求一方接受，贏者全拿，效果快但傷關係</div>
+        <span class="cf-tag">負面的持久影響</span>
       </div>
       <div class="conflict-card cf-worst">
-        <div class="cf-name">🚪 迴避<br>Withdrawal</div>
-        <div class="cf-desc">不面對問題，走為上策，暫時脫離衝突情境。問題完全沒解決</div>
+        <div class="cf-name">迴避 Withdrawal</div>
+        <div class="cf-desc">不面對問題，暫時脫離衝突情境，問題完全沒解決</div>
         <span class="cf-tag">最消極、最無效</span>
       </div>
     </div>
 
     <div class="box tip">
-      <div class="box-title">💡 各技巧的考試判斷邏輯</div>
-      <strong>「哪種解決衝突的技巧，所造成的影響可持續最久？」</strong><br>
-      → 答案：<strong>解決問題（Problem Solving）</strong>，因為根本原因被解決了，效果最持久。<br><br>
-      <strong>「某個 PM 說：我現在沒空處理這個問題！」</strong><br>
-      → 這是 <strong>迴避（Withdrawal）</strong>，選擇不面對。<br><br>
-      <strong>「PM 與 Sponsor 在技術上時常有不同意見，建議用什麼方法？」</strong><br>
-      → 答案：<strong>問題解決（Problem Solving）</strong>，坐下來把問題真正解決掉。<br><br>
-      <strong>「兩個成員對測試方法有不同意見，PM 如何解決最佳？」</strong><br>
-      → 答案：<strong>召集兩位成員，討論爭議點（Problem Solving）</strong>，不是讓資深人員說了算，不是迴避。
-    </div>
-
-    <div class="box trap">
-      <div class="box-title">⚠️ 強迫 vs 解決問題的差異</div>
-      <strong>「強迫（Forcing）</strong>：效果快、但是影響持久（傷感情、留下積怨）<br>
-      <strong>解決問題（Problem Solving）</strong>：效果持久、而且是正面的持久影響<br><br>
-      所以「影響可持續最久」→ 選解決問題（正面持久）<br>
-      而「強迫」的影響也持久，但是負面的——要區分清楚。
+      <div class="box-title">💡 考試判斷邏輯</div>
+      <strong>「哪種方法影響可持續最久？」→ 解決問題</strong>（正面持久）<br>
+      <strong>「PM 說我現在沒空處理！」→ 迴避</strong><br>
+      <strong>「PM 與 Sponsor 技術上時常有不同意見」→ 解決問題</strong><br>
+      <strong>「兩個成員對測試方法有不同意見」→ 召集兩人討論爭議點（解決問題）</strong><br><br>
+      ⚠️ 強迫的影響也持久，但是<strong>負面的</strong>持久；解決問題的影響是<strong>正面的</strong>持久，要區分清楚。
     </div>
   </div>
 </div>
 
-<!-- 五、團隊發展五階段 -->
-<div class="section" id="s5">
-  <div class="section-header" onclick="toggle('b5')">
-    <span><span class="num">五</span>團隊發展五個階段（Tuckman 模型）</span>
-    <span id="c5">▼</span>
-  </div>
-  <div class="section-body" id="b5">
-    <p>Tuckman 提出團隊發展會經歷五個階段，考試會描述情境讓你判斷目前在哪個階段：</p>
+<!-- 三、團隊發展五階段 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>團隊發展五個階段（Tuckman 模型）</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
 
     <div class="team-stages">
       <div class="ts-item">
         <div class="ts-dot" style="background:#2E75B6;">①</div>
         <div class="ts-content">
           <div class="ts-name">組建 Forming</div>
-          <div class="ts-desc">團隊剛成立，成員彼此不熟悉，開始建立初步認識與互動，想避免未來糾紛</div>
+          <div class="ts-desc">團隊剛成立，成員彼此不熟悉，建立初步認識，想避免未來糾紛</div>
           <span class="ts-key">初次見面、辦非正式宴會、初步認識</span>
         </div>
       </div>
@@ -306,7 +234,7 @@
         <div class="ts-dot" style="background:#E05050;">②</div>
         <div class="ts-content">
           <div class="ts-name">風暴 Storming</div>
-          <div class="ts-desc">成員開始對工作方法、技術方向有不同意見，衝突頻繁，開會常不歡而散，難以達成共識</div>
+          <div class="ts-desc">對工作方法、技術方向有不同意見，衝突頻繁，開會常不歡而散</div>
           <span class="ts-key">意見不合、爭論、無法達成共識</span>
         </div>
       </div>
@@ -314,7 +242,7 @@
         <div class="ts-dot" style="background:#E07B20;">③</div>
         <div class="ts-content">
           <div class="ts-name">規範 Norming</div>
-          <div class="ts-desc">成員開始調整彼此的工作習慣與行為，逐漸建立共同規範，希望讓專案順利進行</div>
+          <div class="ts-desc">調整彼此工作習慣與行為，逐漸建立共同規範，開始合作</div>
           <span class="ts-key">調整習慣、建立規範、開始合作</span>
         </div>
       </div>
@@ -322,7 +250,7 @@
         <div class="ts-dot" style="background:#2E8B57;">④</div>
         <div class="ts-content">
           <div class="ts-name">執行 Performing</div>
-          <div class="ts-desc">團隊高度協作，成員彼此了解，除完成本份工作外也相互解決問題，效率最高</div>
+          <div class="ts-desc">團隊高度協作，除完成本份工作外也相互解決問題，效率最高</div>
           <span class="ts-key">高效協作、互相補位、解決問題</span>
         </div>
       </div>
@@ -337,23 +265,17 @@
     </div>
 
     <div class="box tip">
-      <div class="box-title">💡 考題情境判斷</div>
-      「專案來自多個地區，經理舉辦非正式宴會，希望初步認識、避免未來糾紛」→ <strong>組建（Forming）</strong><br><br>
-      「針對使用方法技術討論，不同想法無法達成共識，常在會議上不歡而散」→ <strong>風暴（Storming）</strong><br><br>
-      「成員調整彼此工作習慣與行為，希望讓專案順利進行」→ <strong>規範（Norming）</strong><br><br>
-      「成員彼此了解，完成本份工作外也透過相互合作解決了許多專案問題」→ <strong>執行（Performing）</strong>
+      <div class="box-title">💡 衝突是正常的，不是壞事</div>
+      風暴期（Storming）是團隊發展的必經過程，PM 的職責是引導衝突往「解決問題」方向走，不是壓制。<br>
+      記憶口訣：<strong>組→風→規→執→散</strong>
     </div>
   </div>
 </div>
 
-<!-- 六、馬斯洛 -->
-<div class="section" id="s6">
-  <div class="section-header" onclick="toggle('b6')">
-    <span><span class="num">六</span>馬斯洛需求理論</span>
-    <span id="c6">▼</span>
-  </div>
-  <div class="section-body" id="b6">
-    <p>馬斯洛需求理論將人的需求分為五個層次，由底層到頂層依序滿足：</p>
+<!-- 四、馬斯洛 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>馬斯洛需求理論</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
 
     <div class="maslow">
       <div class="maslow-row m5">自我實現 Self-Actualization<span class="maslow-note">（最高層）實現個人潛能、成長</span></div>
@@ -364,67 +286,48 @@
     </div>
 
     <div class="box tip">
-      <div class="box-title">💡 正確順序記憶（由下到上）</div>
-      <strong>生理 → 安全 → 社會 → 自尊 → 自我實現</strong><br><br>
-      記憶口訣：「生安社尊現」或「生命安全是社會尊嚴的自我實現」<br><br>
-      考題問「馬斯洛需求理論底層到最高層次的順序」<br>
-      → 答案：<strong>生理、安全、社會、自尊、自我實現</strong>（選 C）
+      <div class="box-title">💡 由下到上：生 → 安 → 社 → 尊 → 現</div>
+      最常錯的是把「社會」和「自尊」順序搞反，記住社會（Social）在自尊（Esteem）的下面。
     </div>
 
     <div class="box warn">
-      <div class="box-title">💡 團隊成員抱怨「花很多時間在專案，卻沒有成就感，很少得到滿意的回饋」</div>
-      考題（Q12）：CPI=1.05、SPI=1.1，進入專案尾聲，客戶滿意，但團隊成員抱怨付出多、沒有成就感、沒有滿意的回饋。<br><br>
-      → 這是<strong>自尊需求</strong>（被認可、有成就感）沒有被滿足。<br>
-      → PM 的正確做法：<strong>審查獎勵制度是否需要改善</strong>，讓成員感受到自己的貢獻被認可。<br>
-      → 不是請客戶快點驗收結案，也不是改善時程表。
+      <div class="box-title">💡 考題情境：CPI=1.05，SPI=1.1，但團隊成員抱怨沒有成就感、沒有得到滿意回饋</div>
+      → 這是<strong>自尊需求</strong>沒有被滿足（成就感、被認可）<br>
+      → PM 正確做法：<strong>審查獎勵制度是否需要改善</strong><br>
+      → 不是請客戶快點驗收，不是改善時程表
     </div>
   </div>
 </div>
 
-<!-- 七、矩陣組織資源爭奪 -->
-<div class="section" id="s7">
-  <div class="section-header" onclick="toggle('b7')">
-    <span><span class="num">七</span>矩陣組織中的資源爭奪</span>
-    <span id="c7">▼</span>
-  </div>
-  <div class="section-body" id="b7">
-    <p>矩陣型組織中，PM 沒有完整的資源控制權，資源爭奪是常見問題：</p>
+<!-- 五、矩陣組織資源問題 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>矩陣組織的資源問題</span><span id="c5">▼</span></div>
+  <div class="section-body" id="b5">
 
-    <div class="table-wrap">
-      <table>
-        <tr><th>情境</th><th>正確做法</th></tr>
-        <tr><td>稀少的關鍵資源被其他專案共用，要確保資源能被自己專案使用</td><td>與<strong>功能經理（Functional Manager）</strong>協商，不是請 Sponsor 在章程中授權預分派</td></tr>
-        <tr><td>成員被功能經理調去其他專案，導致 PM 缺乏資源</td><td>與<strong>功能經理</strong>協商討論，因為功能經理有調配人員的權力</td></tr>
-        <tr><td>團隊缺乏估算時程里程碑的技術，此技術只有專案需要</td><td>向外<strong>請求額外調派有經驗的人力資源</strong>（不是請成員的部門安排培訓，因為只有這個專案用到）</td></tr>
-        <tr><td>成員在 JAVA 開發上經驗不足，導致績效不好，沒有更合適的人選</td><td><strong>安排成員參加培訓（Get Training）</strong></td></tr>
-      </table>
-    </div>
+    <div class="table-wrap"><table>
+      <tr><th>情境</th><th>正確做法</th></tr>
+      <tr><td>稀少的關鍵資源被其他專案共用，要確保資源能被自己使用</td><td>與<strong>功能經理</strong>協商</td></tr>
+      <tr><td>成員被功能經理調去其他專案，PM 缺乏資源</td><td>與<strong>功能經理</strong>協商討論</td></tr>
+      <tr><td>團隊缺乏某技術，且只有這個專案需要</td><td>向外<strong>請求調派有經驗的人力資源</strong>（不是安排培訓，因為只有這專案用到）</td></tr>
+      <tr><td>成員在特定技術上經驗不足，沒有更合適人選</td><td><strong>安排成員參加培訓</strong></td></tr>
+      <tr><td>稀少資源只有特定地點才有</td><td>考慮運用<strong>虛擬團隊（Virtual Team）</strong></td></tr>
+    </table></div>
 
     <div class="box trap">
-      <div class="box-title">⚠️ 矩陣組織中資源問題：找功能經理！</div>
-      矩陣組織的特性就是 PM 和功能經理「共享」資源。當資源被調走或發生爭奪時，PM 要找的是<strong>功能經理</strong>協商，不是找其他專案的 PM，不是找 Sponsor。<br><br>
-      「整合組織內跨領域的研究成果及資源，但專案團隊只能兼職參與專案，哪種組織類型較佳？」<br>
-      → 答案：<strong>矩陣型（Matrix）</strong>，既能整合跨領域資源，又允許成員兼職參與。
+      <div class="box-title">⚠️ 矩陣組織資源問題：找功能經理</div>
+      矩陣組織的特性是 PM 和功能經理「共享」資源。當資源被調走或發生爭奪，PM 要找的是<strong>功能經理</strong>協商，不是 Sponsor，不是其他 PM。<br><br>
+      「整合跨領域研究成果及資源，但成員只能兼職參與，哪種組織類型較佳？」<br>
+      → <strong>矩陣型（Matrix）</strong>，既能整合跨領域資源，又允許成員兼職參與。<br><br>
+      「矩陣組織中，建設團隊的阻礙是什麼？」<br>
+      → <strong>團隊成員是暫時借調的，所以難以激勵</strong>
     </div>
-
-    <h3>虛擬團隊（Virtual Team）</h3>
-    <p>考題偶爾出現虛擬團隊的情境：</p>
-    <ul>
-      <li>成員分散在不同地點，透過線上工具協作</li>
-      <li>優點：可以使用到地理上分散的專業人才</li>
-      <li>缺點：溝通困難、建立信任較慢</li>
-      <li>「稀少資源只有特定地點才有，考慮運用虛擬團隊」→ 這是虛擬團隊的典型應用情境</li>
-    </ul>
   </div>
 </div>
 
-<!-- 八、題目出題模式 -->
-<div class="section" id="s8">
-  <div class="section-header" onclick="toggle('b8')">
-    <span><span class="num">八</span>題目出題模式與陷阱彙整</span>
-    <span id="c8">▼</span>
-  </div>
-  <div class="section-body" id="b8">
+<!-- 六、題目出題模式 -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('b6')"><span><span class="num">六</span>題目出題模式與陷阱彙整</span><span id="c6">▼</span></div>
+  <div class="section-body" id="b6">
 
     <div class="qtype">
       <div class="qt-title">📝 題型1：「這個情境用哪種衝突解決技巧？」</div>
@@ -434,7 +337,6 @@
         <li>「召集兩人討論爭議點，找出解決方案」→ <strong>解決問題（Problem Solving）</strong></li>
         <li>「強調大家的共同點，暫時緩和」→ <strong>緩和（Smoothing）</strong></li>
         <li>「影響可持續最久的方法」→ <strong>解決問題</strong></li>
-        <li>「PM 與 Sponsor 技術上常有不同意見」→ <strong>問題解決</strong></li>
       </ul>
     </div>
 
@@ -459,50 +361,15 @@
       </ul>
     </div>
 
-    <div class="qtype">
-      <div class="qt-title">📝 題型4：「矩陣組織的資源問題找誰？」</div>
-      <ul>
-        <li>稀少資源被其他專案搶用 → 與 <strong>功能經理</strong> 協商</li>
-        <li>成員被調走 → 找 <strong>功能經理</strong> 討論</li>
-        <li>成員技能不足、培訓有長期價值 → <strong>安排培訓</strong></li>
-        <li>只有這個專案需要的技術 → <strong>向外請求有經驗的人力資源</strong></li>
-      </ul>
-    </div>
-
-    <div class="box trap">
-      <div class="box-title">⚠️ 最常答錯的考點</div>
-      <strong>「RACI 中只能有一個人的角色是？」→ Accountable（A）</strong><br><br>
-      <strong>「矩陣組織中，建設團隊的阻礙是什麼？」</strong><br>
-      → 答案：<strong>團隊成員是暫時借調的，所以難以激勵</strong><br>
-      → 不是因為技術性組合、不是因為太龐大、不是因為集中辦公<br><br>
-      <strong>「馬斯洛需求層次由底到頂」→ 生理、安全、社會、自尊、自我實現</strong><br>
-      最常錯的是把「社會」和「自尊」的順序搞反。
-    </div>
-  </div>
-</div>
-
-<!-- 九、核心思維 -->
-<div class="section" id="s9">
-  <div class="section-header" onclick="toggle('b9')">
-    <span><span class="num">九</span>核心思維總結</span>
-    <span id="c9">▼</span>
-  </div>
-  <div class="section-body" id="b9">
     <div class="box tip">
-      <div class="box-title">💡 Ch9 資源管理的核心思維</div>
+      <div class="qt-title" style="font-weight:700;color:var(--tip-text);margin-bottom:6px;">💡 Ch9 核心思維</div>
       <ul>
-        <li><strong>衝突解決首選「解決問題」</strong>：最持久、最有效，直接面對問題找解方</li>
-        <li><strong>RACI 只有 A 是唯一的</strong>：每個任務只能有一個當責者</li>
-        <li><strong>團隊發展五階段</strong>：組建→風暴→規範→執行→解散，衝突是正常的（風暴期）</li>
-        <li><strong>馬斯洛由下到上</strong>：生理→安全→社會→自尊→自我實現</li>
-        <li><strong>矩陣組織資源問題找功能經理</strong>，不是找 Sponsor 或其他 PM</li>
+        <li><strong>衝突解決首選「解決問題」</strong>——最持久、最有效，幾乎是所有衝突題的最佳答案</li>
+        <li><strong>RACI 只有 A 是唯一的</strong>——每個任務只能有一個當責者</li>
+        <li><strong>馬斯洛由下到上</strong>：生理→安全→社會→自尊→自我實現，社會在自尊的下面</li>
+        <li><strong>矩陣組織資源問題找功能經理</strong>，不是 Sponsor 或其他 PM</li>
+        <li><strong>風暴期是正常的</strong>，衝突不代表團隊有問題，PM 要引導往解決問題的方向</li>
       </ul>
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 對應您的實戰經驗</div>
-      您在銀行帶 AP 專案，也一定遇過「成員被其他部門借調、資源不夠、成員意見不合」的情況。<br><br>
-      PMP 的思維是：<strong>衝突不是壞事，風暴期是團隊正常發展的必經過程</strong>。PM 的職責是引導衝突往「解決問題」的方向走，而不是壓制或迴避。<br><br>
-      考試記得：看到衝突情境，第一反應是「解決問題（Problem Solving）」，這幾乎是所有衝突題的最佳答案，除非題目特別說明有時間或資源限制才考慮其他方法。
     </div>
   </div>
 </div>

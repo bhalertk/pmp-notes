@@ -168,7 +168,7 @@
       <div class="bp-row bp-1">💰 成本預算 Cost Budget = 成本基準 + 管理儲備<span class="bp-note">（整個專案批准的資金上限）</span></div>
       <div class="bp-row bp-2">📊 成本基準 Cost Baseline = 控制帳戶成本 + 應變儲備<span class="bp-note">（PM 的績效監控基準）</span></div>
       <div class="bp-row bp-3">🗂️ 控制帳戶 Control Account = 工作包成本 + 規劃包<span class="bp-note">（PM 的主要管控點）</span></div>
-      <div class="bp-row bp-4">📦 工作包 Work Package = 各活動成本加總<span class="bp-note">（最詳細估算的基本單位）</span></div>
+      <div class="bp-row bp-4">📦 工作包 Work Package = 各活動成本加總<span class="bp-note">（成本匯總的基本單位）</span></div>
     </div>
 
     <div class="table-wrap"><table>
@@ -176,7 +176,7 @@
       <tr><td>成本預算<br>Cost Budget</td><td>Sponsor / 高階管理層</td><td>整個專案批准的資金上限，包含管理儲備</td></tr>
       <tr><td>成本基準<br>Cost Baseline</td><td>PM</td><td>績效監控基準，由制定預算流程產出，包含應變儲備但<strong>不含管理儲備</strong></td></tr>
       <tr><td>控制帳戶<br>Control Account</td><td>PM / 客戶 / Sponsor</td><td>PM 一般狀況估算工期成本的管控點；客戶和 Sponsor 驗收績效基準的主要管控點</td></tr>
-      <tr><td>工作包<br>Work Package</td><td>PM / 團隊</td><td>成本估算的基本單位；利害關係人若無法信任工作包估算，可再細分到「活動」層級</td></tr>
+      <tr><td>工作包<br>Work Package</td><td>PM / 團隊</td><td>成本匯總的基本單位；利害關係人若無法信任工作包估算，可再細分到「活動」層級；活動層級再細分則到「資源」層級</td></tr>
     </table></div>
 
     <div class="box trap">
@@ -186,8 +186,8 @@
       EAC 預測線超過成本基準但低於成本預算 → 還在可接受範圍<br>
       EAC 預測線超過成本預算 → 需向 Sponsor 申請追加預算<br><br>
       預算包含「範疇及時程」嗎？→ <strong>是的</strong>，預算是根據範疇和時程制定的<br><br>
-      <strong>「主管要求詳細估算，最準確應估算到哪層？」</strong> → <strong>工作包（Work Package）</strong><br>
-      <strong>「利害關係人無法信任工作包估算，應再估算到哪層？」</strong> → <strong>活動（Activity）</strong>（更細一層）
+      <strong>「主管要求詳細估算，最準確應估算到哪層？」</strong> → <strong>資源（Resource）</strong>（最細，估每種資源的單價和用量）<br>
+      <strong>「利害關係人無法信任工作包估算，應再估算到哪層？」</strong> → <strong>活動（Activity）</strong>（比工作包細一層）
     </div>
   </div>
 </div>
@@ -365,7 +365,7 @@
     <div class="qtype">
       <div class="qt-title">📝 題型4：「估算到哪個層級？」</div>
       <ul>
-        <li>主管要詳細估算 → <strong>工作包（Work Package）</strong></li>
+        <li>主管要詳細估算 → <strong>資源（Resource）</strong></li>
         <li>利害關係人無法信任工作包估算 → <strong>活動（Activity）</strong></li>
         <li>客戶驗收績效基準的主要管控點 → <strong>控制帳戶（Control Account）</strong></li>
         <li>預算編列的基礎 → <strong>WBS</strong></li>

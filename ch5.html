@@ -6,129 +6,32 @@
 <title>PMP 重點整理 Ch5 範疇管理</title>
 <style>
   :root {
-    --primary: #1F4E79;
-    --secondary: #2E75B6;
-    --accent: #2E5F8A;
-    --warn-bg: #FFF9E6;
-    --warn-border: #F0C040;
-    --warn-text: #7A4F00;
-    --tip-bg: #EAF5EA;
-    --tip-border: #5CAF5C;
-    --tip-text: #2E5E2E;
-    --trap-bg: #FFF0F0;
-    --trap-border: #E05050;
-    --trap-text: #6E1010;
-    --bg: #F4F7FB;
-    --card: #FFFFFF;
-    --border: #D0DCE8;
-    --text: #222222;
+    --primary: #1F4E79; --secondary: #2E75B6; --accent: #2E5F8A;
+    --warn-bg: #FFF9E6; --warn-border: #F0C040; --warn-text: #7A4F00;
+    --tip-bg: #EAF5EA; --tip-border: #5CAF5C; --tip-text: #2E5E2E;
+    --trap-bg: #FFF0F0; --trap-border: #E05050; --trap-text: #6E1010;
+    --bg: #F4F7FB; --card: #FFFFFF; --border: #D0DCE8; --text: #222222;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.7;
-    padding-bottom: 60px;
-  }
-  .hero {
-    background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 100%);
-    color: white;
-    padding: 28px 20px 22px;
-    text-align: center;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; padding-bottom: 60px; }
+  .hero { background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 100%); color: white; padding: 28px 20px 22px; text-align: center; }
   .hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
   .hero p { font-size: 13px; opacity: 0.85; }
-  .hero .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 3px 12px;
-    font-size: 12px;
-    margin-top: 8px;
-  }
-  .nav-bar {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 10px 16px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    font-size: 13px;
-  }
-  .nav-bar a {
-    color: var(--secondary);
-    text-decoration: none;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: white;
-  }
+  .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 3px 12px; font-size: 12px; margin-top: 8px; }
+  .nav-bar { background: white; border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+  .nav-bar a { color: var(--secondary); text-decoration: none; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border); background: white; }
   .nav-bar a.active { background: var(--primary); color: white; border-color: var(--primary); }
-  .toc {
-    background: var(--card);
-    margin: 16px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .toc-header {
-    background: var(--primary);
-    color: white;
-    padding: 12px 16px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-  }
+  .toc { background: var(--card); margin: 16px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .toc-header { background: var(--primary); color: white; padding: 12px 16px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; }
   .toc-body { padding: 12px 16px; }
-  .toc-body a {
-    display: block;
-    color: var(--secondary);
-    text-decoration: none;
-    padding: 5px 0;
-    font-size: 14px;
-    border-bottom: 1px solid #f0f0f0;
-  }
+  .toc-body a { display: block; color: var(--secondary); text-decoration: none; padding: 5px 0; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
   .toc-body a:last-child { border-bottom: none; }
-  .section {
-    margin: 0 16px 16px;
-    background: var(--card);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .section-header {
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    color: white;
-    padding: 14px 16px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-  }
-  .section-header .num {
-    background: rgba(255,255,255,0.25);
-    border-radius: 20px;
-    padding: 2px 10px;
-    font-size: 12px;
-    margin-right: 8px;
-  }
+  .section { margin: 0 16px 16px; background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .section-header { background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 14px 16px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .section-header .num { background: rgba(255,255,255,0.25); border-radius: 20px; padding: 2px 10px; font-size: 12px; margin-right: 8px; }
   .section-body { padding: 16px; display: none; }
   .section-body.open { display: block; }
-  h3 {
-    color: var(--primary);
-    font-size: 14px;
-    font-weight: 700;
-    margin: 18px 0 8px;
-    padding-left: 10px;
-    border-left: 4px solid var(--secondary);
-  }
+  h3 { color: var(--primary); font-size: 14px; font-weight: 700; margin: 18px 0 8px; padding-left: 10px; border-left: 4px solid var(--secondary); }
   h3:first-child { margin-top: 0; }
   p { font-size: 14px; margin-bottom: 10px; }
   .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 8px; border: 1px solid var(--border); }
@@ -138,49 +41,25 @@
   tr:last-child td { border-bottom: none; }
   tr:nth-child(even) td { background: #F8FAFD; }
   td:first-child { font-weight: 600; color: var(--accent); }
-  .box {
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin: 10px 0;
-    font-size: 13.5px;
-    line-height: 1.65;
-  }
+  .box { border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 13.5px; line-height: 1.65; }
   .box .box-title { font-weight: 700; margin-bottom: 5px; font-size: 13px; }
   .warn { background: var(--warn-bg); border-left: 4px solid var(--warn-border); color: var(--warn-text); }
   .tip  { background: var(--tip-bg);  border-left: 4px solid var(--tip-border);  color: var(--tip-text); }
   .trap { background: var(--trap-bg); border-left: 4px solid var(--trap-border); color: var(--trap-text); }
   ul { padding-left: 18px; margin: 8px 0; }
   ul li { font-size: 14px; margin-bottom: 5px; }
-  .qtype {
-    background: #F0F6FF;
-    border: 1px solid #C0D8F0;
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin: 10px 0;
-  }
+  .qtype { background: #F0F6FF; border: 1px solid #C0D8F0; border-radius: 10px; padding: 12px 14px; margin: 10px 0; }
   .qtype .qt-title { font-weight: 700; color: var(--primary); font-size: 13px; margin-bottom: 6px; }
   .timeline { position: relative; padding: 8px 0; margin: 12px 0; }
   .tl-item { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
-  .tl-dot {
-    min-width: 32px; height: 32px; border-radius: 50%;
-    background: var(--primary); color: white;
-    font-size: 12px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 2px;
-  }
-  .tl-content {
-    flex: 1; background: #F8FAFD;
-    border: 1px solid var(--border);
-    border-radius: 10px; padding: 10px 12px;
-  }
+  .tl-dot { min-width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .tl-content { flex: 1; background: #F8FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
   .tl-content .tl-title { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 4px; }
   .tl-content .tl-doc { font-size: 12px; color: var(--accent); margin-top: 6px; }
   .tl-content p { font-size: 13px; margin: 0; color: #444; }
   .tag { display: inline-block; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 4px; }
-  .tag-blue { background: #D6E8FF; color: #1a3a6e; }
   .tag-green { background: #D6F0D6; color: #1a4a1a; }
   .tag-orange { background: #FFE8CC; color: #6e3a00; }
-  .tag-red { background: #FFD6D6; color: #6e0000; }
   .back-top { text-align: center; padding: 20px 0 10px; font-size: 13px; color: var(--secondary); cursor: pointer; text-decoration: underline; }
 </style>
 </head>
@@ -202,69 +81,38 @@
   <a href="key-questions.html">🔥 重點題型</a>
 </div>
 
-<!-- 目錄 -->
 <div class="toc">
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
   <div class="toc-body" id="toc-body">
-    <a href="#s1">一、範疇管理是什麼？</a>
-    <a href="#s2">二、範疇管理的時間軸：六個流程全貌</a>
-    <a href="#s3">三、蒐集需求的工具方法</a>
-    <a href="#s4">四、WBS 工作分解結構</a>
-    <a href="#s5">五、關鍵文件詳解</a>
-    <a href="#s6">六、範疇潛變 Scope Creep（高頻考點）</a>
-    <a href="#s7">七、題目出題模式與陷阱彙整</a>
-    <a href="#s_aexam5">★ A卷補強：範疇管理考點</a>
-    <a href="#s8">八、核心思維總結</a>
+    <a href="#s1">一、六個流程時間軸</a>
+    <a href="#s2">二、蒐集需求的工具方法</a>
+    <a href="#s3">三、WBS + 關鍵文件</a>
+    <a href="#s4">四、範疇潛變 Scope Creep</a>
+    <a href="#s5">五、題目出題模式與陷阱彙整</a>
   </div>
 </div>
 
-<!-- 一、範疇管理是什麼 -->
+<!-- 一、六個流程時間軸 -->
 <div class="section" id="s1">
-  <div class="section-header" onclick="toggle('b1')">
-    <span><span class="num">一</span>範疇管理是什麼？</span>
-    <span id="c1">▼</span>
-  </div>
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>六個流程時間軸</span><span id="c1">▼</span></div>
   <div class="section-body open" id="b1">
-    <p>範疇管理（Scope Management）就是回答這個問題：<strong>「這個專案到底要做什麼？不做什麼？」</strong></p>
-    <div class="box tip">
-      <div class="box-title">💡 一句話理解範疇管理</div>
-      把專案的工作邊界畫清楚，確保只做該做的事，不多也不少。<br><br>
-      對應您的銀行 AP 經驗：客戶說要做一個「查詢系統」，結果一直加功能變成「交易系統」，這就是範疇失控。範疇管理就是防止這種事發生的機制。
-    </div>
-    <p>範疇管理分兩個層面：</p>
-    <div class="table-wrap">
-      <table>
-        <tr><th>層面</th><th>說明</th></tr>
-        <tr><td>產品範疇<br>Product Scope</td><td>產品或服務本身的特性和功能，以「需求」為衡量基準</td></tr>
-        <tr><td>專案範疇<br>Project Scope</td><td>為了交付產品，所需完成的工作，以「專案管理計畫」為衡量基準</td></tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- 二、時間軸 -->
-<div class="section" id="s2">
-  <div class="section-header" onclick="toggle('b2')">
-    <span><span class="num">二</span>範疇管理的時間軸：六個流程全貌</span>
-    <span id="c2">▼</span>
-  </div>
-  <div class="section-body" id="b2">
-    <p>範疇管理有六個流程，理解這條線，流程順序題就不用死背：</p>
+    <p>範疇管理的本質：<strong>把專案邊界畫清楚——要做什麼、不做什麼都要明確。</strong></p>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot">①</div>
         <div class="tl-content">
           <div class="tl-title">規劃範疇管理 Plan Scope Management <span class="tag tag-green">規劃</span></div>
-          <p>制定「如何定義、確認、控制範疇」的計畫，是後續所有動作的依據</p>
-          <div class="tl-doc">📄 範疇管理計畫 Scope Management Plan</div>
+          <p>制定「如何定義、確認、控制範疇」的計畫</p>
+          <div class="tl-doc">📄 範疇管理計畫 Scope Management Plan<br>📄 需求管理計畫 Requirements Management Plan（說明如何蒐集、分析、記錄和管理需求）</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">②</div>
         <div class="tl-content">
           <div class="tl-title">蒐集需求 Collect Requirements <span class="tag tag-green">規劃</span></div>
-          <p>透過各種方法向利害關係人蒐集需求，確認專案要達成什麼目標</p>
-          <div class="tl-doc">📄 需求文件 Requirements Documentation<br>📄 需求追溯矩陣 Requirements Traceability Matrix</div>
+          <p>透過各種方法向利害關係人蒐集需求</p>
+          <div class="tl-doc">📄 需求文件（Requirements Documentation）：記錄需求內容，說明需求如何滿足目標<br>
+          📄 需求追溯矩陣（RTM）：追蹤需求與目標的連結關係，整個生命週期持續追蹤</div>
         </div>
       </div>
       <div class="tl-item">
@@ -272,23 +120,25 @@
         <div class="tl-content">
           <div class="tl-title">定義範疇 Define Scope <span class="tag tag-green">規劃</span></div>
           <p>從所有需求中，確認哪些納入本次專案，哪些不納入，畫出邊界</p>
-          <div class="tl-doc">📄 範疇聲明書 Project Scope Statement（在規劃階段產出）</div>
+          <div class="tl-doc">📄 範疇聲明書 Project Scope Statement<br>⚠️「完成定義範疇後，記錄結果在哪份文件？」→ 範疇聲明書，不是 WBS</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">④</div>
         <div class="tl-content">
-          <div class="tl-title">建立工作分解結構 Create WBS <span class="tag tag-green">規劃</span></div>
-          <p>把範疇拆解成較小、可管理的工作包（Work Package），方便估計和執行</p>
-          <div class="tl-doc">📄 WBS ＋ WBS 說明書 WBS Dictionary</div>
+          <div class="tl-title">建立 WBS Create WBS <span class="tag tag-green">規劃</span></div>
+          <p>把範疇拆解成較小、可管理的工作包（Work Package）</p>
+          <div class="tl-doc">📄 WBS ＋ WBS Dictionary（說明每個 Work Package 的詳細內容、負責人、驗收標準）<br>
+          範疇基準 = 範疇聲明書 + WBS + WBS Dictionary（三份，不含範疇管理計畫）</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">⑤</div>
         <div class="tl-content">
           <div class="tl-title">確認範疇 Validate Scope <span class="tag tag-orange">監控</span></div>
-          <p>客戶或利害關係人「正式驗收」交付成果，確認成果符合需求</p>
-          <div class="tl-doc">⚠️ 注意：這是「客戶驗收」，不是品質管控</div>
+          <p>客戶或利害關係人「正式驗收」交付成果</p>
+          <div class="tl-doc">⚠️ 這是「客戶驗收簽字」，不是品質管控<br>
+          順序：先 Control Quality（團隊內部確認）→ 再 Validate Scope（客戶正式驗收）</div>
         </div>
       </div>
       <div class="tl-item">
@@ -302,196 +152,127 @@
     </div>
 
     <div class="box trap">
-      <div class="box-title">⚠️ 流程順序常考陷阱：先有什麼才能做什麼？</div>
-      「定義範疇之前要先做什麼？」→ <strong>先蒐集需求（Collect Requirements）</strong>，有了需求才能定義範疇。<br><br>
-      「建立 WBS 之前要先做什麼？」→ <strong>先定義範疇（Define Scope）</strong>，有了範疇邊界才能分解工作。<br><br>
+      <div class="box-title">⚠️ 流程順序常考陷阱</div>
+      「定義範疇之前要先做什麼？」→ <strong>先蒐集需求</strong><br>
+      「建立 WBS 之前要先做什麼？」→ <strong>先定義範疇</strong><br>
       正確順序：規劃 → 蒐集需求 → 定義範疇 → 建立 WBS → 確認範疇 → 控制範疇
     </div>
   </div>
 </div>
 
-<!-- 三、蒐集需求工具 -->
+<!-- 二、蒐集需求工具 -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>蒐集需求的工具方法（高頻考點）</span><span id="c2">▼</span></div>
+  <div class="section-body" id="b2">
+    <div class="table-wrap"><table>
+      <tr><th>工具方法</th><th>特徵 / 適用情境</th></tr>
+      <tr><td>訪談 Interview</td><td>一對一深入交流。適合深入了解特定人的需求。</td></tr>
+      <tr><td>焦點團體 Focus Groups</td><td>特定族群座談，由主持人引導互動式討論<br>關鍵字：<strong>特定族群、座談、互動式討論</strong></td></tr>
+      <tr><td>引導 Facilitation</td><td>PM 促進跨單位人員討論，達成共識。跨部門工作坊（Workshop）是典型。<br>關鍵字：<strong>跨部門、工作坊、達成共識</strong></td></tr>
+      <tr><td>腦力激盪 Brainstorming</td><td>短時間內提出大量想法，不做任何評估<br>關鍵字：<strong>大量想法、不做評估</strong></td></tr>
+      <tr><td>親和圖 Affinity Diagram</td><td>將腦力激盪的大量創意，分析共同點與差異，<strong>分類整理</strong></td></tr>
+      <tr><td>心智圖 Mind Mapping</td><td>視覺化呈現想法間的關聯，<strong>探索更多想法</strong></td></tr>
+      <tr><td>問卷調查 Questionnaire</td><td>需向大量人員蒐集資料<br>關鍵字：<strong>大量、廣泛、統計</strong></td></tr>
+      <tr><td>雛形法 Prototype</td><td>先建立產品模型，使用者體驗後反覆修正<br>關鍵字：<strong>建立模型、使用者體驗、反覆修正</strong></td></tr>
+      <tr><td>標竿法 Benchmarking</td><td>參考其他組織或業界最佳實務作為比較基準<br>關鍵字：<strong>參考他人、業界範本</strong></td></tr>
+    </table></div>
+
+    <div class="box tip">
+      <div class="box-title">💡 最常混淆的三組</div>
+      <strong>焦點團體</strong>：特定族群 + 座談 → 重點在「特定族群互動討論」<br>
+      <strong>引導</strong>：跨部門 + 工作坊 → 重點在「讓不同單位達成共識」<br>
+      <strong>腦力激盪</strong>：大量想法 + 不評估 → 重點在「產生大量創意」<br><br>
+      <strong>親和圖 vs 心智圖：</strong><br>
+      親和圖 = 腦力激盪之後，把結果<strong>分類整理</strong><br>
+      心智圖 = 視覺化呈現，<strong>探索更多想法</strong>和關聯
+    </div>
+  </div>
+</div>
+
+<!-- 三、WBS + 關鍵文件 -->
 <div class="section" id="s3">
-  <div class="section-header" onclick="toggle('b3')">
-    <span><span class="num">三</span>蒐集需求的工具方法（高頻考點）</span>
-    <span id="c3">▼</span>
-  </div>
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>WBS + 關鍵文件</span><span id="c3">▼</span></div>
   <div class="section-body" id="b3">
-    <p>Ch5 最多題目考「在這個情境下，應該用哪種蒐集需求的方法？」，要記住每種方法的適用情境：</p>
-    <div class="table-wrap">
-      <table>
-        <tr><th>工具方法</th><th>特徵 / 適用情境</th></tr>
-        <tr><td>訪談 Interview</td><td>一對一深入交流。適合需要深入了解特定人的需求時。</td></tr>
-        <tr><td>焦點團體<br>Focus Groups</td><td>邀請特定族群（使用者、利害關係人）召開座談會，由主持人引導互動式討論。<br>關鍵字：<strong>特定族群、座談、互動式討論</strong></td></tr>
-        <tr><td>引導 Facilitation</td><td>PM 促進跨單位人員討論，讓大家達成共識。跨部門工作坊（Workshop）是典型情境。<br>關鍵字：<strong>跨部門、工作坊、達成共識</strong></td></tr>
-        <tr><td>腦力激盪<br>Brainstorming</td><td>短時間內提出大量想法，不對任何想法做評估。<br>關鍵字：<strong>大量想法、不做評估、越多越好</strong></td></tr>
-        <tr><td>親和圖<br>Affinity Diagram</td><td>將腦力激盪得到的大量創意，分析共同點與差異，分類整理。<br>關鍵字：<strong>分析腦力激盪的結果、歸類</strong></td></tr>
-        <tr><td>心智圖<br>Mind Mapping</td><td>視覺化呈現想法之間的關聯，探索更多想法。<br>關鍵字：<strong>分析想法之間的關聯、探索更多</strong></td></tr>
-        <tr><td>問卷調查<br>Questionnaire</td><td>需要向大量人員蒐集資料時使用。<br>關鍵字：<strong>大量、廣泛、統計分析</strong></td></tr>
-        <tr><td>雛形法<br>Prototype</td><td>先建立產品模型，交給使用者體驗並取得回饋，再反覆修正。<br>關鍵字：<strong>建立模型、使用者體驗、反覆修正</strong></td></tr>
-        <tr><td>標竿法<br>Benchmarking</td><td>參考其他組織或業界的最佳實務，作為比較基準。<br>關鍵字：<strong>參考他人、業界範本、比較</strong></td></tr>
-      </table>
+
+    <h3>WBS 核心概念</h3>
+    <div class="table-wrap"><table>
+      <tr><th>概念</th><th>說明</th></tr>
+      <tr><td>工作包 Work Package</td><td>WBS 最底層，可實際估計時間、成本、指派負責人的最小單位</td></tr>
+      <tr><td>控制帳戶 Control Account</td><td>Work Package 上方的匯總管理點，由 PM 監控成本和進度</td></tr>
+      <tr><td>WBS Dictionary</td><td>說明每個 Work Package 的詳細內容（範圍、負責人、驗收標準）<br>→ 成員不清楚自己負責的 Work Package 詳細內容 → 查 WBS Dictionary</td></tr>
+      <tr><td>範疇基準 Scope Baseline</td><td>範疇聲明書 + WBS + WBS Dictionary（三份）<br>⚠️ 不包含範疇管理計畫</td></tr>
+    </table></div>
+
+    <h3>WBS 建立方式</h3>
+    <div class="table-wrap"><table>
+      <tr><th>方式</th><th>說明</th></tr>
+      <tr><td>由上而下 Top-down</td><td>從大到小分解，有豐富經驗或 WBS 範本可用時</td></tr>
+      <tr><td>由下而上 Bottom-up</td><td>先列所有工作項目再向上歸納，沒有相關經驗時</td></tr>
+      <tr><td>滾浪式規劃 Rolling Wave Planning</td><td>近期工作詳細規劃，遠期工作暫時保持高層次，隨著資訊增加再逐步細化</td></tr>
+    </table></div>
+
+    <div class="box trap">
+      <div class="box-title">⚠️ WBS 分解的考點</div>
+      <strong>WBS 要分解到多細？</strong> → 分解到「可以實際估計時間和成本」就夠，不是越細越好<br>
+      WBS 是「交付成果導向」的分解，不是活動清單<br>
+      「WBS 能幫助誰？」→ 通常答案是「<strong>以上皆是</strong>」（團隊/PM/客戶都受益）
     </div>
 
-    <div class="box tip">
-      <div class="box-title">💡 最常混淆的三組：焦點團體 vs 引導 vs 腦力激盪</div>
-      <strong>焦點團體</strong>：特定族群 + 座談 + 主持人引導 → 重點在「特定族群互動討論」<br>
-      <strong>引導</strong>：跨部門 + 工作坊 + 達成共識 → 重點在「讓不同單位的人達成共識」<br>
-      <strong>腦力激盪</strong>：大量想法 + 不評估 + 越多越好 → 重點在「產生大量創意」<br><br>
-      記憶訣竅：看題目關鍵字，「座談特定族群」→ 焦點團體；「跨部門共識」→ 引導；「大量創意」→ 腦力激盪。
-    </div>
+    <h3>關鍵文件對照</h3>
+    <div class="table-wrap"><table>
+      <tr><th>文件</th><th>用途 / 考試關鍵</th></tr>
+      <tr><td>需求文件<br>Requirements Documentation</td><td>記錄蒐集到的需求內容，以及需求如何滿足目標<br>→ 蒐集需求流程的產出；查「哪些需求確定納入專案」</td></tr>
+      <tr><td>需求追溯矩陣 RTM</td><td>追蹤需求與目標的「連結關係」，整個生命週期持續追蹤實現狀態<br>→ 「定期確認需求與目標的連結關係」→ RTM<br>→ 確認範疇（Validate Scope）時逐一核對需求 → RTM</td></tr>
+      <tr><td>範疇聲明書<br>Project Scope Statement</td><td>定義專案要做什麼、不做什麼，定義範疇後產出</td></tr>
+    </table></div>
 
-    <div class="box warn">
-      <div class="box-title">💡 雛形法（Prototype）的特別說明</div>
-      雛形法是敏捷思維的體現——不是一開始就把需求定死，而是<strong>先做出一個可以給使用者體驗的版本，根據回饋再修正，持續迭代</strong>。<br><br>
-      考題情境：「專案團隊創建產品前，先建立模型交給使用者體驗，取得具體回饋後，再反覆修正模型，持續進行」→ 選 Prototype（雛形法）。
+    <div class="box trap">
+      <div class="box-title">⚠️ 需求文件 vs RTM 最常混淆</div>
+      <strong>需求文件</strong>：記錄需求「內容」是什麼 → 關鍵字「蒐集需求後的產出」「記錄需求內容」<br>
+      <strong>RTM</strong>：追蹤需求與目標的「連結關係」→ 關鍵字「確認連結關係」「定期追蹤」「驗收核對」
     </div>
   </div>
 </div>
 
-<!-- 四、WBS -->
+<!-- 四、範疇潛變 -->
 <div class="section" id="s4">
-  <div class="section-header" onclick="toggle('b4')">
-    <span><span class="num">四</span>WBS 工作分解結構（高頻考點）</span>
-    <span id="c4">▼</span>
-  </div>
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>範疇潛變 Scope Creep（高頻考點）</span><span id="c4">▼</span></div>
   <div class="section-body" id="b4">
-    <p>WBS（Work Breakdown Structure）是把整個專案範疇，拆解成一層一層、越來越小的工作單位。</p>
+    <p>範疇潛變（Scope Creep）= 未經正式變更流程，範疇悄悄擴大。</p>
 
-    <div class="box tip">
-      <div class="box-title">💡 用銀行 AP 專案來理解 WBS</div>
-      假設您要開發一個銀行查詢系統：<br>
-      最上層：「銀行查詢系統開發」<br>
-      第二層：需求分析 / 系統設計 / 開發 / 測試 / 上線部署<br>
-      第三層（以「開發」為例）：前端介面 / 後端 API / 資料庫設計<br>
-      最底層（Work Package）：「設計帳戶查詢 API」→ 可以實際估計時間和成本的最小單位<br><br>
-      <strong>WBS 是「交付成果導向」的分解，不是活動清單</strong>。
-    </div>
-
-    <h3>WBS 的核心概念</h3>
-    <div class="table-wrap">
-      <table>
-        <tr><th>概念</th><th>說明</th></tr>
-        <tr><td>工作包<br>Work Package</td><td>WBS 最底層的元素，是可以實際估計時間、成本、指派負責人的最小單位</td></tr>
-        <tr><td>控制帳戶<br>Control Account</td><td>在 Work Package 上方，匯總成本和進度的管理點，由 PM 監控</td></tr>
-        <tr><td>WBS 說明書<br>WBS Dictionary</td><td>說明每個 Work Package 的詳細內容，包含範圍、負責人、驗收標準等<br>團隊成員不確定自己 Work Package 詳細內容時，查 WBS Dictionary</td></tr>
-        <tr><td>範疇基準<br>Scope Baseline</td><td>由「範疇聲明書 + WBS + WBS Dictionary」三份文件組成<br>⚠️ 不包含「範疇管理計畫」</td></tr>
-      </table>
-    </div>
-
-    <h3>建立 WBS 的兩個方向</h3>
-    <div class="table-wrap">
-      <table>
-        <tr><th>方向</th><th>適用時機</th></tr>
-        <tr><td>由上而下<br>Top-down</td><td>組織有豐富經驗、有 WBS 範本可以參考時，從大到小分解</td></tr>
-        <tr><td>由下而上<br>Bottom-up</td><td>組織沒有相關經驗，可以邊執行邊向上合併工作交付成果</td></tr>
-        <tr><td>滾浪式規劃<br>Rolling Wave Planning</td><td>近期的工作詳細規劃，遠期的工作暫時保持高層次，隨著資訊增加再逐步細化</td></tr>
-      </table>
-    </div>
+    <div class="table-wrap"><table>
+      <tr><th>情境</th><th>正確做法</th></tr>
+      <tr><td>團隊成員在會議提議增加計畫外的新功能</td><td>PM 說明應專注完成計畫內工作（Control Scope）</td></tr>
+      <tr><td>客戶對交付成果不滿，原因是對交付清單沒明確共識</td><td>事先加強管理利害關係人參與，預防期望不對齊</td></tr>
+      <tr><td>接近完工，客戶突然提出重大範疇變更</td><td>要求客戶提出變更申請，走正式變更流程（不能直接拒絕）</td></tr>
+      <tr><td>利害關係人不斷提出變更，影響專案</td><td>儘早辨識並納入管理，早期蒐集並確認他的需求</td></tr>
+    </table></div>
 
     <div class="box trap">
-      <div class="box-title">⚠️ WBS 分解的常見考點</div>
-      <strong>「WBS 要分解到多細？」</strong>分解到「可以實際估計時間和成本」的程度就夠了，不是越細越好。<br><br>
-      考題說「工作應分解為許多細項，下列何者對工作分解的程度是錯誤的？」<br>
-      → 錯誤答案是：<strong>「分解到能夠實際估計時間及成本」</strong> → 這是正確的分解程度，不是「錯誤」的！<br>
-      → 真正錯誤的是：「不能再進行物理性切割」→ WBS 是管理用的分解，不是物理切割。
+      <div class="box-title">⚠️ 控制範疇 vs 確認範疇容易混淆</div>
+      <strong>確認範疇（Validate Scope）</strong>：客戶「正式驗收」交付成果，客戶簽字確認，監控流程<br>
+      <strong>控制範疇（Control Scope）</strong>：監控範疇是否有偏差，防止範疇潛變，監控流程<br><br>
+      考試情境：「PM 指出團隊應專注完成計畫內工作，且僅限必要工作」→ <strong>控制範疇</strong>（防止擴大，不是驗收）<br><br>
+      Gold Plating（鍍金）= 團隊自己加功能，沒問客戶要不要 → 屬於<strong>控制範疇</strong>需要防止的行為<br>
+      Scope Creep（範疇潛變）= 外部需求不斷偷偷增加 → 同樣需要控制範疇防範
     </div>
-
-    <h3>WBS 能為誰提供最有效的幫助？</h3>
-    <p>WBS 能同時滿足多個角色的需求：</p>
-    <ul>
-      <li>專案團隊：了解自己負責哪些工作</li>
-      <li>PM（專案經理）：系統地估計各工作包的成本和時程</li>
-      <li>客戶或發起人：了解專案的分解合理性</li>
-    </ul>
-    <p>所以考題問「WBS 能為誰提供最有效幫助？」答案通常是「<strong>以上皆是</strong>」。</p>
   </div>
 </div>
 
-<!-- 五、關鍵文件 -->
+<!-- 五、題目出題模式 -->
 <div class="section" id="s5">
-  <div class="section-header" onclick="toggle('b5')">
-    <span><span class="num">五</span>關鍵文件詳解</span>
-    <span id="c5">▼</span>
-  </div>
+  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>題目出題模式與陷阱彙整</span><span id="c5">▼</span></div>
   <div class="section-body" id="b5">
-    <div class="table-wrap">
-      <table>
-        <tr><th>文件</th><th>用途 / 考試關鍵</th></tr>
-        <tr><td>需求文件<br>Requirements Documentation</td><td>記錄所有蒐集到的需求內容，以及需求如何滿足專案目標<br>→ 查「哪些需求確定納入專案範疇」時用這份</td></tr>
-        <tr><td>需求追溯矩陣<br>Requirements Traceability Matrix</td><td>追蹤需求與目標的「連結關係」，確保每個需求都和目標對應，並追蹤整個生命週期的實現狀態<br>→ 「定期確認需求與目標的連結關係」→ RTM<br>→ 確認範疇（Validate Scope）時用來逐一核對需求是否已實現</td></tr>
-        <tr><td>需求管理計畫<br>Requirements Management Plan</td><td>說明如何蒐集、分析、記錄和管理需求的計畫<br>包含：需求的屬性、驗收標準、如何排序<br>⚠️ 不包含「如何蒐集利害關係人的期望」</td></tr>
-        <tr><td>範疇聲明書<br>Project Scope Statement</td><td>明確定義專案要做什麼、不做什麼，是範疇的邊界定義<br>→ 在「定義範疇（Define Scope）」流程產出，屬於規劃階段</td></tr>
-        <tr><td>WBS 說明書<br>WBS Dictionary</td><td>說明每個 Work Package 的詳細內容<br>→ 團隊成員不清楚自己負責的 Work Package 詳細內容時查這份</td></tr>
-        <tr><td>範疇基準<br>Scope Baseline</td><td>由「範疇聲明書 + WBS + WBS Dictionary」組成<br>⚠️ 不包含範疇管理計畫</td></tr>
-      </table>
-    </div>
-
-    <div class="box trap">
-      <div class="box-title">⚠️ 最容易混淆：需求文件 vs 需求追溯矩陣</div>
-      <strong>需求文件（Requirements Documentation）</strong>：記錄需求的「內容」是什麼，以及蒐集需求流程後產出<br>
-      → 查「哪些需求確定納入專案範疇」、「需求如何滿足目標的說明」時用這份<br><br>
-      <strong>需求追溯矩陣（RTM）</strong>：追蹤需求與專案目標的「連結關係」，確保每個需求都和目標對應，並在整個生命週期追蹤實現狀態<br>
-      → 「定期確認需求與目標的連結關係」→ <strong>RTM</strong><br>
-      → 確認範疇（Validate Scope）時逐一核對需求是否已實現 → <strong>RTM</strong><br><br>
-      <strong>考試關鍵字判斷：</strong><br>
-      「記錄需求內容、蒐集需求後的產出」→ <strong>需求文件</strong><br>
-      「確認需求與目標的連結、定期追蹤、驗收核對」→ <strong>RTM</strong>
-    </div>
-  </div>
-</div>
-
-<!-- 六、範疇潛變 -->
-<div class="section" id="s6">
-  <div class="section-header" onclick="toggle('b6')">
-    <span><span class="num">六</span>範疇潛變 Scope Creep（高頻考點）</span>
-    <span id="c6">▼</span>
-  </div>
-  <div class="section-body" id="b6">
-    <p>範疇潛變（Scope Creep）是指未經過正式變更流程，範疇就悄悄地擴大了。這是考試中非常高頻的情境題。</p>
-
-    <div class="box tip">
-      <div class="box-title">💡 用您的工作經驗理解</div>
-      您在銀行做 AP 開發，客戶說「順便幫我加一個小功能嘛，很簡單的」，然後一個小功能疊一個小功能，最後專案嚴重超出時程和預算——這就是範疇潛變。<br><br>
-      PMP 的應對方式：<strong>任何需求變更，不管多小，都要走正式變更流程</strong>。
-    </div>
-
-    <h3>遇到範疇潛變，PM 應該怎麼做？</h3>
-    <div class="table-wrap">
-      <table>
-        <tr><th>情境</th><th>正確做法</th></tr>
-        <tr><td>團隊成員在會議中提議增加計畫外的新功能</td><td>PM 說明應集中精力完成計畫內工作，且僅限必要的工作（Control Scope）</td></tr>
-        <tr><td>客戶對交付成果不滿意，原因是雙方對交付清單沒有明確共識</td><td>應事先「加強管理利害關係人參與（Manage Stakeholder Engagement）」來預防</td></tr>
-        <tr><td>專案已接近完工，客戶突然提出重大範疇變更</td><td>要求客戶提出變更詳細說明及申請，走正式變更流程（不能直接拒絕）</td></tr>
-        <tr><td>一名利害關係人不斷提出變更，影響專案</td><td>儘早辨識該利害關係人並納入管理，早期蒐集並確認他的需求</td></tr>
-      </table>
-    </div>
-
-    <div class="box trap">
-      <div class="box-title">⚠️ 「控制範疇」vs「確認範疇」容易混淆</div>
-      <strong>確認範疇（Validate Scope）</strong>：客戶「正式驗收」交付成果的動作，重點是「客戶簽字確認」，屬於監控流程。<br><br>
-      <strong>控制範疇（Control Scope）</strong>：監控範疇是否有偏差，管理變更，防止範疇潛變，也屬於監控流程。<br><br>
-      考題情境：「PM 正在規劃 WBS，PM 指出團隊應專注完成計畫內的主要工作，且僅限必要工作」→ 這是在做「<strong>控制範疇</strong>」，不是確認範疇，因為是在防止範疇擴大。
-    </div>
-  </div>
-</div>
-
-<!-- 七、題目出題模式 -->
-<div class="section" id="s7">
-  <div class="section-header" onclick="toggle('b7')">
-    <span><span class="num">七</span>題目出題模式與陷阱彙整</span>
-    <span id="c7">▼</span>
-  </div>
-  <div class="section-body" id="b7">
 
     <div class="qtype">
       <div class="qt-title">📝 題型1：「目前在做哪個流程？」</div>
       <ul>
-        <li>「PM 安排與客戶會面，確認公司官網的需求範圍」→ <strong>蒐集需求</strong>（Collect Requirements）</li>
-        <li>「確認哪些需求要納入專案範圍」→ <strong>定義範疇</strong>（Define Scope）</li>
-        <li>「把可交付成果分解成較小的單位或較細的工作包」→ <strong>建立 WBS</strong>（Create WBS）</li>
-        <li>「準備交給客戶確認，需進行哪個流程」→ <strong>確認範疇</strong>（Validate Scope）</li>
-        <li>「PM 發現有人在做計畫外的新功能，阻止並說明專注在計畫內工作」→ <strong>控制範疇</strong>（Control Scope）</li>
+        <li>「PM 安排與客戶會面，確認公司官網的需求範圍」→ <strong>蒐集需求</strong></li>
+        <li>「確認哪些需求要納入專案範圍」→ <strong>定義範疇</strong></li>
+        <li>「把可交付成果分解成較小的工作包」→ <strong>建立 WBS</strong></li>
+        <li>「準備交給客戶確認」→ <strong>確認範疇（Validate Scope）</strong></li>
+        <li>「PM 發現有人在做計畫外的新功能，阻止並說明專注在計畫內工作」→ <strong>控制範疇（Control Scope）</strong></li>
+        <li>「確認 WBS 和工作包符合需求，監控範疇有沒有蔓延」→ <strong>控制範疇</strong></li>
       </ul>
     </div>
 
@@ -501,133 +282,34 @@
         <li>快速提出大量想法，不做評估 → <strong>腦力激盪</strong></li>
         <li>跨部門工作坊，促進討論達成共識 → <strong>引導（Facilitation）</strong></li>
         <li>特定使用者族群座談，互動討論 → <strong>焦點團體</strong></li>
-        <li>大量使用者做滿意度調查 → <strong>問卷調查</strong></li>
+        <li>大量使用者做調查 → <strong>問卷調查</strong></li>
         <li>先做模型，使用者體驗後反覆修正 → <strong>雛形法（Prototype）</strong></li>
         <li>參考其他飯店的建設資料作為範本 → <strong>標竿法（Benchmarking）</strong></li>
-        <li>腦力激盪後，分析創意的共同點差異加以分類 → <strong>親和圖</strong></li>
+        <li>腦力激盪後，分類歸納創意的共同點 → <strong>親和圖</strong></li>
+        <li>分析需求之間的關聯，探索更多想法 → <strong>心智圖</strong></li>
       </ul>
     </div>
 
     <div class="qtype">
       <div class="qt-title">📝 題型3：「應該查哪份文件？」</div>
       <ul>
-        <li>「不確定負責的 Work Package 詳細內容」→ <strong>WBS 說明書（WBS Dictionary）</strong></li>
+        <li>「不確定負責的 Work Package 詳細內容」→ <strong>WBS Dictionary</strong></li>
         <li>「確認需求內容、蒐集需求後的產出文件」→ <strong>需求文件（Requirements Documentation）</strong></li>
         <li>「定期確認需求與目標的連結關係」→ <strong>需求追溯矩陣（RTM）</strong></li>
-        <li>「追蹤需求實現狀態、Validate Scope 時核對需求」→ <strong>需求追溯矩陣（RTM）</strong></li>
-        <li>「確認哪些需求確定納入專案範疇」→ <strong>需求文件</strong></li>
-        <li>「確認專案範疇基準的組成」→ 範疇聲明書 + WBS + WBS Dictionary（<strong>三份合稱範疇基準</strong>）</li>
+        <li>「確認範疇時核對需求是否已實現」→ <strong>RTM</strong></li>
+        <li>「確認專案範疇基準的組成」→ <strong>範疇聲明書 + WBS + WBS Dictionary（三份）</strong></li>
       </ul>
     </div>
 
-    <div class="box trap">
-      <div class="box-title">⚠️ 最常答錯的題目</div>
-      <strong>Q：「專案結束蒐集需求流程後會得到哪一份文件，除了記錄所有需求的內容，也說明這些需求如何滿足專案目標？」</strong><br>
-      → 答案：<strong>需求文件（Requirements Documentation）</strong>。這題強調的是「蒐集需求流程的產出」＋「記錄需求內容」，是需求文件。<br><br>
-      <strong>Q：「應定期確認專案需求與專案目標的連結關係，請問可以參考哪一份文件？」</strong><br>
-      → 答案：<strong>需求追溯矩陣（RTM）</strong>。RTM 負責追蹤需求與目標的連結關係，並在整個生命週期持續追蹤。<br><br>
-      <strong>Q：「完成定義範疇（Define Scope）後，必須將相關結果記錄在哪份文件？」</strong><br>
-      → 答案：<strong>範疇聲明書（Scope Statement）</strong>，不是 WBS，也不是需求文件。
-    </div>
-  </div>
-</div>
-
-<!-- A卷補強 -->
-<div class="section" id="s_aexam5">
-  <div class="section-header" onclick="toggle('b_aexam5')"><span><span class="num">★</span>A卷補強：範疇管理考點</span><span id="c_aexam5">▼</span></div>
-  <div class="section-body" id="b_aexam5">
-
-    <h3>確認範疇 vs 控制品質（A卷Q67、Q82）</h3>
-    <div class="table-wrap"><table>
-      <tr><th>流程</th><th>做什麼</th><th>誰來做</th><th>關鍵字</th></tr>
-      <tr><td>確認範疇<br>Validate Scope</td><td>客戶正式驗收交付成果</td><td>客戶/利害關係人</td><td>客戶驗收、正式接受、簽字</td></tr>
-      <tr><td>控制品質<br>Control Quality</td><td>團隊內部確認成果符合品質標準</td><td>專案團隊</td><td>團隊檢驗、符合標準、檢查</td></tr>
-    </table></div>
-    <div class="box trap">
-      <div class="box-title">⚠️ A卷Q67、Q82 的關鍵</div>
-      Q67：「PM 確認專案的 WBS 和工作包符合需求」→ 這是 <strong>控制範疇（Control Scope）</strong>，監控範疇有沒有蔓延<br><br>
-      Q82：「客戶驗收交付成果」→ <strong>確認範疇（Validate Scope）</strong><br>
-      順序：先控制品質（團隊內部確認）→ 再確認範疇（客戶正式驗收）
-    </div>
-
-    <h3>WBS Dictionary（WBS 字典）（A卷Q65）</h3>
-    <p>WBS 字典是每個工作包的詳細說明文件，包含：</p>
-    <ul>
-      <li>工作包的描述、負責人</li>
-      <li>預計時程和成本</li>
-      <li>所需資源</li>
-      <li>驗收標準</li>
-    </ul>
     <div class="box tip">
-      <div class="box-title">💡 什麼時候查 WBS Dictionary？</div>
-      「工程團隊需要了解 WBS 工作包的詳細工作內容、工作的時間和費用」→ <strong>WBS Dictionary</strong><br>
-      不是 WBS 圖（圖只顯示結構），字典才有詳細內容。
-    </div>
-
-    <h3>蒐集需求工具（A卷Q87、Q93）</h3>
-    <div class="table-wrap"><table>
-      <tr><th>工具</th><th>適用情境</th></tr>
-      <tr><td>腦力激盪 Brainstorming</td><td>快速收集大量創意，沒有對錯之分</td></tr>
-      <tr><td>訪談 Interview</td><td>深入了解個別利害關係人的需求</td></tr>
-      <tr><td>焦點團體 Focus Group</td><td>讓同類利害關係人一起討論，收集群體意見</td></tr>
-      <tr><td>問卷調查 Questionnaires and Survey</td><td>利害關係人人數多，需要快速收集大量意見</td></tr>
-      <tr><td>引導 Facilitation</td><td>PM 引導各方達成共識</td></tr>
-      <tr><td>親和圖 Affinity Diagram</td><td>將大量想法分類整理</td></tr>
-      <tr><td>心智圖 Mind Mapping</td><td>視覺化呈現需求之間的關係</td></tr>
-      <tr><td>原型法 Prototype</td><td>先做出雛形讓使用者試用，收集回饋</td></tr>
-    </table></div>
-
-    <h3>WBS 建立方式（A卷Q77）</h3>
-    <div class="table-wrap"><table>
-      <tr><th>方式</th><th>說明</th></tr>
-      <tr><td>由上而下 Top-down</td><td>從最高層開始分解，逐層往下細化。最常見的方式。</td></tr>
-      <tr><td>由下而上 Bottom-up</td><td>先列出所有工作項目，再向上歸納整理</td></tr>
-      <tr><td>原型法 Prototype</td><td>先做雛形再根據回饋調整 WBS</td></tr>
-      <tr><td>分解 Decomposition</td><td>WBS 建立的核心技術，把大工作分解成小工作</td></tr>
-    </table></div>
-
-    <h3>滾浪式規劃（Rolling Wave Planning）（A卷Q78）</h3>
-    <p>對近期工作做詳細規劃，對遠期工作只做高層次規劃，隨著時間推進再逐步細化。</p>
-    <div class="box tip">
-      <div class="box-title">💡 考試情境</div>
-      「PM 目前只能規劃近期的工作細節，遠期的工作還不確定，這種規劃方式叫什麼？」<br>
-      → <strong>滾浪式規劃（Rolling Wave Planning）</strong>
-    </div>
-
-    <h3>需求追溯矩陣（A卷Q75、Q76）</h3>
-    <p>Requirements Traceability Matrix 追蹤需求與目標的連結關係，確保每個需求都有對應的交付成果，並在整個專案生命週期持續追蹤實現狀態。</p>
-    <div class="box trap">
-      <div class="box-title">⚠️ RTM 的兩個核心用途</div>
-      1. <strong>連結關係</strong>：確認每個需求和專案目標對應，「定期確認需求與目標的連結關係」→ RTM<br><br>
-      2. <strong>驗收核對</strong>：「確認範疇（Validate Scope）時需要查哪份文件，確認交付成果符合需求？」<br>
-      → 除了 PM Plan 之外，重要的還有 <strong>RTM</strong>，驗收時可以逐一核對每個需求是否已實現。
-    </div>
-  </div>
-</div>
-
-<!-- 八、核心思維 -->
-<div class="section" id="s8">
-  <div class="section-header" onclick="toggle('b8')">
-    <span><span class="num">八</span>核心思維總結</span>
-    <span id="c8">▼</span>
-  </div>
-  <div class="section-body" id="b8">
-    <div class="box tip">
-      <div class="box-title">💡 Ch5 範疇管理的核心思維</div>
+      <div class="box-title">💡 Ch5 核心思維</div>
       <ul>
-        <li><strong>範疇管理的本質</strong>是「把邊界畫清楚」，要做什麼、不做什麼都要明確</li>
-        <li><strong>流程有嚴格順序</strong>：先規劃 → 蒐集需求 → 定義範疇 → 建立 WBS → 確認 → 控制</li>
-        <li><strong>WBS 是交付成果導向的分解</strong>，不是活動清單，分解到「可以估計時間成本」就夠</li>
-        <li><strong>確認範疇 = 客戶驗收</strong>；控制範疇 = 防止範疇擴大，兩個是不同的動作</li>
-        <li><strong>範疇潛變的預防</strong>靠的是早期充分蒐集需求，並走正式變更流程</li>
+        <li><strong>流程有嚴格順序</strong>：蒐集需求 → 定義範疇 → WBS → 確認 → 控制，不能跳步</li>
+        <li><strong>確認範疇 = 客戶驗收</strong>；控制範疇 = 防止範疇擴大，兩個是不同動作</li>
+        <li><strong>Control Quality 先於 Validate Scope</strong>：先自己確認品質，再讓客戶驗收</li>
+        <li><strong>範疇潛變的預防</strong>：早期充分蒐集需求，任何變更走正式流程</li>
+        <li>看到「客戶提出新功能」→ 答案通常不是拒絕，而是「走變更流程評估影響」</li>
       </ul>
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 對應您的實戰經驗</div>
-      您18年的開發經驗中，「客戶一直改需求」是最熟悉的痛點。PMP 範疇管理給了您一套正式的應對框架：<br><br>
-      • 一開始就用需求追溯矩陣確認每個需求和目標的連結 → 讓客戶難以隨意增加沒有目標依據的需求<br>
-      • 任何新增需求走變更流程，讓客戶了解變更的代價 → 自然減少無謂的範疇潛變<br><br>
-      考試記得：<strong>看到「客戶提出新功能」，答案通常不是拒絕，而是「走變更流程評估影響」</strong>。
     </div>
   </div>
 </div>

@@ -45,18 +45,15 @@
   ul li{font-size:14px;margin-bottom:5px;}
   .qtype{background:#F0F6FF;border:1px solid #C0D8F0;border-radius:10px;padding:12px 14px;margin:10px 0;}
   .qtype .qt-title{font-weight:700;color:var(--primary);font-size:13px;margin-bottom:6px;}
-  /* 角色卡片 */
   .role-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0;}
   .role-card{border-radius:10px;padding:12px;border:1px solid var(--border);text-align:center;}
   .role-card .rc-icon{font-size:24px;margin-bottom:6px;}
   .role-card .rc-name{font-weight:700;font-size:13px;color:var(--primary);}
   .role-card .rc-eng{font-size:11px;color:var(--accent);margin-bottom:6px;}
   .role-card .rc-desc{font-size:12px;color:#555;text-align:left;}
-  /* Sprint 流程 */
   .sprint-flow{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;align-items:center;}
   .sf-item{background:var(--primary);color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;text-align:center;flex:1;min-width:80px;}
   .sf-arrow{color:var(--secondary);font-size:18px;font-weight:700;}
-  /* Backlog */
   .backlog-card{background:#F8FAFD;border:1px solid var(--border);border-radius:10px;padding:12px;margin:6px 0;}
   .bc-title{font-weight:700;font-size:13px;color:var(--primary);margin-bottom:4px;}
   .bc-desc{font-size:12px;color:#555;}
@@ -83,17 +80,10 @@
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
   <div class="toc-body" id="toc-body">
     <a href="#s1">一、Scrum 三個角色分工</a>
-    <a href="#s2">二、Sprint 衝刺流程與四個事件</a>
-    <a href="#s3">三、Product Backlog 與 Sprint Backlog</a>
-    <a href="#s4">四、Daily Scrum 每日站立會議</a>
-    <a href="#s5">五、敏捷開發團隊特色</a>
-    <a href="#s6">六、需求故事排序與估算</a>
-    <a href="#s7">七、變更在敏捷中的處理方式</a>
-    <a href="#s9">九、進階敏捷觀念（歷屆考點）</a>
-    <a href="#s10">十、PM 在敏捷中的角色（高頻考點）</a>
-    <a href="#s_aexam14">★ A卷補強：敏捷考點解析</a>
-    <a href="#s_aexam14">★ A卷補強：敏捷錯題解析</a>
-    <a href="#s8">十一、題目出題模式與陷阱彙整</a>
+    <a href="#s2">二、Sprint 四個事件 + Backlog + 變更處理</a>
+    <a href="#s3">三、敏捷工具與進階觀念</a>
+    <a href="#s4">四、PM 在敏捷中的角色</a>
+    <a href="#s5">五、題目出題模式與陷阱彙整</a>
   </div>
 </div>
 
@@ -101,7 +91,13 @@
 <div class="section" id="s1">
   <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>Scrum 三個角色分工（超高頻考點）</span><span id="c1">▼</span></div>
   <div class="section-body open" id="b1">
-    <p>每道題幾乎都在考「誰負責做什麼」，三個角色要清楚分工：</p>
+    <div class="box tip">
+      <div class="box-title">💡 船長/後勤/水手比喻</div>
+      <strong>PO = 船長</strong>：決定船往哪走（方向/需求/價值）<br>
+      <strong>SM = 後勤</strong>：讓船員可以專心工作（排除障礙/守護流程）<br>
+      <strong>Dev Team = 水手</strong>：實際操槳划船（執行開發）
+    </div>
+
     <div class="role-grid">
       <div class="role-card">
         <div class="rc-icon">🧭</div>
@@ -112,9 +108,9 @@
           ✅ 確認需求的價值<br>
           ✅ 建立並維護 Product Backlog<br>
           ✅ 向開發團隊解釋需求故事<br>
-          ✅ 決定每次 Sprint 的工作量（Sprint 目標）<br>
-          ✅ 產品增量是否被允收<br>
-          ❌ 不決定 Sprint Backlog 內的工作量（那是Dev Team）
+          ✅ 決定 Sprint 目標（做什麼）<br>
+          ✅ 在 Product Review 決定是否允收<br>
+          ❌ 不決定 Sprint Backlog 的工作量（那是Dev Team）
         </div>
       </div>
       <div class="role-card">
@@ -124,8 +120,8 @@
         <div class="rc-desc">
           ✅ 教導團隊如何依照敏捷原則執行<br>
           ✅ 保護敏捷原則不被破壞<br>
-          ✅ 協助敏捷團隊進行跨專案協商及議題討論<br>
-          ✅ 採僕人式管理為敏捷團隊服務<br>
+          ✅ 協助敏捷團隊跨專案協商及議題討論<br>
+          ✅ 採僕人式管理（Servant Leader）為團隊服務<br>
           ❌ 不以命令與指派的方式分發工作
         </div>
       </div>
@@ -138,24 +134,26 @@
           ✅ 確定 Sprint Backlog 內的工作量<br>
           ✅ 自我組織，自己決定誰做什麼<br>
           ✅ 由跨領域成員組成（3~9人）<br>
-          ✅ 可同時兼任多專案的開發成員
+          ❌ 不得同時兼任多個專案（敏捷要求專注）
         </div>
       </div>
     </div>
+
     <div class="box trap">
-      <div class="box-title">⚠️ PO 的職責「不包含」哪項？</div>
-      考題（Q1）：「PO 的主要職責，不包含哪項？」<br>
-      → 不包含：<strong>決定每次衝刺（Sprint）的工作量</strong><br>
-      → Sprint Backlog 內的工作量由<strong>開發團隊</strong>決定，PO 決定的是 Sprint 目標（做什麼），不是工作量（做多少）。
+      <div class="box-title">⚠️ 三個角色最常考的「不包含」題</div>
+      <strong>「PO 不包含的職責」→ 決定 Sprint 的工作量</strong>（工作量由 Dev Team 決定，PO 決定目標）<br>
+      <strong>「SM 不做的事」→ 以命令與指派的方式分發工作</strong>（SM = 僕人式領導）<br>
+      <strong>「Dev Team 特色不包含」→ 可同時兼任多個專案</strong>（敏捷強調專注）
     </div>
   </div>
 </div>
 
-<!-- 二、Sprint 流程 -->
+<!-- 二、Sprint 四個事件 + Backlog + 變更 -->
 <div class="section" id="s2">
-  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>Sprint 衝刺流程與四個事件</span><span id="c2">▼</span></div>
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>Sprint 四個事件 + Backlog + 變更處理</span><span id="c2">▼</span></div>
   <div class="section-body" id="b2">
-    <p>一個 Sprint 的完整循環，考試常考「子事件的正確順序」：</p>
+
+    <h3>四個事件（正確順序必考）</h3>
     <div class="sprint-flow">
       <div class="sf-item">Sprint Planning<br>衝刺規劃</div>
       <span class="sf-arrow">→</span>
@@ -165,380 +163,175 @@
       <span class="sf-arrow">→</span>
       <div class="sf-item">Retrospective<br>回顧會議</div>
     </div>
+
     <div class="table-wrap"><table>
       <tr><th>事件</th><th>目的</th><th>考試關鍵字</th></tr>
-      <tr><td>Sprint Planning<br>衝刺規劃</td><td>決定本次 Sprint 要做哪些需求故事、納入哪些工作</td><td>「決定需求故事是否納入衝刺內」→ Sprint Planning</td></tr>
-      <tr><td>Daily Scrum<br>每日站立</td><td>每天15分鐘，在看板前開會，同步昨天做了什麼、今天做什麼、有什麼阻礙</td><td>「每天利用固定時間在看板前開會，不超過15分鐘」→ Daily Scrum</td></tr>
-      <tr><td>Product Review<br>產品審查</td><td>Sprint 結束後，展示產品增量給 PO 和利害關係人，PO 決定是否允收</td><td>「產品增量是否被 PO 允收」→ Product Review<br>「利害關係人提出變更」→ 先納入 Product Backlog，由 PO 排序</td></tr>
-      <tr><td>Retrospective<br>回顧會議</td><td>Sprint 結束後，團隊討論「如何改善流程與工作效率」</td><td>「團隊討論如何改善流程與工作效率」→ Retrospective</td></tr>
+      <tr><td>Sprint Planning</td><td>決定本次 Sprint 要做哪些需求故事、估算故事複雜度（Planning Poker）</td><td>「決定需求故事是否納入衝刺」「估算故事相對複雜度」→ Sprint Planning</td></tr>
+      <tr><td>Daily Scrum</td><td>每天15分鐘，在看板前同步：昨天做了什麼、今天做什麼、什麼阻礙工作</td><td>「每天固定時間在看板前，不超過15分鐘」→ Daily Scrum<br>⚠️ 不討論如何解決技術問題，技術問題另外排時間</td></tr>
+      <tr><td>Product Review</td><td>展示產品增量給 PO 和利害關係人，PO 決定是否允收</td><td>「PO 允收產品增量」→ Product Review<br>「利害關係人提出變更」→ 納入 Product Backlog，PO 排序</td></tr>
+      <tr><td>Retrospective</td><td>Sprint 結束後，討論如何改善流程與工作效率</td><td>「討論如何改善流程」→ Retrospective<br>⚠️ 在 Product Review 之後，不是之前</td></tr>
     </table></div>
-    <div class="box trap">
-      <div class="box-title">⚠️ Sprint 子事件正確順序</div>
-      正確順序：<strong>Sprint Planning → Daily Scrum → Product Review → Retrospective</strong><br><br>
-      考題（Q15）：「敏捷專案進行衝刺時，子事件進行順序哪項正確？」<br>
-      → 答案：C. Sprint planning→Daily Scrum→Product review→Retrospective
-    </div>
-    <h3>Sprint Timebox（時間盒）</h3>
-    <ul>
-      <li>同個 Release 內的衝刺，Timebox 要一樣</li>
-      <li>每次衝刺後不可修改 Timebox</li>
-    </ul>
-  </div>
-</div>
 
-<!-- 三、Backlog -->
-<div class="section" id="s3">
-  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>Product Backlog 與 Sprint Backlog</span><span id="c3">▼</span></div>
-  <div class="section-body" id="b3">
+    <h3>Backlog 兩種清單</h3>
     <div class="backlog-card">
       <div class="bc-title">📋 Product Backlog（產品待辦清單）</div>
-      <div class="bc-desc">
-        由 PO 建立並維護。收錄所有待做的需求故事，依照「價值高低」排序：<br>
-        • 排序由價值高到低<br>
-        • 價值高、時間近 → 先拆細先開發<br>
-        • 價值低、時間遠 → 不拆細且後開發<br>
-        • 動態的，隨時可以新增、修改、移除項目
-      </div>
+      <div class="bc-desc">由 PO 建立並維護。依「價值高到低」排序：<br>
+      • 價值高、時間近 → 先拆細，先開發<br>
+      • 價值低、時間遠 → 不拆細，後開發<br>
+      • 動態的，隨時可以新增、修改、移除</div>
     </div>
     <div class="backlog-card">
       <div class="bc-title">📌 Sprint Backlog（衝刺待辦清單）</div>
-      <div class="bc-desc">
-        由開發團隊從 Product Backlog 中挑選，決定本次 Sprint 要做的工作。<br>
-        開發團隊確定 Sprint Backlog 內的工作量（不是 PO）。
-      </div>
+      <div class="bc-desc">從 Product Backlog 中挑選，由<strong>開發團隊</strong>決定本次 Sprint 工作量（不是 PO）。</div>
     </div>
-    <div class="box trap">
-      <div class="box-title">⚠️ 需求故事在 Product Review 不被允收怎麼辦？</div>
-      考題（Q22）：「需求故事在 Product Review 不被允收，應如何處理？」<br>
-      → 答案：<strong>先放回 Product Backlog，由 PO 依價值重新排序，在後續的 Sprint 中持續改善</strong><br>
-      → 不是請求延長 Sprint 時間，不是立即放入下個 Sprint，更不是先允收再下個 Sprint 矯正。
-    </div>
+
+    <h3>變更處理（敏捷 vs 傳統）</h3>
     <div class="box tip">
-      <div class="box-title">💡 利害關係人在 Product Review 提出變更怎麼辦？</div>
-      → 答案：<strong>納入 Product Backlog，由 PO 依價值高低排序，再放入 Sprint 開發</strong><br>
-      → 不是立即放入下個 Sprint，不是請利害關係人提出正式變更申請送 CCB（敏捷沒有 CCB！）
-    </div>
-  </div>
-</div>
-
-<!-- 四、Daily Scrum -->
-<div class="section" id="s4">
-  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>Daily Scrum 每日站立會議</span><span id="c4">▼</span></div>
-  <div class="section-body" id="b4">
-    <p>Daily Scrum 只討論三個問題：</p>
-    <ul>
-      <li>昨天做了什麼？</li>
-      <li>今天要做什麼？</li>
-      <li>什麼事情阻礙工作？</li>
-    </ul>
-    <div class="box trap">
-      <div class="box-title">⚠️ Daily Scrum 的「例外」題</div>
-      「站立會議討論的主題，何者為非？」<br>
-      → 不討論：<strong>如何解決技術問題</strong><br>
-      技術問題應在 Daily Scrum 結束後另外排時間解決，不佔用 15 分鐘的站立時間。<br><br>
-      「成員在 Daily Scrum 提出技術問題，會議轉向討論此問題，PM 該如何？」<br>
-      → 答案：<strong>Daily Scrum 結束後，另外排時間討論此問題</strong>
-    </div>
-  </div>
-</div>
-
-<!-- 五、敏捷開發團隊特色 -->
-<div class="section" id="s5">
-  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>敏捷開發團隊特色</span><span id="c5">▼</span></div>
-  <div class="section-body" id="b5">
-    <div class="table-wrap"><table>
-      <tr><th>特色</th><th>說明</th></tr>
-      <tr><td>跨領域組成</td><td>由不同專業領域的成員組成，具備完成工作所需的全部技能</td></tr>
-      <tr><td>團隊人數</td><td>通常介於 3~9 人之間</td></tr>
-      <tr><td>自我組織</td><td>團隊自我組織且自我授權，自己決定誰做什麼</td></tr>
-      <tr><td>不得兼任多專案</td><td>⚠️「可同時兼任多個專案的開發成員」→ 這是<strong>錯誤</strong>的特色描述！</td></tr>
-    </table></div>
-    <div class="box trap">
-      <div class="box-title">⚠️ 敏捷開發團隊特色「不包含」哪項？</div>
-      考題（Q9）：「敏捷開發團隊的特色，不包含哪項？」<br>
-      → 不包含：<strong>「可同時兼任多個專案的開發成員」</strong><br>
-      → 敏捷強調專注，開發團隊成員應專注在當前 Sprint，不應兼任多個專案。
-    </div>
-  </div>
-</div>
-
-<!-- 六、需求故事排序與估算 -->
-<div class="section" id="s6">
-  <div class="section-header" onclick="toggle('b6')"><span><span class="num">六</span>需求故事排序與估算工具</span><span id="c6">▼</span></div>
-  <div class="section-body" id="b6">
-    <h3>Product Backlog 排序原則</h3>
-    <p>排序由「<strong>價值高到低</strong>」：</p>
-    <ul>
-      <li>價值高 + 時間近 → 先拆細，先開發</li>
-      <li>價值低 + 時間遠 → 不拆細，後開發</li>
-    </ul>
-    <h3>估算工具</h3>
-    <div class="table-wrap"><table>
-      <tr><th>工具</th><th>用途</th></tr>
-      <tr><td>規劃撲克<br>Planning Poker</td><td>考量故事相對複雜度，使用撲克牌進行估算，避免個人偏見影響</td></tr>
-      <tr><td>MoSCoW</td><td>將需求分類為 Must/Should/Could/Won't，用於需求優先順序排列</td></tr>
-      <tr><td>燃盡圖<br>Burndown Chart</td><td>追蹤 Sprint 剩餘工作量，呈現進度趨勢</td></tr>
-    </table></div>
-    <div class="box tip">
-      <div class="box-title">💡 考量故事相對複雜度，用哪個工具？</div>
-      → <strong>規劃撲克（Planning Poker）</strong>
-    </div>
-  </div>
-</div>
-
-<!-- 七、變更處理 -->
-<div class="section" id="s7">
-  <div class="section-header" onclick="toggle('b7')"><span><span class="num">七</span>變更在敏捷中的處理方式</span><span id="c7">▼</span></div>
-  <div class="section-body" id="b7">
-    <div class="box tip">
-      <div class="box-title">💡 敏捷的變更思維 vs 傳統 PMP 的變更思維</div>
+      <div class="box-title">💡 敏捷擁抱變更，不需要送 CCB</div>
       <strong>傳統 PMP</strong>：任何變更 → 送 CCB → 核准後才執行<br>
-      <strong>敏捷</strong>：任何變更 → 納入 Product Backlog → PO 依價值排序 → 在下個適合的 Sprint 執行<br><br>
-      敏捷擁抱變更，不需要送 CCB！這是最容易搞混的地方。
+      <strong>敏捷</strong>：任何變更 → 納入 Product Backlog → PO 依價值排序 → 在適合的 Sprint 執行
     </div>
     <div class="table-wrap"><table>
-      <tr><th>情境</th><th>敏捷中的正確做法</th></tr>
+      <tr><th>情境</th><th>正確做法</th></tr>
       <tr><td>利害關係人在 Product Review 提出變更</td><td>納入 Product Backlog，PO 依價值高低排序，再放入 Sprint</td></tr>
       <tr><td>需求故事在 Product Review 不被允收</td><td>放回 Product Backlog，PO 重新排序，後續 Sprint 改善</td></tr>
       <tr><td>Sprint 進行中成員想增加新功能</td><td>放入 Product Backlog，本次 Sprint 先完成已承諾的工作</td></tr>
     </table></div>
+
+    <h3>Sprint Timebox（時間盒）</h3>
+    <div class="box warn">
+      <div class="box-title">💡 Timebox 規則</div>
+      <strong>同個 Release 內的衝刺，Timebox 要一樣</strong>（不是每次衝刺後可修改）<br>
+      不同 Release 可以有不同的 Timebox。
+    </div>
   </div>
 </div>
 
-<!-- 九、進階敏捷觀念 -->
-<div class="section" id="s9">
-  <div class="section-header" onclick="toggle('b9')"><span><span class="num">九</span>進階敏捷觀念（歷屆考點）</span><span id="c9">▼</span></div>
-  <div class="section-body" id="b9">
+<!-- 三、敏捷工具與進階觀念 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>敏捷工具與進階觀念</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
 
-    <h3>🔬 Spike（技術探索）</h3>
-    <p>當團隊遇到「不確定這個功能技術上能不能做到」時，不是直接開發，而是先做一個短期的研究/實驗來探索可行性。</p>
+    <h3>估算與追蹤工具</h3>
     <div class="table-wrap"><table>
-      <tr><th>項目</th><th>說明</th></tr>
-      <tr><td>定義</td><td>用固定時間（Timebox）做技術可行性探索，結果是「知識」不是「產品功能」</td></tr>
-      <tr><td>目的</td><td>降低不確定性，讓後續的工作估算更準確</td></tr>
-      <tr><td>放在哪</td><td>放進 Sprint 裡執行，但不是正式的 Product Backlog 項目</td></tr>
-      <tr><td>考試情境</td><td>「團隊不確定某技術是否可行，應該怎麼辦？」→ 做 Spike</td></tr>
+      <tr><th>工具</th><th>用途</th></tr>
+      <tr><td>規劃撲克 Planning Poker</td><td>在 Sprint Planning 中，考量故事相對複雜度的估算工具，避免個人偏見</td></tr>
+      <tr><td>MoSCoW</td><td>將需求分類：Must / Should / Could / Won't，用於需求優先排序</td></tr>
+      <tr><td>燃盡圖 Burndown Chart</td><td>Y軸=剩餘工作量，趨勢由上往下。顯示還剩多少沒做，容易看出進度落後</td></tr>
+      <tr><td>燃升圖 Burnup Chart</td><td>Y軸=已完成工作量，趨勢由下往上。也能顯示總範疇的變化（範疇蔓延一目了然）</td></tr>
+      <tr><td>Velocity（速度）</td><td>團隊一個 Sprint 實際完成的工作量。穩定比高更重要。用於預測完工時間</td></tr>
     </table></div>
 
-    <h3>🎯 MVP（最小可行產品）</h3>
-    <p>Minimum Viable Product：用最少的功能，快速交付可以驗證市場假設的產品版本。</p>
+    <h3>Spike（技術探索）</h3>
+    <p>「團隊不確定某技術是否可行」→ 先做 Spike，用固定時間（Timebox）探索技術可行性，結果是「知識」不是產品功能，放在 Sprint 裡執行。</p>
+
+    <h3>MVP（最小可行產品）</h3>
     <div class="box tip">
       <div class="box-title">💡 MVP 的核心邏輯</div>
-      不是做「最小的產品」，而是做「<strong>能驗證最重要假設的最小版本</strong>」。<br>
-      先交付 MVP → 收集真實用戶回饋 → 再決定下一步要做什麼。<br><br>
-      考試情境：「競爭對手即將推出類似產品，PM 應如何？」→ 做 MVP 搶先進入市場，收集回饋再持續改善。
+      不是做「最小的產品」，而是「<strong>能驗證最重要假設的最小版本</strong>」。<br>
+      先交付 MVP → 收集真實回饋 → 再決定下一步。<br>
+      考試情境：「競爭對手即將推出類似產品」→ 做 MVP 搶先進入市場。
     </div>
 
-    <h3>✅ DoD（Definition of Done，完成的定義）</h3>
-    <p>團隊共同定義「什麼叫做一個功能真正完成了」，是敏捷品質的核心機制。</p>
-    <div class="table-wrap"><table>
-      <tr><th>項目</th><th>說明</th></tr>
-      <tr><td>目的</td><td>確保每個成員對「完成」的定義一致，避免「我以為做完了但其實還差很多」</td></tr>
-      <tr><td>內容範例</td><td>程式碼已 review、單元測試通過、文件更新、QA 測試通過</td></tr>
-      <tr><td>誰定義</td><td>Dev Team 和 PO 共同定義，通常在 Sprint Planning 或 Retrospective 中討論</td></tr>
-      <tr><td>考試情境</td><td>「成員一再保證可以完成被交付的任務，最後還是沒完成」→ 應建立清楚的 DoD</td></tr>
-    </table></div>
-
-    <h3>📋 Kanban（看板）</h3>
-    <p>視覺化工作流管理方法，用看板追蹤工作狀態。</p>
-    <div class="box tip">
-      <div class="box-title">💡 Kanban 的三個核心原則</div>
-      <strong>① 視覺化工作流</strong>：把所有工作項目放在看板上（To Do → In Progress → Done）<br>
-      <strong>② 限制在製品（WIP Limit）</strong>：每個欄位同時進行的工作數量有上限，避免多工降低效率<br>
-      <strong>③ 管理流動</strong>：關注工作從開始到完成的流動速度，找出瓶頸<br><br>
-      Kanban 不像 Scrum 有固定的 Sprint，工作是持續流動的（Continuous flow）。
-    </div>
+    <h3>DoD（Definition of Done，完成的定義）</h3>
+    <p>團隊共同定義「什麼叫做一個功能真正完成了」，由 Dev Team 和 PO 共同制定。</p>
     <div class="box trap">
-      <div class="box-title">⚠️ Scrum vs Kanban 的差異</div>
-      <strong>Scrum</strong>：固定時間盒（Sprint）、固定角色（PO/SM/Dev）、有 Retrospective<br>
-      <strong>Kanban</strong>：持續流動、沒有固定 Sprint、核心是 WIP 限制和視覺化<br><br>
-      考試問「用看板管理工作流、限制同時進行的工作數量」→ 這是 <strong>Kanban</strong>
+      <div class="box-title">⚠️ 「成員一再保證可完成，最後還是沒完成」</div>
+      → 應建立清楚的 <strong>DoD（完成定義）</strong>，讓承諾有具體標準
     </div>
 
-    <h3>📈 Burnup Chart vs Burndown Chart</h3>
+    <h3>Kanban（看板）vs Scrum</h3>
     <div class="table-wrap"><table>
-      <tr><th>圖表</th><th>Y軸</th><th>趨勢</th><th>特點</th></tr>
-      <tr><td>燃盡圖<br>Burndown Chart</td><td>剩餘工作量</td><td>由上往下降</td><td>顯示還剩多少工作沒做，容易看出進度是否落後</td></tr>
-      <tr><td>燃升圖<br>Burnup Chart</td><td>已完成工作量</td><td>由下往上升</td><td>顯示已完成多少，也能顯示總範疇的變化（範疇蔓延一目了然）</td></tr>
+      <tr><th></th><th>Scrum</th><th>Kanban</th></tr>
+      <tr><td>節奏</td><td>固定時間盒（Sprint）</td><td>持續流動（Continuous flow）</td></tr>
+      <tr><td>角色</td><td>固定三角色（PO/SM/Dev）</td><td>沒有固定角色</td></tr>
+      <tr><td>核心</td><td>迭代交付、回顧改善</td><td>WIP 限制、視覺化工作流</td></tr>
     </table></div>
-    <div class="box tip">
-      <div class="box-title">💡 判斷圖表的技巧</div>
-      看 Y 軸的起點和終點：<br>
-      從高往低走 → <strong>燃盡圖</strong>（剩餘工作在減少）<br>
-      從低往高走 → <strong>燃升圖</strong>（完成工作在增加）<br><br>
-      兩條線（Plan vs 實際）：實際線在 Plan 線上方 → 進度落後；在下方 → 進度超前。
-    </div>
 
-    <h3>⚡ Velocity（速度）</h3>
-    <p>團隊在一個 Sprint 內實際完成的工作量（通常用 Story Points 衡量）。</p>
-    <ul>
-      <li>用來預測未來 Sprint 能完成多少工作</li>
-      <li>Velocity 不是越高越好，穩定才重要</li>
-      <li>考試情境：「如何預測專案何時完工？」→ 用 Velocity 除以剩餘 Story Points 估算</li>
-    </ul>
-
-    <h3>🧪 TDD / BDD</h3>
+    <h3>TDD / BDD</h3>
     <div class="table-wrap"><table>
-      <tr><th>方法</th><th>全名</th><th>做法</th></tr>
-      <tr><td>TDD</td><td>Test-Driven Development<br>測試驅動開發</td><td>先寫測試 → 再寫程式讓測試通過 → 重構。確保每行程式都有對應的測試覆蓋。</td></tr>
-      <tr><td>BDD</td><td>Behavior-Driven Development<br>行為驅動開發</td><td>以「用戶行為」的角度寫測試，用接近自然語言的格式描述功能（Given/When/Then），讓非技術人員也能理解。</td></tr>
+      <tr><th>方法</th><th>做法</th></tr>
+      <tr><td>TDD（測試驅動開發）</td><td>先寫測試 → 再寫程式讓測試通過 → 重構。確保每行程式都有測試覆蓋。</td></tr>
+      <tr><td>BDD（行為驅動開發）</td><td>以「用戶行為」角度寫測試，用 Given/When/Then 格式，讓非技術人員也能理解。</td></tr>
     </table></div>
   </div>
 </div>
 
-<!-- 十、PM 在敏捷中的角色 -->
-<div class="section" id="s10">
-  <div class="section-header" onclick="toggle('b10')"><span><span class="num">十</span>PM 在敏捷中的角色（高頻考點）</span><span id="c10">▼</span></div>
-  <div class="section-body" id="b10">
-    <p>這是歷屆題型中出現最多次的考點，傳統 PM 和敏捷 PM 的思維差距很大。</p>
+<!-- 四、PM 在敏捷中的角色 -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>PM 在敏捷中的角色（高頻考點）</span><span id="c4">▼</span></div>
+  <div class="section-body" id="b4">
+
+    <div class="box tip">
+      <div class="box-title">💡 傳統 PM vs 敏捷 PM 的思維差距</div>
+      <strong>傳統 PM</strong>：我來規劃、我來指派、我來控制<br>
+      <strong>敏捷 PM</strong>：我來服務團隊、排除障礙、確保價值流動<br><br>
+      考試遇到「PM 在敏捷中應如何？」→ 答案通常是：<br>
+      ✅ 排除阻礙讓團隊專注 ✅ 促進溝通和透明度 ✅ 引導而非指揮<br>
+      ❌ 不是直接指派工作 ❌ 不是替團隊做決定
+    </div>
 
     <div class="table-wrap"><table>
       <tr><th>情境</th><th>傳統 PM 做法</th><th>敏捷 PM 應該做</th></tr>
       <tr><td>Sponsor 想組建有效的 Agile Team</td><td>自己規劃組建</td><td>引導團隊自組織，Sponsor 提供支持，PM 排除障礙</td></tr>
-      <tr><td>公司沒有敏捷經驗，CEO 想導入 Agile</td><td>直接告訴 CEO 怎麼做</td><td>建議先用框架支持專案執行，不要強推，讓團隊漸進適應</td></tr>
-      <tr><td>Scrum Team 開完 Workshop，Stakeholder 已交付任務，PM 發現沒被告知</td><td>要求下次被通知</td><td>了解資訊流通的問題根源，確保溝通管道暢通</td></tr>
-      <tr><td>成員一再保證可完成卻沒完成</td><td>施壓或懲處</td><td>建立清楚的 DoD（完成定義），讓承諾有具體標準</td></tr>
+      <tr><td>公司沒有敏捷經驗，CEO 想導入 Agile</td><td>直接告訴 CEO 怎麼做</td><td>建議先用框架支持執行，讓團隊漸進適應，不要強推</td></tr>
+      <tr><td>Scrum Team 開完 Workshop，PM 發現沒被告知</td><td>要求下次被通知</td><td>了解資訊流通的問題根源，確保溝通管道暢通</td></tr>
+      <tr><td>成員一再保證可完成卻沒完成</td><td>施壓或懲處</td><td>建立清楚的 DoD，讓承諾有具體標準</td></tr>
     </table></div>
-
-    <div class="box tip">
-      <div class="box-title">💡 敏捷 PM 的核心心態</div>
-      <strong>傳統 PM</strong>：我來規劃、我來指派、我來控制<br>
-      <strong>敏捷 PM</strong>：我來服務團隊、排除障礙、確保價值流動<br><br>
-      考試遇到「PM 在敏捷中應如何？」→ 答案通常是：<br>
-      ✅ 排除阻礙讓團隊專注<br>
-      ✅ 促進溝通和透明度<br>
-      ✅ 引導而非指揮<br>
-      ❌ 不是直接指派工作<br>
-      ❌ 不是替團隊做決定
-    </div>
 
     <div class="box trap">
       <div class="box-title">⚠️ 混合型專案（Hybrid）的 PM</div>
-      有些專案同時使用傳統和敏捷方法。PM 在這種情境下需要：<br>
-      <ul>
-        <li>判斷哪些部分適合用計畫型（需求穩定的部分）</li>
-        <li>哪些部分適合用敏捷（需求不確定、需要快速回饋的部分）</li>
-        <li>在兩種文化之間做橋樑，不強迫統一</li>
-      </ul>
-      考試情境：「利害關係人對 Agile 感興趣但不願全面採用」→ 建議<strong>混合式（Hybrid）</strong>
+      「利害關係人對 Agile 感興趣但不願全面採用」→ 建議<strong>混合式（Hybrid）</strong><br><br>
+      判斷哪些部分用計畫型（需求穩定）、哪些用敏捷（需求不確定），在兩種文化之間做橋樑。
     </div>
   </div>
 </div>
 
-<!-- A卷補強 -->
-<div class="section" id="s_aexam14">
-  <div class="section-header" onclick="toggle('b_aexam14')"><span><span class="num">★</span>A卷補強：敏捷考點解析</span><span id="c_aexam14">▼</span></div>
-  <div class="section-body" id="b_aexam14">
+<!-- 五、題目出題模式 -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>題目出題模式與陷阱彙整</span><span id="c5">▼</span></div>
+  <div class="section-body" id="b5">
 
-    <h3>三個角色職責再確認（A卷Q162~Q168高頻）</h3>
-    <div class="table-wrap"><table>
-      <tr><th>題目情境</th><th>答案</th></tr>
-      <tr><td>將資源及活動的成本加總到 WBS 工作包，再向上加總到控制帳戶</td><td>這是 <strong>成本匯總（Cost Aggregation）</strong>，屬於制定預算流程，不是敏捷角色題</td></tr>
-      <tr><td>在 Sprint 中確定工作包內的工作量</td><td><strong>Development Team</strong></td></tr>
-      <tr><td>負責向開發團隊解釋需求故事的內容</td><td><strong>Product Owner（PO）</strong></td></tr>
-      <tr><td>以僕人式管理為敏捷團隊服務</td><td><strong>Scrum Master（SM）</strong></td></tr>
-      <tr><td>負責保護敏捷原則不被破壞</td><td><strong>Scrum Master（SM）</strong></td></tr>
-      <tr><td>負責跨專案協商及議題討論</td><td><strong>Scrum Master（SM）</strong></td></tr>
-      <tr><td>PO 向開發團隊展示 Sprint Goals 的好壞，Dev 根據評估...</td><td>確定 Sprint Backlog 工作量 → <strong>Development Team</strong></td></tr>
-    </table></div>
-
-    <h3>Sprint 事件順序（A卷Q178）</h3>
-    <div class="box trap">
-      <div class="box-title">⚠️ 正確順序一定要記住</div>
-      <strong>Sprint Planning → Daily Scrum → Product Review → Retrospective</strong><br><br>
-      Q178 選項 C 是正確的：Sprint planning→Daily Scrum→<strong>Product review→Retrospective</strong><br>
-      常見錯誤：把 Retrospective 放在 Product Review 前面（選項 A）
-    </div>
-
-    <h3>哪個事件決定需求故事是否納入 Sprint（A卷Q179）</h3>
-    <div class="box tip">
-      <div class="box-title">💡 四個事件的核心功能</div>
-      決定「要做什麼」、「哪些故事進 Sprint」→ <strong>Sprint Planning（衝刺規劃）</strong><br>
-      每天同步進度 → <strong>Daily Scrum</strong><br>
-      PO 允收、展示成果給利害關係人 → <strong>Product Review</strong><br>
-      討論流程如何改善 → <strong>Retrospective</strong>
-    </div>
-
-    <h3>估算需求故事複雜度用哪個事件（A卷Q180）</h3>
-    <div class="box tip">
-      <div class="box-title">💡 容易搞混的考點</div>
-      「估算需求故事的相對複雜度」→ 在 <strong>Sprint Planning</strong> 中進行<br>
-      工具是：<strong>規劃撲克（Planning Poker）</strong><br><br>
-      Q180 答案：<strong>D. 衝刺規劃（Sprint Planning）</strong>
-    </div>
-
-    <h3>Timebox（時間盒）規則（A卷Q177）</h3>
-    <div class="box warn">
-      <div class="box-title">💡 Timebox 不能隨意修改</div>
-      Q177：「敏捷專案中會有多次衝刺，每次衝刺的時間應如何？」<br>
-      → 答案：<strong>B. 同個 Release 內的衝刺，Timebox 要一樣</strong><br><br>
-      不是「每次衝刺後可修改」，而是同一個 Release 裡的所有 Sprint 長度要一致。<br>
-      不同 Release 可以有不同的 Timebox。
-    </div>
-
-    <h3>Product Backlog 的 Sprint Backlog 工作量（A卷Q163~Q174）</h3>
-    <div class="table-wrap"><table>
-      <tr><th>考點</th><th>答案</th></tr>
-      <tr><td>誰建立 Product Backlog？</td><td><strong>PO</strong></td></tr>
-      <tr><td>誰確定 Sprint Backlog 內的工作量？</td><td><strong>Development Team</strong></td></tr>
-      <tr><td>Sprint Backlog 中的工作從哪裡來？</td><td>從 Product Backlog 中挑選</td></tr>
-      <tr><td>需求故事不被允收，怎麼辦？</td><td>放回 Product Backlog，PO 重新排序，後續 Sprint 改善</td></tr>
-      <tr><td>利害關係人在 Product Review 提出變更</td><td>納入 Product Backlog，PO 排序後再排入 Sprint，<strong>不送 CCB</strong></td></tr>
-    </table></div>
-
-    <h3>SM 的核心：僕人式領導（A卷Q167、Q168）</h3>
-    <div class="box trap">
-      <div class="box-title">⚠️ SM 最容易答錯的考點</div>
-      Q167：「Scrum Master 在組織中的角色是？」<br>
-      → 答案：<strong>Servant Leader（僕人式領導）</strong>，不是 PM 也不是 Team Leader<br><br>
-      Q168：「Scrum Master 的職責，何者為非？」<br>
-      → 不包含：<strong>「以命令與指派的方式向開發團隊分發工作」</strong><br>
-      SM 是輔助者，不是指揮官，工作分配是 Development Team 自己決定的。
-    </div>
-  </div>
-</div>
-
-<!-- 八、出題模式 -->
-<div class="section" id="s8">
-  <div class="section-header" onclick="toggle('b8')"><span><span class="num">十一</span>題目出題模式與陷阱彙整</span><span id="c8">▼</span></div>
-  <div class="section-body" id="b8">
     <div class="qtype"><div class="qt-title">📝 題型1：「這個職責屬於誰？」</div>
       <ul>
         <li>蒐集並排序利害關係人需求 → <strong>PO</strong></li>
-        <li>確認需求的價值 → <strong>PO</strong></li>
         <li>建立 Product Backlog → <strong>PO</strong></li>
         <li>向開發團隊解釋需求故事 → <strong>PO</strong></li>
+        <li>在 Product Review 決定是否允收 → <strong>PO</strong></li>
         <li>教導敏捷原則、保護敏捷原則 → <strong>SM</strong></li>
         <li>採僕人式管理為團隊服務 → <strong>SM</strong></li>
         <li>跨專案協商及議題討論 → <strong>SM</strong></li>
         <li>確定 Sprint Backlog 的工作量 → <strong>Dev Team</strong></li>
         <li>自我組織決定誰做什麼 → <strong>Dev Team</strong></li>
-        <li>產品增量是否允收 → <strong>PO（在 Product Review 中）</strong></li>
       </ul>
     </div>
+
     <div class="qtype"><div class="qt-title">📝 題型2：「這個情境是哪個敏捷事件？」</div>
       <ul>
-        <li>決定需求故事是否納入 Sprint → <strong>Sprint Planning</strong></li>
+        <li>決定需求故事是否納入 Sprint、估算複雜度 → <strong>Sprint Planning</strong></li>
         <li>每天在看板前15分鐘，同步進度 → <strong>Daily Scrum</strong></li>
-        <li>PO 允收產品增量 → <strong>Product Review</strong></li>
-        <li>討論如何改善流程與工作效率 → <strong>Retrospective（回顧）</strong></li>
+        <li>PO 允收產品增量、利害關係人提出變更 → <strong>Product Review</strong></li>
+        <li>討論如何改善流程與工作效率 → <strong>Retrospective</strong></li>
       </ul>
     </div>
+
+    <div class="qtype"><div class="qt-title">📝 題型3：「這個情境應該怎麼做？」</div>
+      <ul>
+        <li>利害關係人提出變更 → <strong>納入 Product Backlog，PO 排序後放入 Sprint（不送 CCB）</strong></li>
+        <li>需求故事不被允收 → <strong>放回 Product Backlog，PO 重新排序</strong>（不延長 Sprint）</li>
+        <li>Daily Scrum 有人提出技術問題 → <strong>會後另外安排時間討論</strong></li>
+        <li>成員一再保證完成卻沒完成 → <strong>建立清楚的 DoD</strong></li>
+        <li>競爭對手即將推出類似產品 → <strong>做 MVP 搶先進入市場</strong></li>
+        <li>團隊不確定技術是否可行 → <strong>做 Spike</strong></li>
+      </ul>
+    </div>
+
     <div class="box trap">
       <div class="box-title">⚠️ 最常答錯的敏捷考點</div>
-      <strong>「PO 不包含的職責」→ 決定 Sprint 的工作量</strong>（工作量由 Dev Team 決定）<br><br>
-      <strong>「SM 不做的事」→ 以命令與指派的方式分發工作</strong>（SM 是僕人式管理）<br><br>
-      <strong>「敏捷團隊特色不包含」→ 可同時兼任多專案</strong>（敏捷要求專注）<br><br>
-      <strong>「Daily Scrum 不討論」→ 如何解決技術問題</strong>（技術問題另外排時間）<br><br>
-      <strong>「需求故事不被允收，怎麼辦」→ 放回 Backlog，PO 重新排序</strong>（不是延長 Sprint）<br><br>
-      <strong>「利害關係人提出變更，怎麼辦」→ 納入 Backlog，PO 排序後再排入 Sprint</strong>（不送 CCB！）
-    </div>
-    <div class="box tip">
-      <div class="box-title">💡 您之前說的「船長 vs 後勤」比喻完全正確！</div>
-      <strong>PO = 船長</strong>：決定船往哪走（方向/需求/價值）<br>
-      <strong>SM = 後勤</strong>：讓船員可以專心工作（排除障礙/守護流程）<br>
-      <strong>Dev Team = 水手</strong>：實際操槳划船（執行開發）<br><br>
-      有了這個比喻，任何「誰負責什麼」的題目都可以快速判斷。
+      <strong>「同個 Release 內的 Timebox」→ 要一樣</strong>（不是每次衝刺後可修改）<br>
+      <strong>「SM 在組織中的角色」→ Servant Leader（僕人式領導）</strong>，不是 PM 也不是 Team Leader<br>
+      <strong>「燃盡圖的 Y 軸」→ 剩餘工作量</strong>（由上往下）；燃升圖 = 已完成（由下往上）<br>
+      <strong>「哪個哪個工作速率大於計畫？」→ Plan 線在實際線上方 = 實際比計畫快</strong>
     </div>
   </div>
 </div>

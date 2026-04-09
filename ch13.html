@@ -44,7 +44,6 @@
   ul li{font-size:14px;margin-bottom:5px;}
   .qtype{background:#F0F6FF;border:1px solid #C0D8F0;border-radius:10px;padding:12px 14px;margin:10px 0;}
   .qtype .qt-title{font-weight:700;color:var(--primary);font-size:13px;margin-bottom:6px;}
-  /* Power/Interest Grid */
   .pi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
   .pi-card{border-radius:10px;padding:12px;border:2px solid;text-align:center;}
   .pi-card .pi-strategy{font-size:16px;font-weight:800;margin-bottom:4px;}
@@ -74,38 +73,54 @@
 <div class="toc">
   <div class="toc-header" onclick="toggleToc()">📋 本章目錄 <span id="toc-chevron">▼</span></div>
   <div class="toc-body" id="toc-body">
-    <a href="#s1">一、利害關係人管理四個流程</a>
-    <a href="#s2">二、權力/利益方格（Power/Interest Grid）</a>
-    <a href="#s3">三、辨識利害關係人的識別要素</a>
-    <a href="#s_sal">★ 顯著性模型 Salience Model（歷屆考點）</a>
-    <a href="#s4">四、高頻情境題解析</a>
-    <a href="#s5">五、題目出題模式與陷阱彙整</a>
+    <a href="#s1">一、四個流程 + 辨識要素</a>
+    <a href="#s2">二、權力/利益方格 + 顯著性模型</a>
+    <a href="#s3">三、參與程度五個等級</a>
+    <a href="#s4">四、題目出題模式與陷阱彙整</a>
   </div>
 </div>
 
+<!-- 一、四個流程 + 辨識要素 -->
 <div class="section" id="s1">
-  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>利害關係人管理四個流程</span><span id="c1">▼</span></div>
+  <div class="section-header" onclick="toggle('b1')"><span><span class="num">一</span>四個流程 + 辨識要素</span><span id="c1">▼</span></div>
   <div class="section-body open" id="b1">
     <div class="table-wrap"><table>
       <tr><th>流程</th><th>核心工作</th><th>考試關鍵字</th></tr>
-      <tr><td>辨識利害關係人<br>Identify Stakeholders</td><td>找出所有會影響或受到專案影響的人，分析其利益、參與度、影響力</td><td>「目前正在釐清專案有哪些利害關係人」→ 辨識利害關係人<br>⚠️ 整個專案生命週期都要辨識，不只是起始階段</td></tr>
-      <tr><td>規劃利害關係人參與<br>Plan Stakeholder Engagement</td><td>制定讓利害關係人有效參與專案的計畫，說明如何讓利害關係人有效參與</td><td>「為了說明如何讓利害關係人有效參與專案，必須完成哪個流程」→ 規劃利害關係人參與<br>「提高支持及降低抗拒，需推動哪份計畫」→ 利害關係人參與計畫</td></tr>
-      <tr><td>管理利害關係人參與<br>Manage Stakeholder Engagement</td><td>與利害關係人溝通合作，解決問題，管理期望</td><td>「在重要會議上，另一位 PM 表現良好但你的專案延遲，你怎麼辦」→ 與計畫經理討論（管理參與）</td></tr>
+      <tr><td>辨識利害關係人<br>Identify Stakeholders</td><td>找出所有會影響或受到專案影響的人，分析其利益、參與度、影響力</td><td>「釐清有哪些利害關係人」「分析其權力、利益、關注」<br>⚠️ 整個專案生命週期都要辨識，不只是起始階段</td></tr>
+      <tr><td>規劃利害關係人參與<br>Plan Stakeholder Engagement</td><td>制定讓利害關係人有效參與專案的計畫</td><td>「說明如何讓利害關係人有效參與」「提高支持及降低抗拒，需推動哪份計畫」→ 利害關係人參與計畫</td></tr>
+      <tr><td>管理利害關係人參與<br>Manage Stakeholder Engagement</td><td>與利害關係人溝通合作，解決問題，管理期望</td><td>「另一位 PM 表現良好但你的專案延遲，怎麼辦」→ 與計畫經理討論</td></tr>
       <tr><td>監控利害關係人參與<br>Monitor Stakeholder Engagement</td><td>監控利害關係人的參與度，根據需要調整策略</td><td>持續監控參與度變化</td></tr>
     </table></div>
+
+    <h3>辨識利害關係人的識別要素</h3>
+    <ul>
+      <li>權力（Power）</li>
+      <li>利益（Interest）</li>
+      <li>關注（Concern）</li>
+    </ul>
+    <div class="box trap">
+      <div class="box-title">⚠️ 辨識利害關係人「不包含」什麼？</div>
+      → 不包含：<strong>需求（Needs）</strong><br>
+      需求是在蒐集需求（Ch5）的範疇，不是辨識利害關係人時的識別要素。
+    </div>
+
     <div class="box tip">
       <div class="box-title">💡 PM 獲得章程後的第一步</div>
-      「PM 被指派負責一個新專案，並獲得了專案章程，PM 首先做什麼？」<br>
-      → 答案：<strong>確定所有的利害關係人都有參與（辨識利害關係人）</strong><br>
-      → 拿到章程代表起始階段，起始階段最重要的兩件事：發展章程 + 辨識利害關係人。
+      「PM 被指派負責新專案並獲得專案章程，首先做什麼？」<br>
+      → <strong>辨識所有的利害關係人</strong><br>
+      拿到章程代表起始階段，起始階段最重要的兩件事：發展章程 + 辨識利害關係人。<br><br>
+      「新加入的利害關係人在最終驗收時才表示產品不符合需求，最可能的原因？」<br>
+      → <strong>專案過程中未定期辨識及分析利害關係人</strong>
     </div>
   </div>
 </div>
 
+<!-- 二、Power/Interest Grid + 顯著性模型 -->
 <div class="section" id="s2">
-  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>權力/利益方格（Power/Interest Grid）</span><span id="c2">▼</span></div>
+  <div class="section-header" onclick="toggle('b2')"><span><span class="num">二</span>權力/利益方格 + 顯著性模型</span><span id="c2">▼</span></div>
   <div class="section-body" id="b2">
-    <p>依據利害關係人的「權力（Power）」和「利益（Interest）」，分成四個象限，各有不同的管理策略：</p>
+
+    <h3>Power / Interest Grid（權力/利益方格）</h3>
     <div class="pi-grid">
       <div class="pi-card pi-hh">
         <div class="pi-strategy">Manage Closely</div>
@@ -124,66 +139,36 @@
         <div class="pi-label">低權力 + 低利益<br>監控即可，不需花太多心力</div>
       </div>
     </div>
-    <div class="box trap">
-      <div class="box-title">⚠️ 四格策略記憶</div>
-      <strong>高權力 + 高利益 → Manage Closely（密切管理）</strong><br>
-      <strong>高權力 + 低利益 → Keep Satisfied（讓他們滿意）</strong><br>
-      <strong>低權力 + 高利益 → Keep Informed（定期告知）</strong><br>
-      <strong>低權力 + 低利益 → Monitor（監控）</strong>
-    </div>
-  </div>
-</div>
 
-<div class="section" id="s3">
-  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>辨識利害關係人的識別要素</span><span id="c3">▼</span></div>
-  <div class="section-body" id="b3">
-    <p>辨識利害關係人時，主要識別的要素包含：</p>
-    <ul>
-      <li>權力（Power）</li>
-      <li>利益（Interest）</li>
-      <li>關注（Concern）</li>
-    </ul>
-    <div class="box trap">
-      <div class="box-title">⚠️ 辨識利害關係人「不包含」什麼？</div>
-      「辨識利害關係人主要識別那些，不包含以下何者？」<br>
-      → 不包含：<strong>需求（Needs）</strong><br>
-      → 需求是在蒐集需求（Ch5）的範疇，不是辨識利害關係人時的識別要素。
-    </div>
-    <h3>利害關係人何時需要辨識？</h3>
-    <p>「專案何時需辨識利害關係人？」→ 答案：<strong>整個專案生命週期</strong>，不只是起始階段。新的利害關係人可能在任何時間點出現。</p>
-  </div>
-</div>
-
-<!-- 顯著性模型 -->
-<div class="section" id="s_sal">
-  <div class="section-header" onclick="toggle('b_sal')"><span><span class="num">★</span>顯著性模型 Salience Model（歷屆考點）</span><span id="c_sal">▼</span></div>
-  <div class="section-body" id="b_sal">
-    <p>除了 Power/Interest Grid，PMP 還考另一種分類模型：<strong>顯著性模型（Salience Model）</strong>，用三個維度來評估利害關係人的重要性。</p>
-
-    <h3>三個維度</h3>
+    <h3>顯著性模型（Salience Model）</h3>
+    <p>用三個維度評估利害關係人的重要性，決定優先管理順序：</p>
     <div class="table-wrap"><table>
-      <tr><th>維度</th><th>英文</th><th>說明</th></tr>
-      <tr><td>權力 Power</td><td>Power</td><td>對專案施加影響的能力（決策權、資源控制）</td></tr>
-      <tr><td>合法性 Legitimacy</td><td>Legitimacy</td><td>在專案中的參與是否被視為合適、正當</td></tr>
-      <tr><td>緊迫性 Urgency</td><td>Urgency</td><td>對專案的需求是否需要立即關注</td></tr>
+      <tr><th>維度</th><th>說明</th></tr>
+      <tr><td>權力 Power</td><td>對專案施加影響的能力（決策權、資源控制）</td></tr>
+      <tr><td>合法性 Legitimacy</td><td>在專案中的參與是否被視為合適、正當</td></tr>
+      <tr><td>緊迫性 Urgency</td><td>對專案的需求是否需要立即關注</td></tr>
     </table></div>
-
     <div class="box tip">
-      <div class="box-title">💡 三個維度組合代表不同優先級</div>
-      <strong>同時具備三個維度（權力＋合法性＋緊迫性）</strong> → 最重要，需要立即管理<br>
+      <div class="box-title">💡 三維度組合決定優先級</div>
+      <strong>三個維度都具備（權力+合法性+緊迫性）</strong> → 最重要，立即管理<br>
       <strong>只有兩個維度</strong> → 中等重要，需要關注<br>
       <strong>只有一個維度</strong> → 較不重要，監控即可<br><br>
-      考試情境：「這位利害關係人對專案有很大的影響力，他的需求是合理的，而且需要立即回應」→ 這是<strong>三維度都具備</strong>，最高優先級。
+      考試情境：「這位利害關係人影響力大、需求合理、而且需要立即回應」→ 三維度都具備，最高優先級
     </div>
 
-    <h3>辨識利害關係人的其他方法</h3>
+    <h3>辨識工具</h3>
     <div class="table-wrap"><table>
-      <tr><th>方法</th><th>說明</th></tr>
+      <tr><th>工具</th><th>用途</th></tr>
       <tr><td>利害關係人登錄表<br>Stakeholder Register</td><td>記錄所有利害關係人的資訊（名稱、角色、利益、影響力、分類等）</td></tr>
-      <tr><td>利害關係人參與評估矩陣</td><td>評估各利害關係人目前的參與程度（不知情/抵制/中立/支持/領導）vs 期望的參與程度，找出差距</td></tr>
+      <tr><td>利害關係人參與評估矩陣</td><td>評估各利害關係人目前的參與程度 vs 期望的參與程度，找出差距</td></tr>
     </table></div>
+  </div>
+</div>
 
-    <h3>利害關係人參與程度的五個等級</h3>
+<!-- 三、參與程度五個等級 -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('b3')"><span><span class="num">三</span>參與程度五個等級</span><span id="c3">▼</span></div>
+  <div class="section-body" id="b3">
     <div class="table-wrap"><table>
       <tr><th>等級</th><th>說明</th><th>PM 目標</th></tr>
       <tr><td>不知情 Unaware</td><td>不知道專案存在或對其的影響</td><td>告知資訊</td></tr>
@@ -193,77 +178,67 @@
       <tr><td>領導 Leading</td><td>積極推動專案成功</td><td>讓他發揮影響力</td></tr>
     </table></div>
     <div class="box trap">
-      <div class="box-title">⚠️ 考試常見題型</div>
-      「為了有效管理利害關係人，PM 發現某位關鍵利害關係人目前是抵制狀態，但期望他是支持狀態，PM 應如何？」<br>
-      → 找出他抵制的原因 → 針對性溝通 → 讓他了解專案對他的利益 → 逐步轉化為支持<br><br>
-      這類題目的答案核心：<strong>先了解原因，再針對性溝通，不是強迫接受</strong>
+      <div class="box-title">⚠️ 利害關係人是抵制狀態，PM 應如何？</div>
+      「關鍵利害關係人目前是抵制狀態，但期望他是支持狀態」<br>
+      → 先了解他抵制的原因 → 針對性溝通 → 讓他了解專案對他的利益 → 逐步轉化為支持<br>
+      核心：<strong>先了解原因，再針對性溝通，不是強迫接受</strong>
     </div>
   </div>
 </div>
 
+<!-- 四、題目出題模式 -->
 <div class="section" id="s4">
-  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>高頻情境題解析</span><span id="c4">▼</span></div>
+  <div class="section-header" onclick="toggle('b4')"><span><span class="num">四</span>題目出題模式與陷阱彙整</span><span id="c4">▼</span></div>
   <div class="section-body" id="b4">
-    <div class="box warn">
-      <div class="box-title">💡 發現專案延誤，Sponsor 被蒙在鼓裡</div>
-      接管一個進行中的專案，發現實際上延誤很多，但 Sponsor 一直被告知按時進行。<br>
-      → 最好的措施：<strong>把你的評估如實報告給 Sponsor</strong>，誠實揭露現況。
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 利害關係人要求增加範疇，Sponsor 不喜歡</div>
-      利害關係人要求增加範疇，但 PM 知道 Sponsor 不喜歡範疇增加。<br>
-      → 最佳選擇：<strong>評估增加範疇的影響</strong>，走正式變更流程，讓 Sponsor 知道代價再決定。
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 客戶指定使用品質不合格的子公司</div>
-      客戶說材料請發包給他的子公司，但該子公司品質不合格。<br>
-      → 正確做法：<strong>若子公司無法改善品質就更換廠商</strong>，品質不能妥協。
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 發現產品缺陷但客戶無法察覺</div>
-      PM 發現產品缺陷，但客戶沒有技術能力發現這個缺陷。<br>
-      → 正確做法：<strong>與團隊討論可行的解決方案，向客戶提供建議</strong>，不能密而不宣。
-    </div>
-    <div class="box warn">
-      <div class="box-title">💡 有機密資料被外部研究機構要求提供</div>
-      為完成專案向客戶取得機密資訊，研究機構希望你提供這些機密資料。<br>
-      → 正確做法：<strong>聯繫客戶並取得允許後才提供</strong>，機密資料需要資料主人授權。
-    </div>
-    <div class="box trap">
-      <div class="box-title">⚠️ 新加入的利害關係人最後才表示產品不符需求</div>
-      考題（Q26）：一個複雜網站專案，有一位新加入的利害關係人在最終驗收時表示產品不符合需求，最可能造成這種情況的原因？<br>
-      → 答案：<strong>專案過程中未定期辨識及分析專案利害關係人</strong><br>
-      → 如果有定期辨識，這位利害關係人早就被納入管理，不會到最後才出現。
-    </div>
-  </div>
-</div>
 
-<div class="section" id="s5">
-  <div class="section-header" onclick="toggle('b5')"><span><span class="num">五</span>題目出題模式與陷阱彙整</span><span id="c5">▼</span></div>
-  <div class="section-body" id="b5">
     <div class="qtype"><div class="qt-title">📝 題型1：「目前在哪個流程？」</div>
       <ul>
         <li>「釐清有哪些利害關係人」→ <strong>辨識利害關係人</strong></li>
         <li>「說明如何讓利害關係人有效參與」→ <strong>規劃利害關係人參與</strong></li>
-        <li>「提高利害關係人支持、降低抗拒」→ 推動<strong>利害關係人參與計畫</strong></li>
+        <li>「提高支持、降低抗拒」→ 推動<strong>利害關係人參與計畫</strong></li>
       </ul>
     </div>
+
     <div class="qtype"><div class="qt-title">📝 題型2：「這個利害關係人用哪種策略？」</div>
       <ul>
-        <li>高權力 + 高利益 → <strong>Manage Closely</strong></li>
-        <li>高權力 + 低利益 → <strong>Keep Satisfied</strong></li>
-        <li>低權力 + 高利益 → <strong>Keep Informed</strong></li>
-        <li>低權力 + 低利益 → <strong>Monitor</strong></li>
+        <li>高權力 + 高利益 → <strong>Manage Closely（密切管理）</strong></li>
+        <li>高權力 + 低利益 → <strong>Keep Satisfied（讓他們滿意）</strong></li>
+        <li>低權力 + 高利益 → <strong>Keep Informed（定期告知）</strong></li>
+        <li>低權力 + 低利益 → <strong>Monitor（監控）</strong></li>
       </ul>
     </div>
+
+    <div class="qtype"><div class="qt-title">📝 題型3：「遇到這個情況 PM 應怎麼做？」</div>
+      <ul>
+        <li>發現專案延誤，Sponsor 被蒙在鼓裡 → <strong>如實報告給 Sponsor</strong></li>
+        <li>利害關係人要求增加範疇，Sponsor 不喜歡 → <strong>評估影響，走正式變更流程</strong></li>
+        <li>客戶指定使用品質不合格的子公司 → <strong>子公司無法改善品質就更換廠商</strong></li>
+        <li>發現產品缺陷但客戶無法察覺 → <strong>與團隊討論解決方案，向客戶提供建議，不能隱瞞</strong></li>
+        <li>機密資料被外部機構要求提供 → <strong>聯繫客戶並取得允許後才提供</strong></li>
+      </ul>
+    </div>
+
     <div class="box trap">
       <div class="box-title">⚠️ 最常答錯的考點</div>
-      <strong>「與上級主管意見不合，一直難以達成共識」→</strong> 正確做法：<strong>針對爭議點與上級主管討論</strong>，不是避免討論爭議點，也不是請求退出專案。<br><br>
-      <strong>「在重要會議上，另一 PM 的專案一切順利，但你的專案有很多延誤，你怎麼做？」</strong><br>
-      → 答案：<strong>與計畫經理（Program Manager）討論</strong>，不是和你的 Sponsor 討論，因為這是計畫層級的問題。
+      <strong>「與上級主管意見不合，一直難以達成共識」</strong><br>
+      → 正確做法：<strong>針對爭議點與上級主管討論</strong>，不是避免討論，不是退出專案<br><br>
+      <strong>「重要會議上，另一 PM 的專案一切順利，但你的專案有很多延誤，怎麼做？」</strong><br>
+      → 答案：<strong>與計畫經理（Program Manager）討論</strong>，不是找 Sponsor，這是計畫層級的問題<br><br>
+      <strong>「辨識利害關係人不包含哪個要素？」→ 需求（Needs）</strong>，需求屬於 Ch5 範疇管理
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">💡 Ch13 核心思維</div>
+      <ul>
+        <li>利害關係人辨識貫穿整個生命週期，不只是起始階段</li>
+        <li>拿到章程的第一步 → 辨識利害關係人</li>
+        <li>遇到抵制的利害關係人 → 先了解原因再溝通，不是強迫</li>
+        <li>Ch13 和 Ch10 的差異：Ch13 管「人的期望和參與度」，Ch10 管「資訊怎麼傳」</li>
+      </ul>
     </div>
   </div>
 </div>
+
 <div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到頂部</div>
 <script>
 function toggle(id){const b=document.getElementById(id);const n=id.replace('b','');const c=document.getElementById('c'+n);const o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.textContent=o?'▼':'▲';}
